@@ -66,7 +66,12 @@ export default function Premium2() {
           </span>
           <nav aria-label="ניווט ראשי">
             <ul className="hidden md:flex items-center gap-8 list-none">
-              {navLinks.map((link) => (
+              {[
+                { label: "טיפולים", href: "/premium-2/treatments" },
+                { label: "תוצאות", href: "/premium-2/results" },
+                { label: "ביקורות", href: "#reviews" },
+                { label: "צרו קשר", href: "/premium-2/contact" },
+              ].map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="text-sm font-bold hover:text-[var(--accent)] transition-colors"
                     style={{ color: "var(--text-muted)" }}>{link.label}</a>

@@ -68,7 +68,12 @@ export default function Premium1() {
           </div>
           <nav aria-label="ניווט ראשי">
             <ul className="hidden md:flex items-center gap-8 list-none">
-              {navLinks.map((link) => (
+              {[
+                { label: "שירותים", href: "#services" },
+                { label: "אודות", href: "#about" },
+                { label: "ביקורות", href: "#reviews" },
+                { label: "צרו קשר", href: "/premium-1/contact" },
+              ].map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="text-xs font-medium tracking-wide uppercase hover:opacity-60"
                     style={{ color: "var(--text-muted)" }}>{link.label}</a>
@@ -163,9 +168,9 @@ export default function Premium1() {
             </motion.div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: "var(--border)" }}>
               {services.map((s, i) => (
-                <motion.div key={s.id} variants={fadeUp} custom={i} initial="hidden"
+                <motion.a key={s.id} href={`/premium-1/services/${s.id}`} variants={fadeUp} custom={i} initial="hidden"
                   whileInView="show" viewport={{ once: true }}
-                  className="p-6 hover:opacity-80 transition-opacity cursor-default"
+                  className="p-6 hover:opacity-80 transition-opacity block"
                   style={{ backgroundColor: "var(--bg-secondary)" }}>
                   <div
                     className="flex justify-center mb-4"
@@ -176,7 +181,8 @@ export default function Premium1() {
                   </div>
                   <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
                   <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
-                </motion.div>
+                  <span className="text-xs mt-2 block" style={{ color: "var(--accent)" }}>קרא עוד ←</span>
+                </motion.a>
               ))}
             </div>
           </div>

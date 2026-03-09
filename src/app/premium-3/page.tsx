@@ -54,7 +54,12 @@ export default function Premium3() {
           </div>
           <nav aria-label="ניווט ראשי">
             <ul className="hidden md:flex items-center gap-7 list-none">
-              {navLinks.map((link) => (
+              {[
+                { label: "אודות", href: "/premium-3/about" },
+                { label: "טיפולים", href: "/premium-3/treatments" },
+                { label: "גלריה", href: "/premium-3/gallery" },
+                { label: "צרו קשר", href: "#contact" },
+              ].map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="text-sm font-medium hover:opacity-60"
                     style={{ color: "var(--text-muted)" }}>{link.label}</a>

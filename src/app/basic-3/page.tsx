@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, MapPin, Clock, Star, ChevronDown, Zap, Shield, ArrowLeft } from "lucide-react";
+import { Phone, MapPin, Clock, Star, Zap, Shield, Cpu, ScanLine, ArrowLeft } from "lucide-react";
 import {
   IconShieldCheck,
   IconDiamond,
@@ -11,25 +11,71 @@ import {
   IconAlertTriangle,
   IconCrown,
   IconDroplet,
+  IconScan,
+  IconDevices,
+  IconRadioactive,
 } from "@tabler/icons-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import KupatHolimBar from "@/components/shared/KupatHolimBar";
-import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
-import { cn } from "@/lib/utils";
+import { clinicData, services, reviews, navLinks } from "@/lib/mock-data";
 import { useState } from "react";
 
-/* ── icon map ── */
+/* ── service icon map ── */
 const iconMap = {
-  implants: <IconShieldCheck size={28} stroke={1.5} aria-hidden="true" />,
-  veneers: <IconDiamond size={28} stroke={1.5} aria-hidden="true" />,
-  whitening: <IconBolt size={28} stroke={1.5} aria-hidden="true" />,
-  orthodontics: <IconArrowsHorizontal size={28} stroke={1.5} aria-hidden="true" />,
-  children: <IconHeart size={28} stroke={1.5} aria-hidden="true" />,
-  emergency: <IconAlertTriangle size={28} stroke={1.5} aria-hidden="true" />,
-  crowns: <IconCrown size={28} stroke={1.5} aria-hidden="true" />,
-  cleaning: <IconDroplet size={28} stroke={1.5} aria-hidden="true" />,
+  implants: <IconShieldCheck size={26} stroke={1.5} aria-hidden="true" />,
+  veneers: <IconDiamond size={26} stroke={1.5} aria-hidden="true" />,
+  whitening: <IconBolt size={26} stroke={1.5} aria-hidden="true" />,
+  orthodontics: <IconArrowsHorizontal size={26} stroke={1.5} aria-hidden="true" />,
+  children: <IconHeart size={26} stroke={1.5} aria-hidden="true" />,
+  emergency: <IconAlertTriangle size={26} stroke={1.5} aria-hidden="true" />,
+  crowns: <IconCrown size={26} stroke={1.5} aria-hidden="true" />,
+  cleaning: <IconDroplet size={26} stroke={1.5} aria-hidden="true" />,
 };
+
+/* ── service tabs ── */
+const serviceTabs = [
+  {
+    id: "restoration",
+    label: "שתלים ושיקום",
+    ids: ["implants", "crowns", "cleaning"],
+  },
+  {
+    id: "aesthetics",
+    label: "אסתטיקה",
+    ids: ["veneers", "whitening", "orthodontics"],
+  },
+  {
+    id: "family",
+    label: "ילדים וחירום",
+    ids: ["children", "emergency"],
+  },
+];
+
+/* ── tech showcase data ── */
+const techFeatures = [
+  {
+    icon: <IconScan size={36} stroke={1} aria-hidden="true" />,
+    name: "סריקה תלת-ממדית",
+    badge: "3D",
+    desc: "סריקה דיגיטלית מדויקת של הפה כולו בשניות — ללא רושם מסורתי. תמונה מדויקת ל-100%.",
+    detail: "iTero Element 5D",
+  },
+  {
+    icon: <IconDevices size={36} stroke={1} aria-hidden="true" />,
+    name: "כתרים ביום אחד",
+    badge: "CEREC",
+    desc: "עיצוב, ייצור והתקנת כתר חרסינה בביקור יחיד. ללא מעבדה חיצונית, ללא המתנה.",
+    detail: "CEREC Primescan + MC X",
+  },
+  {
+    icon: <IconRadioactive size={36} stroke={1} aria-hidden="true" />,
+    name: "טיפולים בלייזר",
+    badge: "LASER",
+    desc: "טיפולי חניכיים, הלבנה ועוד — עם לייזר דנטלי. ללא כאב, ריפוי מהיר, תוצאות מדויקות.",
+    detail: "Fotona LightWalker",
+  },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -41,7 +87,11 @@ const fadeUp = {
 };
 
 export default function Basic3() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState("restoration");
+
+  const activeServices = services.filter((s) =>
+    (serviceTabs.find((t) => t.id === activeTab)?.ids ?? []).includes(s.id)
+  );
 
   return (
     <div
@@ -52,7 +102,8 @@ export default function Basic3() {
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40" style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
+      <header className="sticky top-0 z-40"
+        style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
         <KupatHolimBar dark />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
@@ -91,8 +142,6 @@ export default function Basic3() {
               backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
               backgroundSize: "40px 40px"
             }} aria-hidden="true" />
-
-          {/* Glow */}
           <div className="absolute top-1/2 right-1/4 w-96 h-96 -translate-y-1/2 rounded-full pointer-events-none"
             style={{ backgroundColor: "var(--accent)", opacity: 0.04, filter: "blur(100px)" }} aria-hidden="true" />
 
@@ -128,18 +177,24 @@ export default function Basic3() {
                 </a>
               </div>
 
-              {/* Tech stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4">
+              {/* Tech stat chips */}
+              <div className="flex flex-wrap gap-2 pt-2">
                 {[
-                  { val: "3D", label: "סריקה דיגיטלית" },
-                  { val: "CEREC", label: "כתרים ביום" },
-                  { val: "לייזר", label: "טיפולים מדויקים" },
-                ].map((s) => (
-                  <div key={s.label} className="p-3 rounded border text-center"
-                    style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}>
-                    <div className="text-sm font-bold" style={{ color: "var(--accent)" }}>{s.val}</div>
-                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{s.label}</div>
-                  </div>
+                  { icon: <ScanLine size={13} />, label: "סריקה 3D" },
+                  { icon: <Cpu size={13} />, label: "CEREC כתרים ביום" },
+                  { icon: <Shield size={13} />, label: "לייזר דנטלי" },
+                ].map((chip, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + i * 0.15 }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border"
+                    style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "rgba(0,229,255,0.05)" }}
+                  >
+                    <span aria-hidden="true">{chip.icon}</span>
+                    {chip.label}
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -147,16 +202,13 @@ export default function Basic3() {
             {/* Hero visual */}
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
               <div className="rounded overflow-hidden aspect-[4/3] border"
-                style={{ borderColor: "var(--border)" }}
-                role="img" aria-label="מרפאת שיניים טכנולוגית">
+                style={{ borderColor: "var(--border)" }}>
                 <img
                   src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80"
                   alt="ציוד דנטלי מתקדם ומודרני"
                   className="w-full h-full object-cover"
                 />
               </div>
-
-              {/* Overlay badge */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
                 className="absolute -bottom-4 -right-4 rounded border p-3"
                 style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--accent)" }}>
@@ -169,10 +221,71 @@ export default function Basic3() {
           </div>
         </section>
 
-        {/* ── SERVICES ── */}
-        <section id="services" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
-          aria-labelledby="services-heading-b3">
+        {/* ── TECHNOLOGY SHOWCASE ── */}
+        <section id="technology" className="py-20"
+          style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}
+          aria-labelledby="tech-heading-b3">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+              className="text-center mb-12">
+              <div className="flex justify-center items-center gap-2 mb-3">
+                <Cpu size={16} style={{ color: "var(--accent)" }} aria-hidden="true" />
+                <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--accent)" }}>
+                  ציוד ומערכות
+                </span>
+              </div>
+              <h2 id="tech-heading-b3" className="text-3xl font-bold mb-2"
+                style={{ fontFamily: "var(--font-heading)" }}>
+                הטכנולוגיה שמאחורי הטיפול
+              </h2>
+              <p className="text-sm max-w-lg mx-auto" style={{ color: "var(--text-muted)" }}>
+                אנחנו משקיעים בציוד המתקדם ביותר בעולם — כדי שהטיפול שלכם יהיה מדויק, מהיר ונוח
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-3 gap-6">
+              {techFeatures.map((t, i) => (
+                <motion.div
+                  key={t.badge}
+                  variants={fadeUp}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="p-7 rounded border flex flex-col gap-5"
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}
+                >
+                  {/* Badge + icon row */}
+                  <div className="flex items-start justify-between">
+                    <div style={{ color: "var(--accent)" }}>
+                      {t.icon}
+                    </div>
+                    <span className="text-xs font-extrabold px-2 py-1 rounded tracking-widest"
+                      style={{ backgroundColor: "rgba(0,229,255,0.1)", color: "var(--accent)", border: "1px solid var(--accent)" }}>
+                      {t.badge}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                      {t.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-muted)" }}>
+                      {t.desc}
+                    </p>
+                    <p className="text-xs font-mono" style={{ color: "var(--accent)", opacity: 0.7 }}>
+                      {t.detail}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SERVICES (tabbed) ── */}
+        <section id="services" className="py-20" style={{ backgroundColor: "var(--bg)" }}
+          aria-labelledby="services-heading-b3">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="text-center mb-10">
               <h2 id="services-heading-b3" className="text-3xl font-bold mb-2"
@@ -181,21 +294,51 @@ export default function Basic3() {
                 פתרונות מתקדמים לכל צורך דנטלי
               </p>
             </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {services.map((s, i) => (
-                <motion.div key={s.id} variants={fadeUp} custom={i} initial="hidden"
-                  whileInView="show" viewport={{ once: true }}
-                  className="p-4 rounded border hover:border-[var(--accent)] transition-colors"
-                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
-                  <div
-                    className="flex justify-center mb-2"
-                    style={{ color: "var(--accent)" }}
-                    aria-hidden="true"
-                  >
-                    {iconMap[s.id as keyof typeof iconMap]}
+
+            {/* Tab buttons */}
+            <div className="flex justify-center gap-2 mb-8" role="tablist" aria-label="קטגוריות טיפול">
+              {serviceTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  role="tab"
+                  aria-selected={activeTab === tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className="px-5 py-2.5 rounded text-sm font-semibold transition-all"
+                  style={
+                    activeTab === tab.id
+                      ? { backgroundColor: "var(--accent)", color: "var(--bg)" }
+                      : { backgroundColor: "var(--bg-secondary)", color: "var(--text-muted)", border: "1px solid var(--border)" }
+                  }
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Service cards */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+              role="tabpanel" aria-label={serviceTabs.find((t) => t.id === activeTab)?.label}>
+              {activeServices.map((s, i) => (
+                <motion.div
+                  key={s.id}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.07 }}
+                  className="p-5 rounded border flex flex-col gap-3 hover:border-[var(--accent)] transition-colors"
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: "rgba(0,229,255,0.08)", color: "var(--accent)" }}>
+                      {iconMap[s.id as keyof typeof iconMap]}
+                    </div>
+                    <h3 className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)" }}>
+                      {s.title}
+                    </h3>
                   </div>
-                  <h3 className="font-semibold text-sm mb-1">{s.title}</h3>
-                  <p className="text-xs hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                    {s.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -203,12 +346,11 @@ export default function Basic3() {
         </section>
 
         {/* ── ABOUT ── */}
-        <section id="about" className="py-20" style={{ backgroundColor: "var(--bg)" }}
+        <section id="about" className="py-20" style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}
           aria-labelledby="about-heading-b3">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded border aspect-square overflow-hidden"
-              style={{ borderColor: "var(--border)" }}
-              role="img" aria-label={`תמונת ${clinicData.doctorName}`}>
+            <div className="rounded border aspect-square overflow-hidden max-w-sm mx-auto md:max-w-full"
+              style={{ borderColor: "var(--border)" }}>
               <img
                 src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
                 alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
@@ -230,7 +372,7 @@ export default function Basic3() {
         </section>
 
         {/* ── REVIEWS ── */}
-        <section id="reviews" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
+        <section id="reviews" className="py-20" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="reviews-heading-b3">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -241,7 +383,7 @@ export default function Basic3() {
                 <motion.div key={r.id} variants={fadeUp} custom={i} initial="hidden"
                   whileInView="show" viewport={{ once: true }}
                   className="p-5 rounded border"
-                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}>
                   <div className="flex text-yellow-400 mb-3" aria-label={`דירוג: ${r.rating} כוכבים`}>
                     {[...Array(r.rating)].map((_, j) => <Star key={j} size={13} fill="currentColor" aria-hidden="true" />)}
                   </div>
@@ -253,42 +395,9 @@ export default function Basic3() {
           </div>
         </section>
 
-        {/* ── FAQ ── */}
-        <section id="faq" className="py-20" style={{ backgroundColor: "var(--bg)" }}
-          aria-labelledby="faq-heading-b3">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6">
-            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
-              id="faq-heading-b3" className="text-3xl font-bold text-center mb-10"
-              style={{ fontFamily: "var(--font-heading)" }}>שאלות נפוצות</motion.h2>
-            <div className="space-y-2">
-              {faqs.map((faq, i) => (
-                <motion.div key={i} variants={fadeUp} custom={i} initial="hidden"
-                  whileInView="show" viewport={{ once: true }}
-                  className="rounded border overflow-hidden"
-                  style={{ borderColor: openFaq === i ? "var(--accent)" : "var(--border)" }}>
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                    className="w-full flex items-center justify-between p-4 text-right text-sm font-semibold hover:opacity-80"
-                    style={{ backgroundColor: "var(--bg-secondary)" }}>
-                    <span>{faq.q}</span>
-                    <ChevronDown size={15} aria-hidden="true"
-                      className={cn("transition-transform flex-shrink-0 mr-2", openFaq === i && "rotate-180")}
-                      style={{ color: "var(--accent)" }} />
-                  </button>
-                  {openFaq === i && (
-                    <div className="px-4 pb-4 pt-3 text-sm leading-relaxed"
-                      style={{ color: "var(--text-muted)", backgroundColor: "var(--bg)", borderTop: "1px solid var(--border)" }}>
-                      {faq.a}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── CONTACT ── */}
-        <section id="contact" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
+        <section id="contact" className="py-20"
+          style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}
           aria-labelledby="contact-heading-b3">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -348,7 +457,8 @@ export default function Basic3() {
               </a>
             </div>
           </div>
-          <div className="border-t pt-4 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
+          <div className="border-t pt-4 text-center text-xs"
+            style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
             © {new Date().getFullYear()} {clinicData.name}
           </div>
         </div>
