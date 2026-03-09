@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Leaf } from "lucide-react";
+import { Leaf, Sparkles, ShieldCheck, Users } from "lucide-react";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
@@ -15,22 +15,22 @@ const timeline = [
 
 const philosophy = [
   {
-    icon: "🌿",
+    icon: <Leaf size={28} strokeWidth={1.5} aria-hidden="true" />,
     title: "גישה הוליסטית",
     desc: "בריאות הפה קשורה לבריאות הכללית. אנו מסתכלים על המטופל בשלמות ולא רק על השן הבעייתית.",
   },
   {
-    icon: "🤝",
+    icon: <Users size={28} strokeWidth={1.5} aria-hidden="true" />,
     title: "שותפות אמיתית",
     desc: "כל מטופל מקבל הסבר מלא לפני כל שלב. אנו מאמינים שהחלטות מתקבלות יחד.",
   },
   {
-    icon: "✨",
+    icon: <Sparkles size={28} strokeWidth={1.5} aria-hidden="true" />,
     title: "אסתטיקה טבעית",
     desc: "תוצאות שנראות טבעיות, לא מלאכותיות. החיוך הכי יפה הוא זה שנראה כאילו נולד עם שלך.",
   },
   {
-    icon: "🛡️",
+    icon: <ShieldCheck size={28} strokeWidth={1.5} aria-hidden="true" />,
     title: "בטיחות קודם",
     desc: "ציוד מעוקר, חומרים בדוקים, ועמידה בכל תקני הבטיחות הישראליים והבינלאומיים.",
   },
@@ -126,7 +126,7 @@ export default function AboutPage() {
                   className="p-8 rounded-2xl text-center"
                   style={{ backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border)" }}
                 >
-                  <div className="text-4xl mb-4" aria-hidden="true">{p.icon}</div>
+                  <div className="mb-4" style={{ color: "var(--accent)" }}>{p.icon}</div>
                   <h3 className="font-bold mb-3" style={{ fontFamily: "var(--font-heading)" }}>{p.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.desc}</p>
                 </div>

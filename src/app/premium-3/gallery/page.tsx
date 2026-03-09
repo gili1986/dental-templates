@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Leaf } from "lucide-react";
+import { useState } from "react";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
@@ -73,6 +76,12 @@ const galleryImages = [
 const categories = ["הכל", "מרפאה", "צוות", "תוצאות"];
 
 export default function GalleryPage() {
+  const [activeCategory, setActiveCategory] = useState("הכל");
+
+  const filteredImages = activeCategory === "הכל"
+    ? galleryImages
+    : galleryImages.filter((img) => img.category === activeCategory);
+
   return (
     <div
       className="theme-p3 min-h-screen"
@@ -129,13 +138,14 @@ export default function GalleryPage() {
           {categories.map((cat) => (
             <button
               key={cat}
-              className="px-5 py-2 rounded-full text-sm font-medium transition-all"
+              onClick={() => setActiveCategory(cat)}
+              className="px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer"
               style={{
-                backgroundColor: cat === "הכל" ? "var(--primary)" : "var(--bg-secondary)",
-                color: cat === "הכל" ? "white" : "var(--text-muted)",
+                backgroundColor: cat === activeCategory ? "var(--primary)" : "var(--bg-secondary)",
+                color: cat === activeCategory ? "white" : "var(--text-muted)",
                 border: "1px solid var(--border)",
               }}
-              aria-pressed={cat === "הכל"}
+              aria-pressed={cat === activeCategory}
             >
               {cat}
             </button>
@@ -144,7 +154,7 @@ export default function GalleryPage() {
 
         {/* Masonry-style grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4" aria-label="תמונות גלריה">
-          {galleryImages.map((img) => (
+          {filteredImages.map((img) => (
             <figure
               key={img.id}
               className={`overflow-hidden rounded-2xl group ${img.size === "lg" ? "lg:col-span-2" : ""}`}

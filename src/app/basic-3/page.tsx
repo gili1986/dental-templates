@@ -18,7 +18,14 @@ import {
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import KupatHolimBar from "@/components/shared/KupatHolimBar";
-import { clinicData, services, reviews, navLinks } from "@/lib/mock-data";
+import { clinicData, services, reviews } from "@/lib/mock-data";
+
+const b3NavLinks = [
+  { label: "טכנולוגיה", href: "#technology" },
+  { label: "שירותים", href: "#services" },
+  { label: "ביקורות", href: "#reviews" },
+  { label: "צרו קשר", href: "#contact" },
+];
 import { useState } from "react";
 
 /* ── service icon map ── */
@@ -115,7 +122,7 @@ export default function Basic3() {
           </div>
           <nav aria-label="ניווט ראשי">
             <ul className="hidden md:flex items-center gap-6 list-none">
-              {navLinks.map((link) => (
+              {b3NavLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="text-sm font-medium hover:opacity-70"
                     style={{ color: "var(--text-muted)" }}>{link.label}</a>

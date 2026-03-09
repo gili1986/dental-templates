@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
@@ -186,7 +187,7 @@ export default function ContactPage() {
                 <a href={`tel:${clinicData.phone}`}
                   className="flex items-start gap-3 group"
                   aria-label={`חייגו ${clinicData.phone}`}>
-                  <span className="text-xl mt-0.5">📞</span>
+                  <Phone size={18} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
                   <div>
                     <div className="text-xs uppercase tracking-widest mb-1"
                       style={{ color: "var(--text-muted)" }}>טלפון</div>
@@ -199,7 +200,7 @@ export default function ContactPage() {
                 <a href={`https://wa.me/${clinicData.whatsapp}`} target="_blank" rel="noopener noreferrer"
                   className="flex items-start gap-3 group"
                   aria-label="שלחו הודעה בוואטסאפ">
-                  <span className="text-xl mt-0.5">💬</span>
+                  <MessageCircle size={18} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
                   <div>
                     <div className="text-xs uppercase tracking-widest mb-1"
                       style={{ color: "var(--text-muted)" }}>וואטסאפ</div>
@@ -212,7 +213,7 @@ export default function ContactPage() {
                 <a href={`mailto:${clinicData.email}`}
                   className="flex items-start gap-3 group"
                   aria-label={`שלחו אימייל ל-${clinicData.email}`}>
-                  <span className="text-xl mt-0.5">✉️</span>
+                  <Mail size={18} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
                   <div>
                     <div className="text-xs uppercase tracking-widest mb-1"
                       style={{ color: "var(--text-muted)" }}>אימייל</div>
@@ -223,7 +224,7 @@ export default function ContactPage() {
                 </a>
 
                 <div className="flex items-start gap-3">
-                  <span className="text-xl mt-0.5">📍</span>
+                  <MapPin size={18} strokeWidth={1.5} className="mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} aria-hidden="true" />
                   <div>
                     <div className="text-xs uppercase tracking-widest mb-1"
                       style={{ color: "var(--text-muted)" }}>כתובת</div>
@@ -267,7 +268,7 @@ export default function ContactPage() {
                 }}
                 aria-label="מפת מיקום המרפאה"
               >
-                🗺️ מפה — Google Maps embed
+                מפה — Google Maps embed
               </div>
               <p className="text-xs mt-2" style={{ color: "var(--text-muted)" }}>
                 {clinicData.address}
