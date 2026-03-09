@@ -227,7 +227,7 @@ export default function Home() {
       style={{ backgroundColor: "#F7F8FA", minHeight: "100vh", fontFamily: "'Heebo', sans-serif" }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Heebo', sans-serif; }
       `}</style>
@@ -304,7 +304,7 @@ export default function Home() {
             fontWeight: "900",
             lineHeight: 1.15,
             marginBottom: "16px",
-            fontFamily: "'Frank Ruhl Libre', serif",
+            fontFamily: "'Heebo', sans-serif",
           }}>
             בחר את התבנית שמתאימה<br />למרפאה שלך
           </h1>
@@ -397,7 +397,7 @@ export default function Home() {
                     fontWeight: "800",
                     color: "#111",
                     marginBottom: "3px",
-                    fontFamily: "'Frank Ruhl Libre', serif",
+                    fontFamily: "'Heebo', sans-serif",
                     lineHeight: 1.2,
                   }}>
                     {t.nameHe}
@@ -458,7 +458,7 @@ export default function Home() {
               fontSize: "1.4rem",
               fontWeight: "900",
               color: "#111",
-              fontFamily: "'Frank Ruhl Libre', serif",
+              fontFamily: "'Heebo', sans-serif",
               marginBottom: "6px",
             }}>
               כל תבנית כוללת
@@ -499,7 +499,7 @@ export default function Home() {
               fontSize: "1.4rem",
               fontWeight: "900",
               color: "#111",
-              fontFamily: "'Frank Ruhl Libre', serif",
+              fontFamily: "'Heebo', sans-serif",
               marginBottom: "6px",
             }}>
               בייסיק לעומת פרמיום
@@ -606,7 +606,7 @@ export default function Home() {
           <h2 style={{
             fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
             fontWeight: "900",
-            fontFamily: "'Frank Ruhl Libre', serif",
+            fontFamily: "'Heebo', sans-serif",
             marginBottom: "10px",
           }}>
             מצאת תבנית שאתה אוהב?
