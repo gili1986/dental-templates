@@ -1,13 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, MapPin, Clock, Star, ChevronDown, TrendingUp, ArrowLeft } from "lucide-react";
+import {
+  Phone,
+  MapPin,
+  Clock,
+  Star,
+  ChevronDown,
+  TrendingUp,
+  ArrowLeft,
+  Layers,
+  Sparkles,
+  Zap,
+  SlidersHorizontal,
+  HeartPulse,
+  AlertCircle,
+  Award,
+  Droplets,
+} from "lucide-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import KupatHolimBar from "@/components/shared/KupatHolimBar";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+
+/* ── icon map ── */
+const iconMap = {
+  implants: <Layers size={28} strokeWidth={2.5} aria-hidden="true" />,
+  veneers: <Sparkles size={28} strokeWidth={2.5} aria-hidden="true" />,
+  whitening: <Zap size={28} strokeWidth={2.5} aria-hidden="true" />,
+  orthodontics: <SlidersHorizontal size={28} strokeWidth={2.5} aria-hidden="true" />,
+  children: <HeartPulse size={28} strokeWidth={2.5} aria-hidden="true" />,
+  emergency: <AlertCircle size={28} strokeWidth={2.5} aria-hidden="true" />,
+  crowns: <Award size={28} strokeWidth={2.5} aria-hidden="true" />,
+  cleaning: <Droplets size={28} strokeWidth={2.5} aria-hidden="true" />,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -110,13 +138,13 @@ export default function Premium2() {
 
                 {/* Hero image */}
                 <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
-                  <div className="aspect-[4/3] flex items-center justify-center"
-                    style={{ backgroundColor: "var(--bg-secondary)" }}
-                    role="img" aria-label="תמונת המרפאה">
-                    <div className="text-center">
-                      <div className="text-8xl mb-2" aria-hidden="true">🦷</div>
-                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת מרפאה</p>
-                    </div>
+                  <div className="aspect-[4/3] overflow-hidden"
+                    role="img" aria-label="מרפאת שיניים בולדית ומודרנית">
+                    <img
+                      src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80"
+                      alt="כלי עבודה דנטליים מקצועיים"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   {/* Red accent corner */}
                   <div className="absolute top-0 left-0 w-4 h-16" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
@@ -142,7 +170,13 @@ export default function Premium2() {
                   whileInView="show" viewport={{ once: true }}
                   className="p-6 border-l border-b group hover:bg-black hover:text-white transition-colors"
                   style={{ borderColor: "var(--border)" }}>
-                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform" aria-hidden="true">{s.icon}</div>
+                  <div
+                    className="flex justify-center mb-3 group-hover:scale-110 transition-transform"
+                    style={{ color: "var(--accent)" }}
+                    aria-hidden="true"
+                  >
+                    {iconMap[s.id as keyof typeof iconMap]}
+                  </div>
                   <h3 className="font-extrabold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
                 </motion.div>
               ))}
@@ -154,13 +188,13 @@ export default function Premium2() {
         <section id="about" className="py-20" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="about-heading-p2">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div className="aspect-square flex items-center justify-center relative overflow-hidden"
-              style={{ backgroundColor: "var(--bg-secondary)" }}
+            <div className="aspect-square relative overflow-hidden"
               role="img" aria-label={`תמונת ${clinicData.doctorName}`}>
-              <div className="text-center">
-                <div className="text-8xl mb-2" aria-hidden="true">👩‍⚕️</div>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת הרופא/ה</p>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
+                className="w-full h-full object-cover"
+              />
               {/* Red strip */}
               <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
             </div>

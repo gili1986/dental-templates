@@ -9,6 +9,14 @@ import {
   ChevronDown,
   CheckCircle,
   ArrowLeft,
+  Layers,
+  Sparkles,
+  Zap,
+  SlidersHorizontal,
+  HeartPulse,
+  AlertCircle,
+  Award,
+  Droplets,
 } from "lucide-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
@@ -22,6 +30,18 @@ import {
 } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+
+/* ── icon map ── */
+const iconMap = {
+  implants: <Layers size={28} aria-hidden="true" />,
+  veneers: <Sparkles size={28} aria-hidden="true" />,
+  whitening: <Zap size={28} aria-hidden="true" />,
+  orthodontics: <SlidersHorizontal size={28} aria-hidden="true" />,
+  children: <HeartPulse size={28} aria-hidden="true" />,
+  emergency: <AlertCircle size={28} aria-hidden="true" />,
+  crowns: <Award size={28} aria-hidden="true" />,
+  cleaning: <Droplets size={28} aria-hidden="true" />,
+};
 
 /* ── animation helpers ── */
 const fadeUp = {
@@ -206,7 +226,7 @@ export default function Basic1() {
               </div>
             </motion.div>
 
-            {/* Hero image placeholder */}
+            {/* Hero image */}
             <motion.div
               variants={fadeUp}
               custom={2}
@@ -214,25 +234,12 @@ export default function Basic1() {
               animate="show"
               className="relative"
             >
-              <div
-                className="rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center text-6xl"
-                style={{ backgroundColor: "var(--primary)", opacity: 0.1 }}
-                aria-hidden="true"
-              />
-              <div
-                className="absolute inset-0 rounded-2xl flex items-center justify-center"
-                aria-label="תמונת המרפאה"
-              >
-                <div
-                  className="w-full h-full rounded-2xl flex flex-col items-center justify-center gap-4"
-                  style={{ backgroundColor: "var(--primary)", opacity: 0.08 }}
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+                <img
+                  src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=900&q=80"
+                  alt="מרפאת שיניים מודרנית ונקייה"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute text-center">
-                  <div className="text-8xl mb-2" aria-hidden="true">🦷</div>
-                  <p className="text-sm font-medium" style={{ color: "var(--primary)" }}>
-                    כאן תופיע תמונת המרפאה / הרופא
-                  </p>
-                </div>
               </div>
 
               {/* Floating badge */}
@@ -300,8 +307,12 @@ export default function Basic1() {
                   className="p-5 rounded-xl border text-center group hover:shadow-md transition-shadow cursor-default"
                   style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}
                 >
-                  <div className="text-3xl mb-3" aria-hidden="true">
-                    {service.icon}
+                  <div
+                    className="flex justify-center mb-3"
+                    style={{ color: "var(--primary)" }}
+                    aria-hidden="true"
+                  >
+                    {iconMap[service.id as keyof typeof iconMap]}
                   </div>
                   <h3
                     className="font-semibold text-sm mb-1"
@@ -326,19 +337,16 @@ export default function Basic1() {
           aria-labelledby="about-heading"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            {/* Photo placeholder */}
+            {/* Doctor photo */}
             <div
-              className="rounded-2xl aspect-square flex items-center justify-center text-6xl order-2 md:order-1"
-              style={{ backgroundColor: "var(--border)" }}
-              role="img"
+              className="rounded-2xl overflow-hidden aspect-square order-2 md:order-1"
               aria-label={`תמונת ${clinicData.doctorName}`}
             >
-              <div className="text-center">
-                <div className="text-7xl mb-2" aria-hidden="true">👩‍⚕️</div>
-                <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-                  תמונת הרופא/ה
-                </p>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Text */}

@@ -2,12 +2,34 @@
 
 import { motion } from "framer-motion";
 import { Phone, MapPin, Clock, Star, ChevronDown, Zap, Shield, ArrowLeft } from "lucide-react";
+import {
+  IconShieldCheck,
+  IconDiamond,
+  IconBolt,
+  IconArrowsHorizontal,
+  IconHeart,
+  IconAlertTriangle,
+  IconCrown,
+  IconDroplet,
+} from "@tabler/icons-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import KupatHolimBar from "@/components/shared/KupatHolimBar";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+
+/* ── icon map ── */
+const iconMap = {
+  implants: <IconShieldCheck size={28} stroke={1.5} aria-hidden="true" />,
+  veneers: <IconDiamond size={28} stroke={1.5} aria-hidden="true" />,
+  whitening: <IconBolt size={28} stroke={1.5} aria-hidden="true" />,
+  orthodontics: <IconArrowsHorizontal size={28} stroke={1.5} aria-hidden="true" />,
+  children: <IconHeart size={28} stroke={1.5} aria-hidden="true" />,
+  emergency: <IconAlertTriangle size={28} stroke={1.5} aria-hidden="true" />,
+  crowns: <IconCrown size={28} stroke={1.5} aria-hidden="true" />,
+  cleaning: <IconDroplet size={28} stroke={1.5} aria-hidden="true" />,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -124,13 +146,14 @@ export default function Basic3() {
 
             {/* Hero visual */}
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
-              <div className="rounded aspect-[4/3] border flex items-center justify-center"
-                style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--border)" }}
-                role="img" aria-label="תמונת המרפאה הטכנולוגית">
-                <div className="text-center">
-                  <div className="text-8xl mb-2" aria-hidden="true">🦷</div>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת מרפאה / רופא</p>
-                </div>
+              <div className="rounded overflow-hidden aspect-[4/3] border"
+                style={{ borderColor: "var(--border)" }}
+                role="img" aria-label="מרפאת שיניים טכנולוגית">
+                <img
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80"
+                  alt="ציוד דנטלי מתקדם ומודרני"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Overlay badge */}
@@ -164,7 +187,13 @@ export default function Basic3() {
                   whileInView="show" viewport={{ once: true }}
                   className="p-4 rounded border hover:border-[var(--accent)] transition-colors"
                   style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
-                  <div className="text-2xl mb-2" aria-hidden="true">{s.icon}</div>
+                  <div
+                    className="flex justify-center mb-2"
+                    style={{ color: "var(--accent)" }}
+                    aria-hidden="true"
+                  >
+                    {iconMap[s.id as keyof typeof iconMap]}
+                  </div>
                   <h3 className="font-semibold text-sm mb-1">{s.title}</h3>
                   <p className="text-xs hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
                 </motion.div>
@@ -177,13 +206,14 @@ export default function Basic3() {
         <section id="about" className="py-20" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="about-heading-b3">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded border aspect-square flex items-center justify-center"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}
+            <div className="rounded border aspect-square overflow-hidden"
+              style={{ borderColor: "var(--border)" }}
               role="img" aria-label={`תמונת ${clinicData.doctorName}`}>
-              <div className="text-center">
-                <div className="text-7xl mb-2" aria-hidden="true">👩‍⚕️</div>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת הרופא/ה</p>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
+                className="w-full h-full object-cover"
+              />
             </div>
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="space-y-5">

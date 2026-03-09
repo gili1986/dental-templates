@@ -2,12 +2,25 @@
 
 import { motion } from "framer-motion";
 import { Phone, MapPin, Clock, Star, ChevronDown, Leaf, ArrowLeft } from "lucide-react";
+import { Tooth, Sparkle, Sun, ArrowsHorizontal, Baby, FirstAid, Crown, Drop } from "@phosphor-icons/react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import KupatHolimBar from "@/components/shared/KupatHolimBar";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+
+/* ── icon map ── */
+const iconMap = {
+  implants: <Tooth size={32} weight="fill" aria-hidden="true" />,
+  veneers: <Sparkle size={32} weight="fill" aria-hidden="true" />,
+  whitening: <Sun size={32} weight="fill" aria-hidden="true" />,
+  orthodontics: <ArrowsHorizontal size={32} weight="bold" aria-hidden="true" />,
+  children: <Baby size={32} weight="fill" aria-hidden="true" />,
+  emergency: <FirstAid size={32} weight="fill" aria-hidden="true" />,
+  crowns: <Crown size={32} weight="fill" aria-hidden="true" />,
+  cleaning: <Drop size={32} weight="fill" aria-hidden="true" />,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -112,13 +125,13 @@ export default function Premium3() {
 
             {/* Hero image */}
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
-              <div className="rounded-3xl aspect-[4/3] flex items-center justify-center"
-                style={{ backgroundColor: "var(--border)" }}
-                role="img" aria-label="תמונת המרפאה">
-                <div className="text-center">
-                  <div className="text-8xl mb-2" aria-hidden="true">🌿</div>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת מרפאה</p>
-                </div>
+              <div className="rounded-3xl overflow-hidden aspect-[4/3]"
+                role="img" aria-label="מרפאת שיניים חמה ואורגנית">
+                <img
+                  src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=900&q=80"
+                  alt="מרפאת שיניים חמה ומזמינה"
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Floating review badge */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
@@ -151,7 +164,13 @@ export default function Premium3() {
                   whileInView="show" viewport={{ once: true }}
                   className="p-5 rounded-2xl border text-center hover:shadow-sm transition-shadow"
                   style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}>
-                  <div className="text-3xl mb-3" aria-hidden="true">{s.icon}</div>
+                  <div
+                    className="flex justify-center mb-3"
+                    style={{ color: "var(--accent)" }}
+                    aria-hidden="true"
+                  >
+                    {iconMap[s.id as keyof typeof iconMap]}
+                  </div>
                   <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
                   <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
                 </motion.div>
@@ -164,13 +183,13 @@ export default function Premium3() {
         <section id="about" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
           aria-labelledby="about-heading-p3">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-14 items-center">
-            <div className="rounded-3xl aspect-square flex items-center justify-center"
-              style={{ backgroundColor: "var(--border)" }}
+            <div className="rounded-3xl overflow-hidden aspect-square"
               role="img" aria-label={`תמונת ${clinicData.doctorName}`}>
-              <div className="text-center">
-                <div className="text-7xl mb-2" aria-hidden="true">👩‍⚕️</div>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>תמונת הרופא/ה</p>
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
+                className="w-full h-full object-cover"
+              />
             </div>
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="space-y-5">
