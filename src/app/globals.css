@@ -1,26 +1,138 @@
+/* ─── Google Fonts ─── */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@300;400;500;600;700;800;900&family=David+Libre:wght@400;500;700&display=swap");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Base RTL ─── */
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+/* ─── Template B1: Clean Trust ─── */
+.theme-b1 {
+  --primary: #1B4F8A;
+  --primary-light: #4FC3F7;
+  --primary-dark: #0D3060;
+  --accent: #4FC3F7;
+  --bg: #FFFFFF;
+  --bg-secondary: #F0F7FF;
+  --text: #1A1A2E;
+  --text-muted: #64748B;
+  --border: #E2EAF4;
+  --font-heading: 'Rubik', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+}
+
+/* ─── Template B2: Warm Approachable ─── */
+.theme-b2 {
+  --primary: #C4704A;
+  --primary-light: #E8907A;
+  --primary-dark: #9A5035;
+  --accent: #E8907A;
+  --bg: #FFFDF9;
+  --bg-secondary: #FDF3EC;
+  --text: #2D1B12;
+  --text-muted: #8B6B5C;
+  --border: #EDD8CA;
+  --font-heading: 'Frank Ruhl Libre', serif;
+  --font-body: 'Assistant', sans-serif;
+}
+
+/* ─── Template B3: Clinical High-Tech ─── */
+.theme-b3 {
+  --primary: #00E5FF;
+  --primary-light: #80F4FF;
+  --primary-dark: #00B8CC;
+  --accent: #00E5FF;
+  --bg: #0D1B2A;
+  --bg-secondary: #0F2035;
+  --text: #E8F4FF;
+  --text-muted: #8BAFC8;
+  --border: #1E3A52;
+  --font-heading: 'Rubik', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+}
+
+/* ─── Template P1: Nordic Minimal Luxury ─── */
+.theme-p1 {
+  --primary: #2C2C2C;
+  --primary-light: #4A4A4A;
+  --primary-dark: #1A1A1A;
+  --accent: #C9A96E;
+  --bg: #FAFAF8;
+  --bg-secondary: #F2F0EB;
+  --text: #1A1A1A;
+  --text-muted: #888888;
+  --border: #E0DDD6;
+  --font-heading: 'Frank Ruhl Libre', serif;
+  --font-body: 'Assistant', sans-serif;
+}
+
+/* ─── Template P2: Bold Editorial Modern ─── */
+.theme-p2 {
+  --primary: #1A1A1A;
+  --primary-light: #333333;
+  --primary-dark: #000000;
+  --accent: #FF4D4D;
+  --bg: #FFFFFF;
+  --bg-secondary: #F8F8F8;
+  --text: #1A1A1A;
+  --text-muted: #666666;
+  --border: #E0E0E0;
+  --font-heading: 'Rubik', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+}
+
+/* ─── Template P3: Warm Organic Premium ─── */
+.theme-p3 {
+  --primary: #4A3728;
+  --primary-light: #6B5040;
+  --primary-dark: #2E2218;
+  --accent: #D4B896;
+  --bg: #FAF6F1;
+  --bg-secondary: #F0E8DE;
+  --text: #2E2218;
+  --text-muted: #8A7060;
+  --border: #DDD0C0;
+  --font-heading: 'David Libre', serif;
+  --font-body: 'Assistant', sans-serif;
+}
+
+/* ─── Focus styles (accessibility) ─── */
+:focus-visible {
+  outline: 3px solid var(--accent, #4FC3F7);
+  outline-offset: 2px;
+}
+
+/* ─── Skip to content (accessibility) ─── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  background: var(--primary, #1B4F8A);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  font-family: var(--font-body, 'Heebo', sans-serif);
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 0 0 0 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── Smooth transitions ─── */
+a, button {
+  transition: all 0.2s ease;
 }
