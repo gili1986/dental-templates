@@ -536,12 +536,14 @@ export default function Home() {
                   padding: "16px",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "space-between",
                   gap: "8px",
                   border: `1px solid ${N[100]}`,
                 }}
               >
                 <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
-                <span style={{ fontSize: "0.82rem", fontWeight: "600", color: N[800] }}>{f.label}</span>
+                <span style={{ fontSize: "0.82rem", fontWeight: "600", color: N[800], flex: 1 }}>{f.label}</span>
+                <Icon icon="ph:check-circle-fill" width={16} height={16} style={{ flexShrink: 0, color: "#22C55E" }} />
               </div>
             ))}
           </div>
