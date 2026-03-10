@@ -151,7 +151,7 @@ export default function Basic2() {
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
               <div className="rounded-3xl overflow-hidden aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1588776814546-1ffaee159d1e?auto=format&fit=crop&w=900&q=80"
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
                   alt="רופאת שיניים מחייכת בטיפול ידידותי"
                   className="w-full h-full object-cover"
                 />

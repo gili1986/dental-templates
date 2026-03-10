@@ -107,6 +107,32 @@ body {
   --font-body: 'Assistant', sans-serif;
 }
 
+/* ─── 8px Grid: Tailwind text-* line-height overrides ─── */
+/* Only the sizes that don't already land on an 8px multiple */
+@theme {
+  --text-sm--line-height: 1.5rem;   /* 24px = 8×3  (was 20px) */
+  --text-lg--line-height: 2rem;     /* 32px = 8×4  (was 28px) */
+  --text-xl--line-height: 2rem;     /* 32px = 8×4  (was 28px) */
+  --text-3xl--line-height: 2.5rem;  /* 40px = 8×5  (was 36px) */
+  --text-5xl--line-height: 3.5rem;  /* 56px = 8×7  (was unitless 1) */
+  --text-6xl--line-height: 4rem;    /* 64px = 8×8  (was unitless 1) */
+  --text-7xl--line-height: 5rem;    /* 80px = 8×10 (was unitless 1) */
+  --text-8xl--line-height: 6rem;    /* 96px = 8×12 (was unitless 1) */
+  --text-9xl--line-height: 8rem;    /* 128px= 8×16 (was unitless 1) */
+}
+
+/* ─── 8px Grid: Heading element line-heights ─── */
+@layer base {
+  h1 { line-height: 3.5rem; }   /* 56px = 8×7  */
+  h2 { line-height: 2.5rem; }   /* 40px = 8×5  */
+  h3 { line-height: 2rem;   }   /* 32px = 8×4  */
+  h4 { line-height: 2rem;   }   /* 32px = 8×4  */
+  h5 { line-height: 1.5rem; }   /* 24px = 8×3  */
+  h6 { line-height: 1.5rem; }   /* 24px = 8×3  */
+  p  { line-height: 1.5rem; }   /* 24px = 8×3  */
+  li { line-height: 1.5rem; }   /* 24px = 8×3  */
+}
+
 /* ─── Focus styles (accessibility) ─── */
 :focus-visible {
   outline: 3px solid var(--accent, #4FC3F7);

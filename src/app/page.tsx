@@ -125,17 +125,17 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
       {/* Nav bar */}
       <div
         style={{
-          height: "20px",
+          height: "16px",
           backgroundColor: t.dark ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.9)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 10px",
+          padding: "0 8px",
           borderBottom: t.dark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
         }}
       >
         <div style={{ width: "40px", height: "4px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.9 }} />
-        <div style={{ display: "flex", gap: "5px" }}>
+        <div style={{ display: "flex", gap: "4px" }}>
           {[22, 18, 26, 20].map((w, i) => (
             <div key={i} style={{
               width: `${w}px`, height: "3px", borderRadius: "1.5px",
@@ -154,13 +154,13 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          gap: "5px",
-          padding: "0 12px",
+          gap: "4px",
+          padding: "0 8px",
         }}
       >
         <div style={{ width: "90px", height: "6px", borderRadius: "3px", backgroundColor: t.dark || t.tier === "premium" ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.9)" }} />
         <div style={{ width: "60px", height: "3px", borderRadius: "2px", backgroundColor: "rgba(255,255,255,0.4)" }} />
-        <div style={{ width: "44px", height: "14px", borderRadius: "3px", backgroundColor: t.accent, opacity: 0.9, marginTop: "2px" }} />
+        <div style={{ width: "44px", height: "14px", borderRadius: "3px", backgroundColor: t.accent, opacity: 0.9, marginTop: "4px" }} />
       </div>
 
       {/* Section 2 */}
@@ -193,11 +193,11 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
           backgroundColor: t.sectionColors[2] ?? "#ffffff",
           display: "flex",
           alignItems: "center",
-          padding: "0 10px",
+          padding: "0 8px",
           gap: "8px",
         }}
       >
-        <div style={{ width: "36px", height: "36px", borderRadius: "50%", backgroundColor: t.accent, opacity: 0.3, flexShrink: 0 }} />
+        <div style={{ width: "32px", height: "32px", borderRadius: "50%", backgroundColor: t.accent, opacity: 0.3, flexShrink: 0 }} />
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "3px" }}>
           <div style={{ width: "70%", height: "4px", borderRadius: "2px", backgroundColor: t.dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)" }} />
           <div style={{ width: "50%", height: "3px", borderRadius: "1.5px", backgroundColor: t.dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)" }} />
@@ -237,7 +237,7 @@ export default function Home() {
         backgroundColor: "white",
         borderBottom: "1px solid #E5E7EB",
         padding: "0 24px",
-        height: "60px",
+        height: "64px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -246,11 +246,11 @@ export default function Home() {
         zIndex: 50,
       }}>
         <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <span style={{ fontSize: "1.4rem" }}>🦷</span>
             <div>
               <div style={{ fontSize: "0.95rem", fontWeight: "800", color: "#111", lineHeight: 1 }}>DentalSites</div>
-              <div style={{ fontSize: "0.65rem", color: "#888", marginTop: "2px" }}>תבניות אתר לרופאי שיניים</div>
+              <div style={{ fontSize: "0.65rem", color: "#888", marginTop: "4px" }}>תבניות אתר לרופאי שיניים</div>
             </div>
           </div>
           <a
@@ -289,10 +289,10 @@ export default function Home() {
             backgroundColor: "rgba(255,255,255,0.12)",
             border: "1px solid rgba(255,255,255,0.2)",
             borderRadius: "20px",
-            padding: "5px 14px",
+            padding: "4px 16px",
             fontSize: "0.75rem",
             fontWeight: "600",
-            marginBottom: "20px",
+            marginBottom: "16px",
             letterSpacing: "0.02em",
           }}>
             <span>✦</span>
@@ -302,13 +302,13 @@ export default function Home() {
           <h1 style={{
             fontSize: "clamp(1.9rem, 4vw, 2.9rem)",
             fontWeight: "900",
-            lineHeight: 1.15,
+            lineHeight: 1.2,
             marginBottom: "16px",
             fontFamily: "'Heebo', sans-serif",
           }}>
             בחר את התבנית שמתאימה<br />למרפאה שלך
           </h1>
-          <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: "480px", margin: "0 auto" }}>
+          <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.5, maxWidth: "480px", margin: "0 auto" }}>
             אתרים מוכנים לפרסום, בעברית מלאה, מותאמים למובייל ועומדים בדרישות נגישות ישראל.
             כל תבנית כוללת מבנה שונה שמתאים לסגנון הקליניקה.
           </p>
@@ -319,7 +319,7 @@ export default function Home() {
       <main style={{ maxWidth: "1160px", margin: "0 auto", padding: "48px 24px" }}>
 
         {/* Section label */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
           <div style={{ flex: 1, height: "1px", backgroundColor: "#E5E7EB" }} />
           <span style={{ fontSize: "0.8rem", fontWeight: "700", color: "#888", whiteSpace: "nowrap", letterSpacing: "0.08em" }}>
             3 בייסיק · 3 פרמיום
@@ -330,7 +330,7 @@ export default function Home() {
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-          gap: "20px",
+          gap: "24px",
           marginBottom: "64px",
         }}>
           {templates.map((t) => (
@@ -359,10 +359,10 @@ export default function Home() {
                 <TemplatePreview t={t} />
 
                 {/* Card body */}
-                <div style={{ padding: "16px 18px 18px" }}>
+                <div style={{ padding: "16px" }}>
 
                   {/* Badges row */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
                     <span style={{
                       fontSize: "0.62rem",
                       fontWeight: "700",
@@ -386,8 +386,8 @@ export default function Home() {
                     </span>
                     {/* Color dots */}
                     <div style={{ marginRight: "auto", display: "flex", gap: "4px" }}>
-                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.color }} />
-                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.accent }} />
+                      <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: t.color }} />
+                      <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: t.accent }} />
                     </div>
                   </div>
 
@@ -396,13 +396,13 @@ export default function Home() {
                     fontSize: "1.05rem",
                     fontWeight: "800",
                     color: "#111",
-                    marginBottom: "3px",
+                    marginBottom: "4px",
                     fontFamily: "'Heebo', sans-serif",
                     lineHeight: 1.2,
                   }}>
                     {t.nameHe}
                   </h2>
-                  <p style={{ fontSize: "0.68rem", color: "#aaa", marginBottom: "10px" }}>{t.name}</p>
+                  <p style={{ fontSize: "0.68rem", color: "#aaa", marginBottom: "8px" }}>{t.name}</p>
 
                   {/* Fit tag */}
                   <div style={{
@@ -411,11 +411,11 @@ export default function Home() {
                     gap: "6px",
                     backgroundColor: "#F7F8FA",
                     borderRadius: "8px",
-                    padding: "8px 10px",
-                    marginBottom: "14px",
+                    padding: "8px 12px",
+                    marginBottom: "16px",
                   }}>
                     <span style={{ fontSize: "0.75rem", color: "#888", flexShrink: 0 }}>הכי מתאים ל:</span>
-                    <span style={{ fontSize: "0.75rem", color: "#444", fontWeight: "600", lineHeight: 1.4 }}>
+                    <span style={{ fontSize: "0.75rem", color: "#444", fontWeight: "600", lineHeight: 1.5 }}>
                       {t.fit}
                     </span>
                   </div>
@@ -453,13 +453,13 @@ export default function Home() {
 
         {/* ─── Features Grid ─── */}
         <div style={{ marginBottom: "64px" }}>
-          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
             <h2 style={{
               fontSize: "1.4rem",
               fontWeight: "900",
               color: "#111",
               fontFamily: "'Heebo', sans-serif",
-              marginBottom: "6px",
+              marginBottom: "8px",
             }}>
               כל תבנית כוללת
             </h2>
@@ -478,10 +478,10 @@ export default function Home() {
                 style={{
                   backgroundColor: "white",
                   borderRadius: "10px",
-                  padding: "14px 16px",
+                  padding: "16px",
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
+                  gap: "8px",
                   border: "1px solid #EFEFEF",
                 }}
               >
@@ -494,13 +494,13 @@ export default function Home() {
 
         {/* ─── Basic vs Premium Comparison ─── */}
         <div style={{ marginBottom: "64px" }}>
-          <div style={{ textAlign: "center", marginBottom: "28px" }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
             <h2 style={{
               fontSize: "1.4rem",
               fontWeight: "900",
               color: "#111",
               fontFamily: "'Heebo', sans-serif",
-              marginBottom: "6px",
+              marginBottom: "8px",
             }}>
               בייסיק לעומת פרמיום
             </h2>
@@ -527,13 +527,13 @@ export default function Home() {
                 color: "#1B4F8A",
                 backgroundColor: "#F0F7FF",
                 display: "inline-block",
-                padding: "3px 10px",
+                padding: "4px 12px",
                 borderRadius: "10px",
-                marginBottom: "14px",
+                marginBottom: "16px",
               }}>
                 בייסיק
               </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
                 {[
                   "דף בית אחד רציף (one-pager)",
                   "6–8 סקשנים קבועים",
@@ -570,13 +570,13 @@ export default function Home() {
                 color: "#C4704A",
                 backgroundColor: "#FDF3EC",
                 display: "inline-block",
-                padding: "3px 10px",
+                padding: "4px 12px",
                 borderRadius: "10px",
-                marginBottom: "14px",
+                marginBottom: "16px",
               }}>
                 פרמיום
               </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
                 {[
                   "אתר מולטי-פייג׳ עם דפים פנימיים",
                   "דפי שירות / טיפולים נפרדים",
@@ -607,11 +607,11 @@ export default function Home() {
             fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
             fontWeight: "900",
             fontFamily: "'Heebo', sans-serif",
-            marginBottom: "10px",
+            marginBottom: "8px",
           }}>
             מצאת תבנית שאתה אוהב?
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.9rem", marginBottom: "24px", lineHeight: 1.7 }}>
+          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.9rem", marginBottom: "24px", lineHeight: 1.5 }}>
             דברו איתנו ב-WhatsApp — נתאים את התבנית לקליניקה שלך ונשיק תוך ימים ספורים.
           </p>
           <a
@@ -641,7 +641,7 @@ export default function Home() {
         backgroundColor: "#0D1B2A",
         color: "rgba(255,255,255,0.45)",
         textAlign: "center",
-        padding: "20px 24px",
+        padding: "24px",
         fontSize: "0.72rem",
       }}>
         <p>© 2025 DentalSites · כל הזכויות שמורות · תבניות אתר מקצועיות לרופאי שיניים בישראל</p>

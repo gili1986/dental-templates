@@ -196,7 +196,7 @@ export default function Basic3() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 + i * 0.15 }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border"
+                    className="flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold border"
                     style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "rgba(0,229,255,0.05)" }}
                   >
                     <span aria-hidden="true">{chip.icon}</span>

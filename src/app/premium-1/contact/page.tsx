@@ -261,7 +261,7 @@ export default function ContactPage() {
               <div
                 className="w-full flex items-center justify-center text-sm"
                 style={{
-                  height: 180,
+                  height: 176,
                   backgroundColor: "var(--bg-secondary)",
                   border: "1px solid var(--border)",
                   color: "var(--text-muted)",
