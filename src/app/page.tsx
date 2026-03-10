@@ -525,8 +525,9 @@ export default function Home() {
             </p>
           </div>
           <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "12px",
           }}>
             {features.map((f, i) => (
@@ -541,6 +542,7 @@ export default function Home() {
                   justifyContent: "space-between",
                   gap: "8px",
                   border: `1px solid ${N[100]}`,
+                  width: "200px",
                 }}
               >
                 <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
