@@ -238,15 +238,14 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
           backgroundColor: t.sectionColors[2] ?? "#ffffff",
           display: "flex",
           alignItems: "center",
-          padding: "0 8px",
-          gap: "8px",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "3px",
+          padding: "0 16px",
         }}
       >
-        <div style={{ width: "32px", height: "32px", borderRadius: "50%", backgroundColor: t.accent, opacity: 0.3, flexShrink: 0 }} />
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "3px" }}>
-          <div style={{ width: "70%", height: "4px", borderRadius: "2px", backgroundColor: t.dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)" }} />
-          <div style={{ width: "50%", height: "3px", borderRadius: "1.5px", backgroundColor: t.dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)" }} />
-        </div>
+        <div style={{ width: "70%", height: "4px", borderRadius: "2px", backgroundColor: t.dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)" }} />
+        <div style={{ width: "50%", height: "3px", borderRadius: "1.5px", backgroundColor: t.dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)" }} />
       </div>
 
       {/* Footer strip */}
