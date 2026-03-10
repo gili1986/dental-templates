@@ -269,12 +269,15 @@ export default function Home() {
   return (
     <div
       dir="rtl"
-      style={{ backgroundColor: N[50], minHeight: "100vh", fontFamily: "'Heebo', sans-serif" }}
+      style={{ backgroundColor: N[50], minHeight: "100vh", fontFamily: "'Google Sans', sans-serif" }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
+        @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Bold.ttf') format('truetype'); font-weight: 700 900; font-style: normal; font-display: swap; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Heebo', sans-serif; }
+        body { font-family: 'Google Sans', sans-serif; }
       `}</style>
 
       {/* ─── Header ─── */}
@@ -349,7 +352,7 @@ export default function Home() {
             fontWeight: "900",
             lineHeight: 1.2,
             marginBottom: "16px",
-            fontFamily: "'Heebo', sans-serif",
+            fontFamily: "'Google Sans', sans-serif",
           }}>
             בחר את התבנית שמתאימה<br />למרפאה שלך
           </h1>
@@ -452,7 +455,7 @@ export default function Home() {
                     fontWeight: "800",
                     color: N[950],
                     marginBottom: "4px",
-                    fontFamily: "'Heebo', sans-serif",
+                    fontFamily: "'Google Sans', sans-serif",
                     lineHeight: 1.2,
                   }}>
                     {t.nameHe}
@@ -513,7 +516,7 @@ export default function Home() {
               fontSize: "1.4rem",
               fontWeight: "900",
               color: N[950],
-              fontFamily: "'Heebo', sans-serif",
+              fontFamily: "'Google Sans', sans-serif",
               marginBottom: "8px",
             }}>
               כל תבנית כוללת
@@ -556,7 +559,7 @@ export default function Home() {
               fontSize: "1.4rem",
               fontWeight: "900",
               color: N[950],
-              fontFamily: "'Heebo', sans-serif",
+              fontFamily: "'Google Sans', sans-serif",
               marginBottom: "8px",
             }}>
               בייסיק לעומת פרמיום
@@ -663,7 +666,7 @@ export default function Home() {
           <h2 style={{
             fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
             fontWeight: "900",
-            fontFamily: "'Heebo', sans-serif",
+            fontFamily: "'Google Sans', sans-serif",
             marginBottom: "8px",
           }}>
             מצאת תבנית שאתה אוהב?
