@@ -618,12 +618,6 @@ export default function Home() {
               overflow: "hidden",
             }}>
               <div style={{
-                position: "absolute",
-                top: 0, left: 0, right: 0,
-                height: "3px",
-                background: "linear-gradient(90deg, #C4704A, #E8907A)",
-              }} />
-              <div style={{
                 fontSize: "0.7rem",
                 fontWeight: "700",
                 color: "#C4704A",
