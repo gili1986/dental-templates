@@ -382,11 +382,15 @@ export default function Home() {
                       borderRadius: "10px",
                       backgroundColor: "#F3F4F6",
                       color: "#555",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      whiteSpace: "nowrap",
                     }}>
                       <Icon
                         icon={t.structure === "מולטי-פייג׳" ? "ph:stack-fill" : "ph:file-text-fill"}
-                        width={11}
-                        height={11}
+                        width={12}
+                        height={12}
                         style={{ flexShrink: 0 }}
                       />
                       {t.structure}
