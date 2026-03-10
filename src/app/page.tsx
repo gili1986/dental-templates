@@ -4,6 +4,53 @@ import Link from "next/link";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
+// ─── Color System · Primary #4182DC ───────────────────────────────────────────
+//
+//  Primary scale (H214)
+//  50   #EBF2FF  — tint / badge bg
+//  100  #D3E5FA  — light surface
+//  200  #A8CCF5  — dividers, borders
+//  300  #6FA8EB  — icon secondary
+//  500  #4182DC  — primary (brand blue)
+//  700  #2A5CB8  — hover / gradient start
+//  900  #1A3D7A  — gradient end / deep
+//
+//  Neutral scale
+//  950  #0D1F3C  — text heading / footer bg
+//  800  #1E2D42  — text dark
+//  600  #3D4F65  — text body
+//  400  #7A8FA6  — text muted
+//  200  #B8C6D4  — text subtle
+//  100  #DDE5F0  — border
+//  50   #F4F7FD  — page bg
+//  white
+//
+//  Semantic (kept from template palette – not UI brand)
+//  premium accent:  #C4704A / #FDF3EC
+//  whatsapp:        #25D366
+//  star:            #F59E0B
+// ──────────────────────────────────────────────────────────────────────────────
+
+const P = {
+  50:  "#EBF2FF",
+  100: "#D3E5FA",
+  200: "#A8CCF5",
+  300: "#6FA8EB",
+  500: "#4182DC",
+  700: "#2A5CB8",
+  900: "#1A3D7A",
+} as const;
+
+const N = {
+  950: "#0D1F3C",
+  800: "#1E2D42",
+  600: "#3D4F65",
+  400: "#7A8FA6",
+  200: "#B8C6D4",
+  100: "#DDE5F0",
+  50:  "#F4F7FD",
+} as const;
+
 const templates = [
   {
     id: "basic-1",
@@ -98,20 +145,17 @@ const templates = [
 ];
 
 const features = [
-  { icon: "circle-flags:il", label: "עברית מלאה RTL", color: undefined },
-  { icon: "ph:device-mobile-fill", label: "מותאם למובייל", color: "#1B4F8A" },
-  { icon: "ph:wheelchair-fill", label: "נגישות SI 5568", color: "#1B4F8A" },
-  { icon: "ph:whatsapp-logo-fill", label: "כפתור WhatsApp", color: "#25D366" },
-  { icon: "ph:first-aid-kit-fill", label: "לוגואי קופות חולים", color: "#1B4F8A" },
-  { icon: "ph:star-fill", label: "ביקורות מטופלים", color: "#F59E0B" },
-  { icon: "ph:question-fill", label: "שאלות נפוצות", color: "#1B4F8A" },
-  { icon: "ph:map-trifold-fill", label: "מפה וניווט", color: "#1B4F8A" },
+  { icon: "circle-flags:il",        label: "עברית מלאה RTL",      color: undefined     },
+  { icon: "ph:device-mobile-fill",  label: "מותאם למובייל",        color: P[500]        },
+  { icon: "ph:wheelchair-fill",     label: "נגישות SI 5568",        color: P[500]        },
+  { icon: "ph:whatsapp-logo-fill",  label: "כפתור WhatsApp",       color: "#25D366"     },
+  { icon: "ph:first-aid-kit-fill",  label: "לוגואי קופות חולים",   color: P[500]        },
+  { icon: "ph:star-fill",           label: "ביקורות מטופלים",      color: "#F59E0B"     },
+  { icon: "ph:question-fill",       label: "שאלות נפוצות",         color: P[500]        },
+  { icon: "ph:map-trifold-fill",    label: "מפה וניווט",            color: P[500]        },
 ];
 
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
-  const sectionHeights = [36, 22, 20, 14, 8];
-  const sectionsToShow = t.sections.slice(0, 5);
-
   return (
     <div
       style={{
@@ -225,7 +269,7 @@ export default function Home() {
   return (
     <div
       dir="rtl"
-      style={{ backgroundColor: "#F7F8FA", minHeight: "100vh", fontFamily: "'Heebo', sans-serif" }}
+      style={{ backgroundColor: N[50], minHeight: "100vh", fontFamily: "'Heebo', sans-serif" }}
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
@@ -236,7 +280,7 @@ export default function Home() {
       {/* ─── Header ─── */}
       <header style={{
         backgroundColor: "white",
-        borderBottom: "1px solid #E5E7EB",
+        borderBottom: `1px solid ${N[100]}`,
         padding: "0 24px",
         height: "64px",
         display: "flex",
@@ -248,10 +292,10 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <Icon icon="ph:tooth-fill" width={22} height={22} style={{ color: "#1B4F8A", flexShrink: 0 }} />
+            <Icon icon="ph:tooth-fill" width={22} height={22} style={{ color: P[500], flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: "0.95rem", fontWeight: "800", color: "#111", lineHeight: 1 }}>DentalSites</div>
-              <div style={{ fontSize: "0.65rem", color: "#888", marginTop: "4px" }}>תבניות אתר לרופאי שיניים</div>
+              <div style={{ fontSize: "0.95rem", fontWeight: "800", color: N[950], lineHeight: 1 }}>DentalSites</div>
+              <div style={{ fontSize: "0.65rem", color: N[400], marginTop: "4px" }}>תבניות אתר לרופאי שיניים</div>
             </div>
           </div>
           <a
@@ -277,7 +321,7 @@ export default function Home() {
 
       {/* ─── Hero ─── */}
       <section style={{
-        background: "linear-gradient(135deg, #1B4F8A 0%, #0D3266 100%)",
+        background: `linear-gradient(135deg, ${P[500]} 0%, ${P[900]} 100%)`,
         color: "white",
         padding: "64px 24px 56px",
         textAlign: "center",
@@ -321,11 +365,11 @@ export default function Home() {
 
         {/* Section label */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-          <div style={{ flex: 1, height: "1px", backgroundColor: "#E5E7EB" }} />
-          <span style={{ fontSize: "0.8rem", fontWeight: "700", color: "#888", whiteSpace: "nowrap", letterSpacing: "0.08em" }}>
+          <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
+          <span style={{ fontSize: "0.8rem", fontWeight: "700", color: N[400], whiteSpace: "nowrap", letterSpacing: "0.08em" }}>
             3 בייסיק · 3 פרמיום
           </span>
-          <div style={{ flex: 1, height: "1px", backgroundColor: "#E5E7EB" }} />
+          <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
         </div>
 
         <div style={{
@@ -347,10 +391,10 @@ export default function Home() {
                   backgroundColor: "white",
                   borderRadius: "14px",
                   overflow: "hidden",
-                  border: hoveredId === t.id ? `2px solid ${t.color}` : "2px solid transparent",
+                  border: hoveredId === t.id ? `2px solid ${t.color}` : `2px solid transparent`,
                   boxShadow: hoveredId === t.id
                     ? `0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px ${t.color}20`
-                    : "0 2px 8px rgba(0,0,0,0.06)",
+                    : `0 2px 8px rgba(65,130,220,0.08)`,
                   transition: "all 0.22s ease",
                   transform: hoveredId === t.id ? "translateY(-3px)" : "none",
                   cursor: "pointer",
@@ -369,8 +413,8 @@ export default function Home() {
                       fontWeight: "700",
                       padding: "2px 8px",
                       borderRadius: "10px",
-                      backgroundColor: t.tier === "premium" ? "#FDF3EC" : "#F0F7FF",
-                      color: t.tier === "premium" ? "#C4704A" : "#1B4F8A",
+                      backgroundColor: t.tier === "premium" ? "#FDF3EC" : P[50],
+                      color: t.tier === "premium" ? "#C4704A" : P[500],
                       letterSpacing: "0.03em",
                     }}>
                       {t.tierLabel}
@@ -380,8 +424,8 @@ export default function Home() {
                       fontWeight: "600",
                       padding: "2px 8px",
                       borderRadius: "10px",
-                      backgroundColor: "#F3F4F6",
-                      color: "#555",
+                      backgroundColor: N[50],
+                      color: N[400],
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "4px",
@@ -406,27 +450,27 @@ export default function Home() {
                   <h2 style={{
                     fontSize: "1.05rem",
                     fontWeight: "800",
-                    color: "#111",
+                    color: N[950],
                     marginBottom: "4px",
                     fontFamily: "'Heebo', sans-serif",
                     lineHeight: 1.2,
                   }}>
                     {t.nameHe}
                   </h2>
-                  <p style={{ fontSize: "0.68rem", color: "#aaa", marginBottom: "8px" }}>{t.name}</p>
+                  <p style={{ fontSize: "0.68rem", color: N[200], marginBottom: "8px" }}>{t.name}</p>
 
                   {/* Fit tag */}
                   <div style={{
                     display: "flex",
                     alignItems: "flex-start",
                     gap: "6px",
-                    backgroundColor: "#F7F8FA",
+                    backgroundColor: N[50],
                     borderRadius: "8px",
                     padding: "8px 12px",
                     marginBottom: "16px",
                   }}>
-                    <span style={{ fontSize: "0.75rem", color: "#888", flexShrink: 0 }}>הכי מתאים ל:</span>
-                    <span style={{ fontSize: "0.75rem", color: "#444", fontWeight: "600", lineHeight: 1.5 }}>
+                    <span style={{ fontSize: "0.75rem", color: N[400], flexShrink: 0 }}>הכי מתאים ל:</span>
+                    <span style={{ fontSize: "0.75rem", color: N[600], fontWeight: "600", lineHeight: 1.5 }}>
                       {t.fit}
                     </span>
                   </div>
@@ -437,9 +481,9 @@ export default function Home() {
                     alignItems: "center",
                     justifyContent: "space-between",
                     paddingTop: "12px",
-                    borderTop: "1px solid #F0F0F0",
+                    borderTop: `1px solid ${N[100]}`,
                   }}>
-                    <span style={{ fontSize: "0.7rem", color: "#bbb" }}>
+                    <span style={{ fontSize: "0.7rem", color: N[200] }}>
                       {t.sections.length} עמודים/סקשנים
                     </span>
                     <span style={{
@@ -468,13 +512,13 @@ export default function Home() {
             <h2 style={{
               fontSize: "1.4rem",
               fontWeight: "900",
-              color: "#111",
+              color: N[950],
               fontFamily: "'Heebo', sans-serif",
               marginBottom: "8px",
             }}>
               כל תבנית כוללת
             </h2>
-            <p style={{ fontSize: "0.82rem", color: "#888" }}>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>
               ללא עלות נוספת — הכל כלול בכל אחת מהתבניות
             </p>
           </div>
@@ -493,11 +537,11 @@ export default function Home() {
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
-                  border: "1px solid #EFEFEF",
+                  border: `1px solid ${N[100]}`,
                 }}
               >
                 <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
-                <span style={{ fontSize: "0.82rem", fontWeight: "600", color: "#333" }}>{f.label}</span>
+                <span style={{ fontSize: "0.82rem", fontWeight: "600", color: N[800] }}>{f.label}</span>
               </div>
             ))}
           </div>
@@ -509,13 +553,13 @@ export default function Home() {
             <h2 style={{
               fontSize: "1.4rem",
               fontWeight: "900",
-              color: "#111",
+              color: N[950],
               fontFamily: "'Heebo', sans-serif",
               marginBottom: "8px",
             }}>
               בייסיק לעומת פרמיום
             </h2>
-            <p style={{ fontSize: "0.82rem", color: "#888" }}>מה ההבדל בין שתי החבילות?</p>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>מה ההבדל בין שתי החבילות?</p>
           </div>
 
           <div style={{
@@ -530,13 +574,13 @@ export default function Home() {
               backgroundColor: "white",
               borderRadius: "14px",
               padding: "24px",
-              border: "1px solid #E5E7EB",
+              border: `1px solid ${N[100]}`,
             }}>
               <div style={{
                 fontSize: "0.7rem",
                 fontWeight: "700",
-                color: "#1B4F8A",
-                backgroundColor: "#F0F7FF",
+                color: P[500],
+                backgroundColor: P[50],
                 display: "inline-block",
                 padding: "4px 12px",
                 borderRadius: "10px",
@@ -552,8 +596,8 @@ export default function Home() {
                   "מושלם להשקה מהירה",
                   "עלות הטמעה נמוכה יותר",
                 ].map((item, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "#444" }}>
-                    <Icon icon="ph:check-bold" width={14} height={14} style={{ color: "#1B4F8A", flexShrink: 0, marginTop: "2px" }} />
+                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
+                    <Icon icon="ph:check-bold" width={14} height={14} style={{ color: P[500], flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -595,7 +639,7 @@ export default function Home() {
                   "SEO טוב יותר לטיפולים ספציפיים",
                   "מתאים לקליניקות שצומחות",
                 ].map((item, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "#444" }}>
+                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
                     <Icon icon="ph:diamond-fill" width={12} height={12} style={{ color: "#C4704A", flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
@@ -608,7 +652,7 @@ export default function Home() {
 
       {/* ─── Bottom CTA ─── */}
       <section style={{
-        background: "linear-gradient(135deg, #0D3266 0%, #1B4F8A 100%)",
+        background: `linear-gradient(135deg, ${P[900]} 0%, ${P[500]} 100%)`,
         padding: "48px 24px",
         textAlign: "center",
         color: "white",
@@ -649,8 +693,8 @@ export default function Home() {
 
       {/* ─── Footer ─── */}
       <footer style={{
-        backgroundColor: "#0D1B2A",
-        color: "rgba(255,255,255,0.45)",
+        backgroundColor: N[950],
+        color: "rgba(255,255,255,0.4)",
         textAlign: "center",
         padding: "24px",
         fontSize: "0.72rem",
