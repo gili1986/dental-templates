@@ -294,10 +294,10 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <Icon icon="ph:tooth-fill" width={22} height={22} style={{ color: P[500], flexShrink: 0 }} />
+            <Icon icon="ph:tooth-fill" width={32} height={32} style={{ color: P[500], flexShrink: 0 }} />
             <div>
               <div style={{ fontSize: "0.95rem", fontWeight: "800", color: N[950], lineHeight: 1 }}>DentalSites</div>
-              <div style={{ fontSize: "0.65rem", color: N[400], marginTop: "4px" }}>תבניות אתר לרופאי שיניים</div>
+              <div style={{ fontSize: "0.65rem", color: N[400], marginTop: "0px" }}>תבניות אתר לרופאי שיניים</div>
             </div>
           </div>
           <a
