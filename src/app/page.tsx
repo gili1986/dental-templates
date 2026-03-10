@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 const templates = [
   {
@@ -97,14 +98,14 @@ const templates = [
 ];
 
 const features = [
-  { icon: "🇮🇱", label: "עברית מלאה RTL" },
-  { icon: "📱", label: "מותאם למובייל" },
-  { icon: "♿", label: "נגישות SI 5568" },
-  { icon: "💬", label: "כפתור WhatsApp" },
-  { icon: "🏥", label: "לוגואי קופות חולים" },
-  { icon: "⭐", label: "ביקורות מטופלים" },
-  { icon: "❓", label: "שאלות נפוצות" },
-  { icon: "🗺️", label: "מפה וניווט" },
+  { icon: "circle-flags:il", label: "עברית מלאה RTL", color: undefined },
+  { icon: "ph:device-mobile-fill", label: "מותאם למובייל", color: "#1B4F8A" },
+  { icon: "ph:wheelchair-fill", label: "נגישות SI 5568", color: "#1B4F8A" },
+  { icon: "ph:whatsapp-logo-fill", label: "כפתור WhatsApp", color: "#25D366" },
+  { icon: "ph:first-aid-kit-fill", label: "לוגואי קופות חולים", color: "#1B4F8A" },
+  { icon: "ph:star-fill", label: "ביקורות מטופלים", color: "#F59E0B" },
+  { icon: "ph:question-fill", label: "שאלות נפוצות", color: "#1B4F8A" },
+  { icon: "ph:map-trifold-fill", label: "מפה וניווט", color: "#1B4F8A" },
 ];
 
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
@@ -247,7 +248,7 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <span style={{ fontSize: "1.4rem" }}>🦷</span>
+            <Icon icon="ph:tooth-fill" width={22} height={22} style={{ color: "#1B4F8A", flexShrink: 0 }} />
             <div>
               <div style={{ fontSize: "0.95rem", fontWeight: "800", color: "#111", lineHeight: 1 }}>DentalSites</div>
               <div style={{ fontSize: "0.65rem", color: "#888", marginTop: "4px" }}>תבניות אתר לרופאי שיניים</div>
@@ -268,7 +269,7 @@ export default function Home() {
               textDecoration: "none",
             }}
           >
-            <span>💬</span>
+            <Icon icon="ph:whatsapp-logo-fill" width={16} height={16} />
             <span>דברו איתנו</span>
           </a>
         </div>
@@ -295,7 +296,7 @@ export default function Home() {
             marginBottom: "16px",
             letterSpacing: "0.02em",
           }}>
-            <span>✦</span>
+            <Icon icon="ph:sparkle-fill" width={12} height={12} />
             <span>6 תבניות מקצועיות · RTL עברית · נגישות SI 5568</span>
           </div>
 
@@ -382,7 +383,13 @@ export default function Home() {
                       backgroundColor: "#F3F4F6",
                       color: "#555",
                     }}>
-                      {t.structure === "מולטי-פייג׳" ? "🗂 " : "📄 "}{t.structure}
+                      <Icon
+                        icon={t.structure === "מולטי-פייג׳" ? "ph:stack-fill" : "ph:file-text-fill"}
+                        width={11}
+                        height={11}
+                        style={{ flexShrink: 0 }}
+                      />
+                      {t.structure}
                     </span>
                     {/* Color dots */}
                     <div style={{ marginRight: "auto", display: "flex", gap: "4px" }}>
@@ -442,7 +449,7 @@ export default function Home() {
                       transition: "opacity 0.2s",
                     }}>
                       צפה בדמו
-                      <span style={{ fontSize: "1rem" }}>←</span>
+                      <Icon icon="ph:arrow-left-bold" width={14} height={14} />
                     </span>
                   </div>
                 </div>
@@ -485,7 +492,7 @@ export default function Home() {
                   border: "1px solid #EFEFEF",
                 }}
               >
-                <span style={{ fontSize: "1.25rem", flexShrink: 0 }}>{f.icon}</span>
+                <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
                 <span style={{ fontSize: "0.82rem", fontWeight: "600", color: "#333" }}>{f.label}</span>
               </div>
             ))}
@@ -542,7 +549,7 @@ export default function Home() {
                   "עלות הטמעה נמוכה יותר",
                 ].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "#444" }}>
-                    <span style={{ color: "#1B4F8A", fontWeight: "700", flexShrink: 0, marginTop: "1px" }}>✓</span>
+                    <Icon icon="ph:check-bold" width={14} height={14} style={{ color: "#1B4F8A", flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -585,7 +592,7 @@ export default function Home() {
                   "מתאים לקליניקות שצומחות",
                 ].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "#444" }}>
-                    <span style={{ color: "#C4704A", fontWeight: "700", flexShrink: 0, marginTop: "1px" }}>✦</span>
+                    <Icon icon="ph:diamond-fill" width={12} height={12} style={{ color: "#C4704A", flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -630,7 +637,7 @@ export default function Home() {
               boxShadow: "0 4px 20px rgba(37,211,102,0.4)",
             }}
           >
-            <span style={{ fontSize: "1.2rem" }}>💬</span>
+            <Icon icon="ph:whatsapp-logo-fill" width={22} height={22} />
             <span>שלחו הודעה ב-WhatsApp</span>
           </a>
         </div>
