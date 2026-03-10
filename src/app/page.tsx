@@ -543,7 +543,7 @@ export default function Home() {
               >
                 <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
                 <span style={{ fontSize: "0.82rem", fontWeight: "600", color: N[800], flex: 1 }}>{f.label}</span>
-                <Icon icon="ph:check-circle-fill" width={16} height={16} style={{ flexShrink: 0, color: "#22C55E" }} />
+                <Icon icon="ph:check-bold" width={16} height={16} style={{ flexShrink: 0, color: "#22C55E" }} />
               </div>
             ))}
           </div>
