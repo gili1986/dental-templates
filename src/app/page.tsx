@@ -277,8 +277,8 @@ export default function Home() {
         @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Bold.ttf') format('truetype'); font-weight: 700 900; font-style: normal; font-display: swap; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Google Sans', sans-serif; }
-        .btn-whatsapp { transition: filter 0.18s ease, transform 0.18s ease; }
-        .btn-whatsapp:hover { filter: brightness(0.88); transform: translateY(-1px); }
+        .btn-whatsapp { transition: background-color 0.18s ease, transform 0.18s ease; }
+        .btn-whatsapp:hover { background-color: #1aab48 !important; transform: translateY(-1px); }
       `}</style>
 
       {/* ─── Header ─── */}
