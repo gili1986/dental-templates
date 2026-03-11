@@ -148,7 +148,7 @@ const features = [
   { icon: "circle-flags:il",        label: "עברית מלאה RTL",      color: undefined     },
   { icon: "ph:device-mobile-fill",  label: "מותאם למובייל",        color: P[500]        },
   { icon: "ph:wheelchair-fill",     label: "נגישות SI 5568",        color: P[500]        },
-  { icon: "ph:whatsapp-logo-fill",  label: "כפתור WhatsApp",       color: "#25D366"     },
+  { icon: "ph:whatsapp-logo",  label: "כפתור WhatsApp",       color: "#25D366"     },
   { icon: "ph:first-aid-kit-fill",  label: "לוגואי קופות חולים",   color: P[500]        },
   { icon: "ph:star-fill",           label: "ביקורות מטופלים",      color: "#F59E0B"     },
   { icon: "ph:question-fill",       label: "שאלות נפוצות",         color: P[500]        },
@@ -318,7 +318,7 @@ export default function Home() {
               textDecoration: "none",
             }}
           >
-            <Icon icon="ph:whatsapp-logo-fill" width={16} height={16} />
+            <Icon icon="ph:whatsapp-logo" width={16} height={16} />
             <span>דברו איתנו</span>
           </a>
         </div>
@@ -707,7 +707,7 @@ export default function Home() {
                   marginTop: "20px",
                 }}
               >
-                <Icon icon="ph:whatsapp-logo-fill" width={16} height={16} />
+                <Icon icon="ph:whatsapp-logo" width={16} height={16} />
                 <span>בואו נדבר על הפרויקט</span>
               </a>
             </div>
@@ -751,7 +751,7 @@ export default function Home() {
               boxShadow: "0 4px 20px rgba(37,211,102,0.4)",
             }}
           >
-            <Icon icon="ph:whatsapp-logo-fill" width={22} height={22} />
+            <Icon icon="ph:whatsapp-logo" width={22} height={22} />
             <span>שלחו הודעה ב-WhatsApp</span>
           </a>
         </div>
