@@ -102,7 +102,7 @@ const templates = [
     name: "P1 — Nordic Minimal Luxury",
     nameHe: "נורדי מינימליסטי",
     tier: "premium",
-    tierLabel: "פרמיום",
+    tierLabel: "מתקדם",
     color: "#2C2C2C",
     accent: "#C9A96E",
     bg: "#F2F0EB",
@@ -117,7 +117,7 @@ const templates = [
     name: "P2 — Bold Editorial",
     nameHe: "אדיטוריאל נועז",
     tier: "premium",
-    tierLabel: "פרמיום",
+    tierLabel: "מתקדם",
     color: "#1A1A1A",
     accent: "#FF4D4D",
     bg: "#F8F8F8",
@@ -132,7 +132,7 @@ const templates = [
     name: "P3 — Warm Organic Premium",
     nameHe: "אורגני פרמיום",
     tier: "premium",
-    tierLabel: "פרמיום",
+    tierLabel: "מתקדם",
     color: "#4A3728",
     accent: "#D4B896",
     bg: "#F0E8DE",
@@ -369,7 +369,7 @@ export default function Home() {
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
           <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
           <span style={{ fontSize: "0.8rem", fontWeight: "700", color: N[400], whiteSpace: "nowrap", letterSpacing: "0.08em" }}>
-            3 בייסיק · 3 פרמיום
+            3 בייסיק · 3 מתקדם
           </span>
           <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
         </div>
@@ -553,7 +553,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ─── Basic vs Premium Comparison ─── */}
+        {/* ─── Comparison ─── */}
         <div style={{ marginBottom: "64px" }}>
           <div style={{ textAlign: "center", marginBottom: "32px" }}>
             <h2 style={{
@@ -563,24 +563,26 @@ export default function Home() {
               fontFamily: "'Google Sans', sans-serif",
               marginBottom: "8px",
             }}>
-              בייסיק לעומת פרמיום
+              השוואת חבילות
             </h2>
-            <p style={{ fontSize: "0.82rem", color: N[400] }}>מה ההבדל בין שתי החבילות?</p>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>בחר את הרמה שמתאימה לך</p>
           </div>
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr",
             gap: "16px",
-            maxWidth: "760px",
+            maxWidth: "1060px",
             margin: "0 auto",
           }}>
-            {/* Basic */}
+            {/* בייסיק */}
             <div style={{
               backgroundColor: "white",
               borderRadius: "14px",
               padding: "24px",
               border: `1px solid ${N[100]}`,
+              display: "flex",
+              flexDirection: "column",
             }}>
               <div style={{
                 fontSize: "0.7rem",
@@ -594,7 +596,7 @@ export default function Home() {
               }}>
                 בייסיק
               </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
                 {[
                   "דף בית אחד רציף (one-pager)",
                   "6–8 סקשנים קבועים",
@@ -610,14 +612,14 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Premium */}
+            {/* מתקדם */}
             <div style={{
               backgroundColor: "white",
               borderRadius: "14px",
               padding: "24px",
               border: "2px solid #C4704A",
-              position: "relative",
-              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
             }}>
               <div style={{
                 fontSize: "0.7rem",
@@ -629,9 +631,9 @@ export default function Home() {
                 borderRadius: "10px",
                 marginBottom: "16px",
               }}>
-                פרמיום
+                מתקדם
               </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
                 {[
                   "אתר מולטי-פייג׳ עם דפים פנימיים",
                   "דפי שירות / טיפולים נפרדים",
@@ -645,6 +647,65 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* מותאם אישית */}
+            <div style={{
+              background: `linear-gradient(145deg, ${N[950]} 0%, ${P[900]} 100%)`,
+              borderRadius: "14px",
+              padding: "24px",
+              display: "flex",
+              flexDirection: "column",
+            }}>
+              <div style={{
+                fontSize: "0.7rem",
+                fontWeight: "700",
+                color: P[200],
+                backgroundColor: "rgba(255,255,255,0.1)",
+                display: "inline-block",
+                padding: "4px 12px",
+                borderRadius: "10px",
+                marginBottom: "8px",
+              }}>
+                מותאם אישית
+              </div>
+              <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", marginBottom: "16px" }}>
+                בנוי בשבילך מאפס
+              </p>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
+                {[
+                  "עיצוב ייחודי — לא קיים בשום מרפאה אחרת",
+                  "מבנה דפים לפי הצרכים הספציפיים שלך",
+                  "אינטגרציות: הזמנת תורים, CRM, טפסים",
+                  "SEO מותאם לנישה ולאזור גיאוגרפי",
+                  "ליווי צמוד מהרעיון ועד השקה",
+                ].map((item, i) => (
+                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "rgba(255,255,255,0.8)" }}>
+                    <Icon icon="ph:star-four-fill" width={12} height={12} style={{ color: P[300], flexShrink: 0, marginTop: "2px" }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://wa.me/972500000000"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  backgroundColor: "#25D366",
+                  color: "white",
+                  padding: "10px 16px",
+                  borderRadius: "20px",
+                  fontSize: "0.82rem",
+                  fontWeight: "700",
+                  textDecoration: "none",
+                  marginTop: "20px",
+                }}
+              >
+                <Icon icon="ph:whatsapp-logo-fill" width={16} height={16} />
+                <span>בואו נדבר על הפרויקט</span>
+              </a>
             </div>
           </div>
         </div>
