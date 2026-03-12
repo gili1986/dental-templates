@@ -37,7 +37,9 @@ const iconMap = {
   children: <IconHeart size={26} stroke={1.5} aria-hidden="true" />,
   emergency: <IconAlertTriangle size={26} stroke={1.5} aria-hidden="true" />,
   crowns: <IconCrown size={26} stroke={1.5} aria-hidden="true" />,
+  crown: <IconCrown size={26} stroke={1.5} aria-hidden="true" />,
   cleaning: <IconDroplet size={26} stroke={1.5} aria-hidden="true" />,
+  hygiene: <IconDroplet size={26} stroke={1.5} aria-hidden="true" />,
 };
 
 /* ── service tabs ── */
@@ -45,7 +47,7 @@ const serviceTabs = [
   {
     id: "restoration",
     label: "שתלים ושיקום",
-    ids: ["implants", "crowns", "cleaning"],
+    ids: ["implants", "crown", "hygiene"],
   },
   {
     id: "aesthetics",
@@ -141,8 +143,14 @@ export default function Basic3() {
       <main id="main-content">
         {/* ── HERO ── */}
         <section className="py-24 lg:py-36 relative overflow-hidden"
-          style={{ backgroundColor: "var(--bg)" }}
+          style={{
+            backgroundImage: "url(/clinic-hero.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
           aria-labelledby="hero-heading-b3">
+          {/* Dark overlay */}
+          <div className="absolute inset-0" style={{ backgroundColor: "rgba(8,12,22,0.80)" }} aria-hidden="true" />
           {/* Tech grid background */}
           <div className="absolute inset-0 pointer-events-none opacity-5"
             style={{
@@ -150,9 +158,9 @@ export default function Basic3() {
               backgroundSize: "40px 40px"
             }} aria-hidden="true" />
           <div className="absolute top-1/2 right-1/4 w-96 h-96 -translate-y-1/2 rounded-full pointer-events-none"
-            style={{ backgroundColor: "var(--accent)", opacity: 0.04, filter: "blur(100px)" }} aria-hidden="true" />
+            style={{ backgroundColor: "var(--accent)", opacity: 0.06, filter: "blur(100px)" }} aria-hidden="true" />
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-14 items-center relative">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative grid lg:grid-cols-2 gap-14 items-center">
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="space-y-6">
               <div className="flex items-center gap-2">
                 <Zap size={14} style={{ color: "var(--accent)" }} aria-hidden="true" />
@@ -160,7 +168,7 @@ export default function Basic3() {
                   style={{ color: "var(--accent)" }}>טכנולוגיה דנטלית מתקדמת</span>
               </div>
 
-              <h1 id="hero-heading-b3" className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight"
+              <h1 id="hero-heading-b3" className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-none"
                 style={{ fontFamily: "var(--font-heading)" }}>
                 הטכנולוגיה<br />
                 <span style={{ color: "var(--accent)" }}>בשירות החיוך</span><br />
@@ -310,7 +318,7 @@ export default function Basic3() {
                   role="tab"
                   aria-selected={activeTab === tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="px-5 py-2.5 rounded text-sm font-semibold transition-all"
+                  className="px-5 py-2.5 rounded text-sm font-semibold transition-all duration-200 hover:scale-105 hover:brightness-110 cursor-pointer"
                   style={
                     activeTab === tab.id
                       ? { backgroundColor: "var(--accent)", color: "var(--bg)" }
