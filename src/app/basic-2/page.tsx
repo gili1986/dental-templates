@@ -10,8 +10,8 @@ import { clinicData, services, reviews } from "@/lib/mock-data";
 
 const b2NavLinks = [
   { label: "שירותים", href: "#services" },
-  { label: "אודות הרופאה", href: "#about" },
   { label: "ביקורות", href: "#reviews" },
+  { label: "אודות הרופאה", href: "#about" },
   { label: "צרו קשר", href: "#contact" },
 ];
 
@@ -24,7 +24,9 @@ const iconMap = {
   children: <Baby size={28} weight="duotone" aria-hidden="true" />,
   emergency: <FirstAid size={28} weight="duotone" aria-hidden="true" />,
   crowns: <Crown size={28} weight="duotone" aria-hidden="true" />,
+  crown: <Crown size={28} weight="duotone" aria-hidden="true" />,
   cleaning: <Drop size={28} weight="duotone" aria-hidden="true" />,
+  hygiene: <Drop size={28} weight="duotone" aria-hidden="true" />,
 };
 
 /* Short descriptions per service for horizontal layout */
@@ -100,9 +102,16 @@ export default function Basic2() {
         {/* ── HERO ── */}
         <section
           className="py-20 lg:py-28 relative overflow-hidden"
-          style={{ backgroundColor: "var(--bg-secondary)" }}
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
           aria-labelledby="hero-heading-b2"
         >
+          {/* Gradient overlay — opaque on text side (right/RTL), transparent on clinic side */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
+            style={{ background: "linear-gradient(to left, rgba(253,243,236,0.95) 35%, rgba(253,243,236,0.55) 65%, rgba(253,243,236,0.25) 100%)" }} />
           {/* Warm background blobs */}
           <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-20 pointer-events-none"
             style={{ backgroundColor: "var(--accent)", filter: "blur(80px)" }} aria-hidden="true" />
@@ -151,26 +160,131 @@ export default function Basic2() {
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
               <div className="rounded-3xl overflow-hidden aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
-                  alt="רופאת שיניים מחייכת בטיפול ידידותי"
+                  src="/smile-hero.jpg"
+                  alt="חיוך בריא ויפה"
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.9 }}
-                className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl p-4"
-                style={{ border: "1px solid var(--border)" }}
-              >
-                <div className="flex text-yellow-400 mb-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" aria-hidden="true" />)}
-                </div>
-                <p className="text-xs font-bold" style={{ color: "var(--text)" }}>מטופלים אוהבים אותנו</p>
-                <p className="text-xs" style={{ color: "var(--text-muted)" }}>340+ ביקורות</p>
-              </motion.div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* ── STATS BAR ── */}
+        <section aria-label="נתוני המרפאה" style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: "340+", label: "מטופלים מרוצים", sub: "ביקורות 5 כוכבים" },
+                { value: "15+", label: "שנות ניסיון", sub: "בטיפולים אסתטיים" },
+                { value: "4", label: "קופות חולים", sub: "כלל, מכבי, מאוחדת, לאומית" },
+                { value: "98%", label: "ממליצים", sub: "על המרפאה לחברים" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="text-center px-2"
+                >
+                  <p className="text-3xl font-bold" style={{ color: "var(--primary)", fontFamily: "var(--font-heading)" }}>
+                    {stat.value}
+                  </p>
+                  <p className="text-sm font-semibold mt-0.5" style={{ color: "var(--text)" }}>{stat.label}</p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{stat.sub}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SERVICES (horizontal list-cards) ── */}
+        <section id="services" className="py-20"
+          style={{ backgroundColor: "var(--bg)" }}
+          aria-labelledby="services-heading-b2"
+        >
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+              className="text-center mb-12">
+              <h2
+                id="services-heading-b2"
+                className="text-3xl font-bold mb-3"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                מה אנחנו מציעים
+              </h2>
+              <p className="text-sm max-w-md mx-auto" style={{ color: "var(--text-muted)" }}>
+                כל מה שצריך לחיוך מושלם ולפה בריא
+              </p>
+            </motion.div>
+
+            {/* 2-column horizontal rows */}
+            <div className="grid md:grid-cols-2 gap-4">
+              {services.map((s, i) => (
+                <motion.div
+                  key={s.id}
+                  variants={fadeUp}
+                  custom={i * 0.5}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="flex items-start gap-4 p-5 rounded-2xl border hover:shadow-md transition-shadow"
+                  style={{
+                    borderColor: "var(--border)",
+                    backgroundColor: "var(--bg)",
+                  }}
+                >
+                  {/* Icon box */}
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: "var(--bg-secondary)", color: "var(--primary)" }}
+                    aria-hidden="true"
+                  >
+                    {iconMap[s.id as keyof typeof iconMap]}
+                  </div>
+                  {/* Text */}
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      className="font-bold text-base mb-1"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      {s.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                      {serviceDescs[s.id] ?? s.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── REVIEWS ── */}
+        <section id="reviews" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
+          aria-labelledby="reviews-heading-b2">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+              id="reviews-heading-b2"
+              className="text-3xl font-bold text-center mb-10"
+              style={{ fontFamily: "var(--font-heading)" }}>
+              מה המטופלים אומרים
+            </motion.h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {reviews.map((r, i) => (
+                <motion.div key={r.id} variants={fadeUp} custom={i} initial="hidden"
+                  whileInView="show" viewport={{ once: true }}
+                  className="p-6 rounded-2xl border"
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
+                  <div className="flex text-yellow-400 mb-3" aria-label={`דירוג: ${r.rating} כוכבים`}>
+                    {[...Array(r.rating)].map((_, j) => <Star key={j} size={13} fill="currentColor" aria-hidden="true" />)}
+                  </div>
+                  <p className="text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
+                  <p className="text-sm font-semibold">{r.name}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -244,95 +358,6 @@ export default function Basic2() {
                   קביעת תור <ArrowLeft size={15} aria-hidden="true" />
                 </a>
               </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── SERVICES (horizontal list-cards) ── */}
-        <section id="services" className="py-20"
-          style={{ backgroundColor: "var(--bg-secondary)" }}
-          aria-labelledby="services-heading-b2"
-        >
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
-              className="text-center mb-12">
-              <h2
-                id="services-heading-b2"
-                className="text-3xl font-bold mb-3"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                מה אנחנו מציעים
-              </h2>
-              <p className="text-sm max-w-md mx-auto" style={{ color: "var(--text-muted)" }}>
-                כל מה שצריך לחיוך מושלם ולפה בריא
-              </p>
-            </motion.div>
-
-            {/* 2-column horizontal rows */}
-            <div className="grid md:grid-cols-2 gap-4">
-              {services.map((s, i) => (
-                <motion.div
-                  key={s.id}
-                  variants={fadeUp}
-                  custom={i * 0.5}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="flex items-start gap-4 p-5 rounded-2xl border hover:shadow-md transition-shadow"
-                  style={{
-                    borderColor: "var(--border)",
-                    backgroundColor: "var(--bg)",
-                  }}
-                >
-                  {/* Icon box */}
-                  <div
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: "var(--bg-secondary)", color: "var(--primary)" }}
-                    aria-hidden="true"
-                  >
-                    {iconMap[s.id as keyof typeof iconMap]}
-                  </div>
-                  {/* Text */}
-                  <div className="flex-1 min-w-0">
-                    <h3
-                      className="font-bold text-base mb-1"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {s.title}
-                    </h3>
-                    <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                      {serviceDescs[s.id] ?? s.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── REVIEWS ── */}
-        <section id="reviews" className="py-20" style={{ backgroundColor: "var(--bg)" }}
-          aria-labelledby="reviews-heading-b2">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
-              id="reviews-heading-b2"
-              className="text-3xl font-bold text-center mb-10"
-              style={{ fontFamily: "var(--font-heading)" }}>
-              מה המטופלים אומרים
-            </motion.h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {reviews.map((r, i) => (
-                <motion.div key={r.id} variants={fadeUp} custom={i} initial="hidden"
-                  whileInView="show" viewport={{ once: true }}
-                  className="p-6 rounded-2xl border"
-                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}>
-                  <div className="flex text-yellow-400 mb-3" aria-label={`דירוג: ${r.rating} כוכבים`}>
-                    {[...Array(r.rating)].map((_, j) => <Star key={j} size={13} fill="currentColor" aria-hidden="true" />)}
-                  </div>
-                  <p className="text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
-                  <p className="text-sm font-semibold">{r.name}</p>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>
