@@ -20,7 +20,8 @@ import {
 } from "lucide-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
-import KupatHolimBar from "@/components/shared/KupatHolimBar";
+import HeaderP2 from "@/components/layout/HeaderP2";
+import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -34,7 +35,9 @@ const iconMap = {
   children: <HeartPulse size={28} strokeWidth={2.5} aria-hidden="true" />,
   emergency: <AlertCircle size={28} strokeWidth={2.5} aria-hidden="true" />,
   crowns: <Award size={28} strokeWidth={2.5} aria-hidden="true" />,
+  crown: <Award size={28} strokeWidth={2.5} aria-hidden="true" />,
   cleaning: <Droplets size={28} strokeWidth={2.5} aria-hidden="true" />,
+  hygiene: <Droplets size={28} strokeWidth={2.5} aria-hidden="true" />,
 };
 
 const fadeUp = {
@@ -57,35 +60,7 @@ export default function Premium2() {
       <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40" style={{ backgroundColor: "var(--bg)", borderBottom: "3px solid var(--accent)" }}>
-        <KupatHolimBar />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <span className="text-xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-            {clinicData.doctorName}
-          </span>
-          <nav aria-label="ניווט ראשי">
-            <ul className="hidden md:flex items-center gap-8 list-none">
-              {[
-                { label: "טיפולים", href: "/premium-2/treatments" },
-                { label: "תוצאות", href: "/premium-2/results" },
-                { label: "ביקורות", href: "#reviews" },
-                { label: "צרו קשר", href: "/premium-2/contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-sm font-bold hover:text-[var(--accent)] transition-colors"
-                    style={{ color: "var(--text-muted)" }}>{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <a href={`tel:${clinicData.phone}`} aria-label={`התקשרו: ${clinicData.phone}`}
-            className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-bold text-white hover:opacity-90"
-            style={{ backgroundColor: "var(--accent)" }}>
-            <Phone size={13} aria-hidden="true" /> {clinicData.phone}
-          </a>
-        </div>
-      </header>
+      <HeaderP2 />
 
       <main id="main-content">
         {/* ── HERO — EDITORIAL STYLE ── */}
@@ -159,6 +134,8 @@ export default function Premium2() {
           </div>
         </section>
 
+        <HealthFundsStrip />
+
         {/* ── SERVICES — Magazine grid ── */}
         <section id="services" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}
           aria-labelledby="services-heading-p2">
@@ -176,7 +153,7 @@ export default function Premium2() {
                   className="p-6 border-l border-b group hover:bg-black hover:text-white transition-colors"
                   style={{ borderColor: "var(--border)" }}>
                   <div
-                    className="flex justify-center mb-3 group-hover:scale-110 transition-transform"
+                    className="flex justify-start mb-3 group-hover:scale-110 transition-transform"
                     style={{ color: "var(--accent)" }}
                     aria-hidden="true"
                   >
@@ -274,6 +251,8 @@ export default function Premium2() {
             </div>
           </div>
         </section>
+
+        <InsuranceStrip />
 
         {/* ── CONTACT ── */}
         <section id="contact" className="py-20" style={{ backgroundColor: "var(--accent)" }}

@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
-import KupatHolimBar from "@/components/shared/KupatHolimBar";
+import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import {
   clinicData,
   services,
@@ -40,7 +40,9 @@ const iconMap = {
   children: <HeartPulse size={28} aria-hidden="true" />,
   emergency: <AlertCircle size={28} aria-hidden="true" />,
   crowns: <Award size={28} aria-hidden="true" />,
+  crown: <Award size={28} aria-hidden="true" />,
   cleaning: <Droplets size={28} aria-hidden="true" />,
+  hygiene: <Droplets size={28} aria-hidden="true" />,
 };
 
 /* ── animation helpers ── */
@@ -76,7 +78,6 @@ export default function Basic1() {
         className="sticky top-0 z-40 shadow-sm"
         style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}
       >
-        <KupatHolimBar />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -267,6 +268,8 @@ export default function Basic1() {
             </motion.div>
           </div>
         </section>
+
+        <HealthFundsStrip />
 
         {/* ── SERVICES ── */}
         <section
@@ -527,6 +530,8 @@ export default function Basic1() {
             </div>
           </div>
         </section>
+
+        <InsuranceStrip />
 
         {/* ── CONTACT ── */}
         <section

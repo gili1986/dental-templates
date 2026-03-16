@@ -3,6 +3,7 @@ import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
+import HeaderP1 from "@/components/layout/HeaderP1";
 
 export default function ContactPage() {
   return (
@@ -13,23 +14,7 @@ export default function ContactPage() {
       <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40"
-        style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <Link href="/premium-1"
-            className="text-sm font-medium hover:opacity-70 transition-opacity flex items-center gap-2"
-            style={{ color: "var(--text-muted)" }}>
-            → חזרה לדף הבית
-          </Link>
-          <div style={{ fontFamily: "var(--font-heading)", textAlign: "center" }}>
-            <span className="text-base font-bold" style={{ color: "var(--text)" }}>
-              {clinicData.doctorName}
-            </span>
-          </div>
-          <div className="w-24 hidden sm:block" /> {/* spacer */}
-        </div>
-      </header>
+      <HeaderP1 />
 
       <main id="main-content" className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
         {/* Breadcrumb */}
@@ -136,7 +121,7 @@ export default function ContactPage() {
                   <option value="">בחרו טיפול...</option>
                   <option value="implants">השתלות שיניים</option>
                   <option value="veneers">ציפויי חרסינה</option>
-                  <option value="whitening">לבנת שיניים</option>
+                  <option value="whitening">הלבנת שיניים</option>
                   <option value="orthodontics">יישור שיניים</option>
                   <option value="crown">כתרים וגשרים</option>
                   <option value="children">רפואת שיניים לילדים</option>

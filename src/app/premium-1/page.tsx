@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -19,7 +20,8 @@ import {
 } from "lucide-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
-import KupatHolimBar from "@/components/shared/KupatHolimBar";
+import HeaderP1 from "@/components/layout/HeaderP1";
+import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -33,7 +35,9 @@ const iconMap = {
   children: <HeartPulse size={26} strokeWidth={1} aria-hidden="true" />,
   emergency: <AlertCircle size={26} strokeWidth={1} aria-hidden="true" />,
   crowns: <Award size={26} strokeWidth={1} aria-hidden="true" />,
+  crown: <Award size={26} strokeWidth={1} aria-hidden="true" />,
   cleaning: <Droplets size={26} strokeWidth={1} aria-hidden="true" />,
+  hygiene: <Droplets size={26} strokeWidth={1} aria-hidden="true" />,
 };
 
 const fadeUp = {
@@ -47,6 +51,7 @@ const fadeUp = {
 
 export default function Premium1() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
     <div
@@ -56,45 +61,20 @@ export default function Premium1() {
       <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40" style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
-        <KupatHolimBar />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <div>
-            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)", color: "var(--text)" }}>
-              {clinicData.doctorName}
-            </span>
-            <div className="w-8 h-0.5 mt-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
-          </div>
-          <nav aria-label="ניווט ראשי">
-            <ul className="hidden md:flex items-center gap-8 list-none">
-              {[
-                { label: "שירותים", href: "#services" },
-                { label: "אודות", href: "#about" },
-                { label: "ביקורות", href: "#reviews" },
-                { label: "צרו קשר", href: "/premium-1/contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-xs font-medium tracking-wide uppercase hover:opacity-60"
-                    style={{ color: "var(--text-muted)" }}>{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <a href={`tel:${clinicData.phone}`} aria-label={`התקשרו: ${clinicData.phone}`}
-            className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-semibold border hover:opacity-80"
-            style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
-            <Phone size={13} aria-hidden="true" /> {clinicData.phone}
-          </a>
-        </div>
-      </header>
+      <HeaderP1 />
 
       <main id="main-content">
         {/* ── HERO ── */}
-        <section className="pt-24 pb-32 relative overflow-hidden"
-          style={{ backgroundColor: "var(--bg)" }}
+        <section className="pt-0 pb-0 relative"
+          style={{
+            backgroundColor: "var(--bg)",
+            backgroundImage: "url('/clinic-hero.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
           aria-labelledby="hero-heading-p1">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="absolute inset-0 bg-[var(--bg)] opacity-85 pointer-events-none" aria-hidden="true" />
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-16 items-center">
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="space-y-8">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
@@ -109,7 +89,7 @@ export default function Premium1() {
                 {clinicData.tagline}
               </h1>
 
-              <p className="text-base leading-relaxed max-w-lg" style={{ color: "var(--text-muted)" }}>
+              <p className="text-base leading-relaxed max-w-lg" style={{ color: "var(--text)" }}>
                 {clinicData.heroSubtitle}
               </p>
 
@@ -119,16 +99,11 @@ export default function Premium1() {
                   style={{ backgroundColor: "var(--accent)", color: "white" }}>
                   קביעת תור <ArrowLeft size={15} aria-hidden="true" />
                 </a>
-                <a href={`tel:${clinicData.phone}`}
-                  className="px-8 py-3.5 text-sm font-semibold border hover:opacity-80"
-                  style={{ borderColor: "var(--text)", color: "var(--text)" }}>
-                  {clinicData.phone}
-                </a>
               </div>
             </motion.div>
 
             {/* Image */}
-            <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
+            <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative z-10" style={{ marginBottom: '-80px' }}>
               <div className="aspect-[3/4] overflow-hidden"
                 role="img" aria-label="מרפאת שיניים יוקרתית">
                 <img
@@ -138,23 +113,39 @@ export default function Premium1() {
                 />
               </div>
               {/* Gold accent line */}
-              <div className="absolute bottom-0 right-0 w-2/3 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
-              <div className="absolute bottom-0 right-0 w-0.5 h-16" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+              <div className="absolute bottom-0 right-0 w-2/3 h-2 translate-y-1/2" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+              <div className="absolute bottom-0 right-0 w-2 h-16 translate-x-1/2" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 translate-x-1/2 translate-y-1/2" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-                className="absolute top-6 -left-6 bg-white p-4 shadow-lg"
-                style={{ border: "1px solid var(--border)" }}>
-                <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>
-                  15+
-                </div>
-                <div className="text-xs" style={{ color: "var(--text-muted)" }}>שנות מצוינות</div>
+                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                style={{ border: "1px solid var(--border)", top: "24px" }}>
+                <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>98%</div>
+                <div className="text-xs" style={{ color: "var(--text)" }}>ממליצים</div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.15 }}
+                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                style={{ border: "1px solid var(--border)", top: "120px" }}>
+                <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>15+</div>
+                <div className="text-xs" style={{ color: "var(--text)" }}>שנות ניסיון</div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
+                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                style={{ border: "1px solid var(--border)", top: "216px" }}>
+                <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>340+</div>
+                <div className="text-xs" style={{ color: "var(--text)" }}>מטופלים מרוצים</div>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
+        {/* overflow buffer: image bleeds 80px into this zone */}
+        <div style={{ paddingTop: '80px', backgroundColor: 'var(--bg)' }}>
+          <HealthFundsStrip align="end" />
+        </div>
+
         {/* ── SERVICES ── */}
-        <section id="services" className="py-24" style={{ backgroundColor: "var(--bg-secondary)" }}
+        <section id="services" className="py-24" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="services-heading-p1">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -171,16 +162,16 @@ export default function Premium1() {
                 <motion.a key={s.id} href={`/premium-1/services/${s.id}`} variants={fadeUp} custom={i} initial="hidden"
                   whileInView="show" viewport={{ once: true }}
                   className="p-6 hover:opacity-80 transition-opacity block"
-                  style={{ backgroundColor: "var(--bg-secondary)" }}>
+                  style={{ backgroundColor: "var(--bg)" }}>
                   <div
-                    className="flex justify-center mb-4"
+                    className="flex justify-start mb-4"
                     style={{ color: "var(--accent)" }}
                     aria-hidden="true"
                   >
                     {iconMap[s.id as keyof typeof iconMap]}
                   </div>
                   <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
-                  <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
+                  <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text)" }}>{s.description}</p>
                   <span className="text-xs mt-2 block" style={{ color: "var(--accent)" }}>קרא עוד ←</span>
                 </motion.a>
               ))}
@@ -189,7 +180,7 @@ export default function Premium1() {
         </section>
 
         {/* ── ABOUT ── */}
-        <section id="about" className="py-24" style={{ backgroundColor: "var(--bg)" }}
+        <section id="about" className="py-24" style={{ backgroundColor: "var(--bg-secondary)" }}
           aria-labelledby="about-heading-p1">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-16 items-center">
             <div className="aspect-square overflow-hidden relative"
@@ -211,14 +202,14 @@ export default function Premium1() {
               <h2 id="about-heading-p1" className="text-3xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>{clinicData.doctorName}</h2>
               <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{clinicData.doctorTitle}</p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{clinicData.doctorBio}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>{clinicData.doctorBio}</p>
               <div className="w-12 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
             </motion.div>
           </div>
         </section>
 
         {/* ── REVIEWS ── */}
-        <section id="reviews" className="py-24" style={{ backgroundColor: "var(--bg-secondary)" }}
+        <section id="reviews" className="py-24" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="reviews-heading-p1">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -243,7 +234,7 @@ export default function Premium1() {
                   <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text)" }}>&ldquo;{r.text}&rdquo;</p>
                   <div>
                     <p className="font-semibold text-sm">{r.name}</p>
-                    <p className="text-xs" style={{ color: "var(--text-muted)" }}>{r.date}</p>
+                    <p className="text-xs" style={{ color: "var(--text)" }}>{r.date}</p>
                   </div>
                 </motion.div>
               ))}
@@ -252,7 +243,7 @@ export default function Premium1() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="faq" className="py-24" style={{ backgroundColor: "var(--bg)" }}
+        <section id="faq" className="py-24" style={{ backgroundColor: "var(--bg-secondary)" }}
           aria-labelledby="faq-heading-p1">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -277,7 +268,7 @@ export default function Premium1() {
                       style={{ color: "var(--accent)" }} />
                   </button>
                   {openFaq === i && (
-                    <div className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                    <div className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text)" }}>
                       {faq.a}
                     </div>
                   )}
@@ -287,8 +278,10 @@ export default function Premium1() {
           </div>
         </section>
 
+        <InsuranceStrip />
+
         {/* ── CONTACT ── */}
-        <section id="contact" className="py-24" style={{ backgroundColor: "var(--bg-secondary)" }}
+        <section id="contact" className="py-24" style={{ backgroundColor: "var(--bg)" }}
           aria-labelledby="contact-heading-p1">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-16">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -320,7 +313,7 @@ export default function Premium1() {
             </motion.div>
             <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="min-h-56 flex items-center justify-center"
-              style={{ backgroundColor: "var(--bg)" }}
+              style={{ backgroundColor: "#ffffff" }}
               role="img" aria-label="מפת מיקום המרפאה">
               <div className="text-center">
                 <MapPin size={30} style={{ color: "var(--accent)", margin: "0 auto 8px" }} aria-hidden="true" />

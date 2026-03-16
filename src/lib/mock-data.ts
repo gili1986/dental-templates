@@ -30,7 +30,7 @@ export const services = [
   {
     id: "whitening",
     icon: "✨",
-    title: "לבנת שיניים",
+    title: "הלבנת שיניים",
     description: "הבהרת שיניים מקצועית לחיוך בהיר ומרהיב",
   },
   {

@@ -17,7 +17,7 @@ import {
 } from "@tabler/icons-react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
-import KupatHolimBar from "@/components/shared/KupatHolimBar";
+import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews } from "@/lib/mock-data";
 
 const b3NavLinks = [
@@ -113,7 +113,6 @@ export default function Basic3() {
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-40"
         style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
-        <KupatHolimBar dark />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded flex items-center justify-center text-xs font-bold"
@@ -235,6 +234,8 @@ export default function Basic3() {
             </motion.div>
           </div>
         </section>
+
+        <HealthFundsStrip />
 
         {/* ── TECHNOLOGY SHOWCASE ── */}
         <section id="technology" className="py-20"
@@ -409,6 +410,8 @@ export default function Basic3() {
             </div>
           </div>
         </section>
+
+        <InsuranceStrip />
 
         {/* ── CONTACT ── */}
         <section id="contact" className="py-20"

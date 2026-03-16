@@ -5,7 +5,7 @@ import { Phone, MapPin, Clock, Star, ArrowLeft, Heart, CheckCircle } from "lucid
 import { Tooth, Sparkle, Sun, ArrowsHorizontal, Baby, FirstAid, Crown, Drop } from "@phosphor-icons/react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
-import KupatHolimBar from "@/components/shared/KupatHolimBar";
+import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews } from "@/lib/mock-data";
 
 const b2NavLinks = [
@@ -64,7 +64,6 @@ export default function Basic2() {
         className="sticky top-0 z-40"
         style={{ backgroundColor: "var(--bg)", borderBottom: "2px solid var(--border)" }}
       >
-        <KupatHolimBar />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           <div style={{ fontFamily: "var(--font-heading)" }}>
             <span className="text-xl font-bold" style={{ color: "var(--primary)" }}>
@@ -198,6 +197,8 @@ export default function Basic2() {
             </div>
           </div>
         </section>
+
+        <HealthFundsStrip />
 
         {/* ── SERVICES (horizontal list-cards) ── */}
         <section id="services" className="py-20"
@@ -361,6 +362,8 @@ export default function Basic2() {
             </div>
           </div>
         </section>
+
+        <InsuranceStrip />
 
         {/* ── CONTACT ── */}
         <section id="contact" className="py-20" style={{ backgroundColor: "var(--bg-secondary)" }}

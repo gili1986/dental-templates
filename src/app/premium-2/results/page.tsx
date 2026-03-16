@@ -2,6 +2,7 @@ import Link from "next/link";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
+import HeaderP2 from "@/components/layout/HeaderP2";
 
 const caseStudies = [
   {
@@ -75,26 +76,7 @@ export default function ResultsPage() {
       <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40"
-        style={{ backgroundColor: "var(--bg)", borderBottom: "2px solid var(--text)" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <Link href="/premium-2"
-            className="text-sm font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
-            style={{ color: "var(--text)" }}>
-            ← חזרה
-          </Link>
-          <span className="text-base font-black uppercase tracking-widest"
-            style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>
-            {clinicData.doctorName}
-          </span>
-          <Link href="/premium-2/contact"
-            className="hidden sm:inline-flex px-5 py-2 text-sm font-bold uppercase tracking-widest text-white"
-            style={{ backgroundColor: "var(--accent)" }}>
-            תור עכשיו
-          </Link>
-        </div>
-      </header>
+      <HeaderP2 />
 
       <main id="main-content">
         {/* ── HERO ── */}

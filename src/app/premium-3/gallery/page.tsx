@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Leaf } from "lucide-react";
 import { useState } from "react";
 import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
+import HeaderP3 from "@/components/layout/HeaderP3";
 
 const galleryImages = [
   {
@@ -90,35 +90,7 @@ export default function GalleryPage() {
       <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-40"
-        style={{ backgroundColor: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <Leaf size={18} style={{ color: "var(--accent)" }} aria-hidden="true" />
-            <Link href="/premium-3"
-              className="text-xl font-bold hover:opacity-70 transition-opacity"
-              style={{ fontFamily: "var(--font-heading)", color: "var(--text)" }}>
-              {clinicData.doctorName}
-            </Link>
-          </div>
-          <nav aria-label="ניווט ראשי">
-            <ul className="hidden md:flex items-center gap-7 list-none">
-              <li><Link href="/premium-3/about" className="text-sm font-medium hover:opacity-60"
-                style={{ color: "var(--text-muted)" }}>אודות</Link></li>
-              <li><Link href="/premium-3/treatments" className="text-sm font-medium hover:opacity-60"
-                style={{ color: "var(--text-muted)" }}>טיפולים</Link></li>
-              <li><Link href="/premium-3/gallery" className="text-sm font-medium"
-                style={{ color: "var(--accent)" }}>גלריה</Link></li>
-            </ul>
-          </nav>
-          <a href={`https://wa.me/${clinicData.whatsapp}`} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center px-5 py-2 text-sm font-medium text-white rounded-full hover:opacity-90"
-            style={{ backgroundColor: "var(--primary)" }}>
-            קביעת תור
-          </a>
-        </div>
-      </header>
+      <HeaderP3 />
 
       <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
         {/* Page header */}
