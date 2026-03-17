@@ -37,7 +37,7 @@ export default function AccessibilityWidget() {
         onClick={() => setOpen(!open)}
         aria-label="פתח תפריט נגישות"
         aria-expanded={open}
-        className="w-10 h-10 rounded-full bg-[var(--primary,#1B4F8A)] text-white flex items-center justify-center shadow-lg hover:opacity-90 focus-visible:outline-2 focus-visible:outline-white"
+        className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:opacity-90 focus-visible:outline-2 focus-visible:outline-white cursor-pointer"
       >
         <Accessibility size={18} aria-hidden="true" />
       </button>

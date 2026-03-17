@@ -120,19 +120,18 @@ export default function TreatmentsPage() {
             {services.map((service, i) => {
               const content = treatmentContent[service.id];
               if (!content) return null;
-              const isEven = i % 2 === 0;
-
               return (
                 <article
                   key={service.id}
-                  className="grid lg:grid-cols-2 gap-0"
+                  id={`treatment-${service.id}`}
+                  className="grid lg:grid-cols-2 gap-0 scroll-mt-20"
                   style={{ borderBottom: "2px solid var(--text)" }}
-                  aria-labelledby={`treatment-${service.id}`}
+                  aria-labelledby={`treatment-title-${service.id}`}
                 >
-                  {/* Tag + number col */}
+                  {/* Tag + number col — always right */}
                   <div
-                    className={`p-10 lg:p-16 flex flex-col justify-between ${isEven ? "" : "lg:order-2"}`}
-                    style={{ backgroundColor: isEven ? "var(--bg)" : "var(--bg-secondary)" }}
+                    className="p-10 lg:p-16 flex flex-col justify-between"
+                    style={{ backgroundColor: "var(--bg)" }}
                   >
                     <div>
                       <div className="flex items-center gap-4 mb-6">
@@ -150,7 +149,7 @@ export default function TreatmentsPage() {
                         {iconMap[service.id]}
                       </div>
 
-                      <h2 id={`treatment-${service.id}`}
+                      <h2 id={`treatment-title-${service.id}`}
                         className="text-3xl lg:text-4xl font-black uppercase mb-4"
                         style={{ fontFamily: "var(--font-heading)" }}>
                         {service.title}
@@ -179,10 +178,10 @@ export default function TreatmentsPage() {
                     </div>
                   </div>
 
-                  {/* Bullets col */}
+                  {/* Bullets col — always left */}
                   <div
-                    className={`p-10 lg:p-16 flex flex-col justify-center ${isEven ? "" : "lg:order-1"}`}
-                    style={{ backgroundColor: isEven ? "var(--bg-secondary)" : "var(--bg)" }}
+                    className="p-10 lg:p-16 flex flex-col justify-center"
+                    style={{ backgroundColor: "var(--bg-secondary)" }}
                   >
                     <h3 className="text-xs font-bold uppercase tracking-widest mb-6"
                       style={{ color: "var(--text-muted)" }}>
@@ -204,11 +203,11 @@ export default function TreatmentsPage() {
                       href={`https://wa.me/${clinicData.whatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-10 self-start inline-flex items-center gap-2 px-8 py-3 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity"
+                      className="mt-10 self-start inline-flex items-center gap-3 px-6 py-3 text-sm font-bold uppercase tracking-widest text-white hover:opacity-90 transition-opacity"
                       style={{ backgroundColor: "var(--text)" }}
                       aria-label={`קביעת תור ל${service.title}`}
                     >
-                      קביעת תור →
+                      <span>קביעת תור</span><span>←</span>
                     </a>
                   </div>
                 </article>

@@ -19,6 +19,7 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews } from "@/lib/mock-data";
+import { useEffect } from "react";
 
 const b3NavLinks = [
   { label: "טכנולוגיה", href: "#technology" },
@@ -97,6 +98,7 @@ const fadeUp = {
 
 export default function Basic3() {
   const [activeTab, setActiveTab] = useState("restoration");
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   const activeServices = services.filter((s) =>
     (serviceTabs.find((t) => t.id === activeTab)?.ids ?? []).includes(s.id)
@@ -107,8 +109,8 @@ export default function Basic3() {
       className="theme-b3 min-h-screen"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)", fontFamily: "var(--font-body)" }}
     >
-      <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      <AccessibilityWidget />
 
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-40"
@@ -318,6 +320,7 @@ export default function Basic3() {
                   key={tab.id}
                   role="tab"
                   aria-selected={activeTab === tab.id}
+                  aria-controls="b3-services-panel"
                   onClick={() => setActiveTab(tab.id)}
                   className="px-5 py-2.5 rounded text-sm font-semibold transition-all duration-200 hover:scale-105 hover:brightness-110 cursor-pointer"
                   style={
@@ -332,7 +335,7 @@ export default function Basic3() {
             </div>
 
             {/* Service cards */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            <div id="b3-services-panel" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
               role="tabpanel" aria-label={serviceTabs.find((t) => t.id === activeTab)?.label}>
               {activeServices.map((s, i) => (
                 <motion.div
@@ -454,7 +457,7 @@ export default function Basic3() {
         </section>
       </main>
 
-      <footer style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }} className="py-8">
+      <footer role="contentinfo" style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }} className="py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-3 gap-8 mb-6 text-sm">
             <div>

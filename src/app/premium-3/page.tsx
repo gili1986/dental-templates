@@ -9,7 +9,7 @@ import HeaderP3 from "@/components/layout/HeaderP3";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* ── icon map ── */
 const iconMap = {
@@ -36,14 +36,15 @@ const fadeUp = {
 
 export default function Premium3() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   return (
     <div
       className="theme-p3 min-h-screen"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)", fontFamily: "var(--font-body)" }}
     >
-      <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      <AccessibilityWidget />
 
       <HeaderP3 />
 
@@ -61,9 +62,9 @@ export default function Premium3() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-16 items-center relative">
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="space-y-7">
               <div className="flex items-center gap-2">
-                <Leaf size={14} style={{ color: "var(--accent)" }} aria-hidden="true" />
+                <Leaf size={14} style={{ color: "var(--text)" }} aria-hidden="true" />
                 <span className="text-xs font-medium tracking-wider"
-                  style={{ color: "var(--accent)" }}>גישה הוליסטית לבריאות הפה</span>
+                  style={{ color: "var(--text)" }}>גישה הוליסטית לבריאות הפה</span>
               </div>
 
               <h1 id="hero-heading-p3"
@@ -83,8 +84,9 @@ export default function Premium3() {
                   קביעת תור <ArrowLeft size={15} aria-hidden="true" />
                 </a>
                 <a href={`tel:${clinicData.phone}`}
-                  className="px-7 py-3.5 rounded-sm font-semibold text-sm border hover:opacity-80"
+                  className="px-7 py-3.5 rounded-sm font-semibold text-sm border hover:opacity-80 flex items-center gap-2"
                   style={{ borderColor: "var(--primary)", color: "var(--primary)" }}>
+                  <Phone size={15} aria-hidden="true" />
                   {clinicData.phone}
                 </a>
               </div>
@@ -139,9 +141,10 @@ export default function Premium3() {
             </motion.div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {services.map((s, i) => (
-                <motion.div key={s.id} variants={fadeUp} custom={i} initial="hidden"
+                <motion.a key={s.id} href={`/premium-3/treatments#t-${s.id}`}
+                  variants={fadeUp} custom={i} initial="hidden"
                   whileInView="show" viewport={{ once: true }}
-                  className="p-5 rounded-2xl border text-center hover:shadow-sm transition-shadow"
+                  className="p-5 rounded-2xl border text-center hover:shadow-md transition-shadow cursor-pointer block"
                   style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-secondary)" }}>
                   <div
                     className="flex justify-center mb-3"
@@ -152,7 +155,7 @@ export default function Premium3() {
                   </div>
                   <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
                   <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -173,12 +176,12 @@ export default function Premium3() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="space-y-5">
               <div className="flex items-center gap-2">
-                <Leaf size={14} style={{ color: "var(--accent)" }} aria-hidden="true" />
-                <span className="text-xs" style={{ color: "var(--accent)" }}>אודות</span>
+                <Leaf size={14} style={{ color: "var(--text)" }} aria-hidden="true" />
+                <span className="text-xs" style={{ color: "var(--text)" }}>אודות</span>
               </div>
               <h2 id="about-heading-p3" className="text-3xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>{clinicData.doctorName}</h2>
-              <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{clinicData.doctorTitle}</p>
+              <p className="text-sm font-medium" style={{ color: "var(--text)" }}>{clinicData.doctorTitle}</p>
               <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{clinicData.doctorBio}</p>
             </motion.div>
           </div>
@@ -223,19 +226,20 @@ export default function Premium3() {
                   style={{ borderColor: "var(--border)" }}>
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
-                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-sm hover:opacity-80"
+                    aria-controls={`faq-panel-p3-${i}`}
+                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-sm hover:opacity-80 cursor-pointer"
                     style={{ backgroundColor: "var(--bg)" }}>
                     <span>{faq.q}</span>
                     <ChevronDown size={15} aria-hidden="true"
                       className={cn("transition-transform flex-shrink-0 mr-2", openFaq === i && "rotate-180")}
                       style={{ color: "var(--accent)" }} />
                   </button>
-                  {openFaq === i && (
-                    <div className="px-4 pb-4 pt-3 text-sm leading-relaxed"
-                      style={{ color: "var(--text-muted)", backgroundColor: "var(--bg)", borderTop: "1px solid var(--border)" }}>
-                      {faq.a}
-                    </div>
-                  )}
+                  <div id={`faq-panel-p3-${i}`} role="region" aria-label={faq.q}
+                    hidden={openFaq !== i}
+                    className="px-4 pb-4 pt-3 text-sm leading-relaxed"
+                    style={{ color: "var(--text-muted)", backgroundColor: "var(--bg)", borderTop: "1px solid var(--border)" }}>
+                    {faq.a}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -287,7 +291,7 @@ export default function Premium3() {
         </section>
       </main>
 
-      <footer className="py-10" style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}>
+      <footer role="contentinfo" className="py-10" style={{ backgroundColor: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-3 gap-8 mb-6 text-sm">
             <div>

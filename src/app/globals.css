@@ -1,5 +1,5 @@
 /* ─── Google Fonts ─── */
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&family=David+Libre:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&family=David+Libre:wght@400;500;700&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Suez+One&display=swap");
 
 @import "tailwindcss";
 
@@ -93,17 +93,23 @@ body {
 }
 
 /* ─── Template P3: Warm Organic Premium ─── */
+@layer base {
+  .theme-p3 h3 {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
 .theme-p3 {
   --primary: #4A3728;
-  --primary-light: #6B5040;
+  --primary-light: #8B6348;
   --primary-dark: #2E2218;
   --accent: #D4B896;
   --bg: #FAF6F1;
   --bg-secondary: #F0E8DE;
   --text: #2E2218;
-  --text-muted: #8A7060;
+  --text-muted: #5C4535;
   --border: #DDD0C0;
-  --font-heading: 'David Libre', serif;
+  --font-heading: 'Rubik', sans-serif;
   --font-body: 'Assistant', sans-serif;
 }
 
@@ -170,4 +176,89 @@ select:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--accent, #4FC3F7);
   border-radius: 2px;
+}
+
+/* ─── High Contrast Mode ─── */
+html.high-contrast,
+html.high-contrast [class*="theme-"] {
+  --primary: #000000 !important;
+  --primary-light: #222222 !important;
+  --primary-dark: #000000 !important;
+  --accent: #000000 !important;
+  --bg: #ffffff !important;
+  --bg-secondary: #f0f0f0 !important;
+  --text: #000000 !important;
+  --text-muted: #111111 !important;
+  --border: #000000 !important;
+}
+
+html.high-contrast body {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.high-contrast img {
+  filter: contrast(1.2);
+}
+
+/* HC: underline links for visibility; do NOT force color — CSS variables already set --text/#000 */
+html.high-contrast a {
+  text-decoration: underline;
+}
+
+html.high-contrast a:focus-visible,
+html.high-contrast button:focus-visible {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px;
+}
+
+/* HC: star ratings — yellow → black */
+html.high-contrast .text-yellow-400,
+html.high-contrast .text-yellow-500 {
+  color: #000000 !important;
+}
+
+/* HC: WhatsApp floating button (hardcoded green bg) */
+html.high-contrast a[href*="wa.me"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* HC: restore opacity on faded text in footers/strips */
+html.high-contrast .opacity-30,
+html.high-contrast .opacity-50,
+html.high-contrast .opacity-60,
+html.high-contrast .opacity-70,
+html.high-contrast .opacity-75,
+html.high-contrast .opacity-80,
+html.high-contrast .opacity-85 {
+  opacity: 1 !important;
+}
+
+
+/* HC: white text must stay white on dark HC backgrounds */
+html.high-contrast .text-white {
+  color: #ffffff !important;
+}
+
+/* HC: semi-transparent white text (e.g. text-white/80) → full white */
+html.high-contrast [class*="text-white/"] {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* HC: remove CSS background-image from hero sections (inline style override via !important) */
+html.high-contrast section {
+  background-image: none !important;
+}
+
+/* HC: make decorative overlay divs (aria-hidden) transparent so dark overlays don't block content */
+html.high-contrast div[aria-hidden="true"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* HC: pill/tag spans that use --border as bg become black bg — force white text */
+html.high-contrast span[style*="var(--border)"] {
+  color: #ffffff !important;
 }

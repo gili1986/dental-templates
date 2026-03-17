@@ -3,6 +3,10 @@ import { clinicData } from "@/lib/mock-data";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import HeaderP2 from "@/components/layout/HeaderP2";
+import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
+
+const SMILE_BEFORE = "/smile-before.png";
+const SMILE_AFTER  = "/smile-after.jpg";
 
 const caseStudies = [
   {
@@ -13,7 +17,7 @@ const caseStudies = [
     before: "שיניים צהובות ולא אחידות",
     after: "8 ציפויי e.max לבן פנינה",
     duration: "3 ביקורים",
-    unsplash: "photo-1494790108755-2616b612b977",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
   {
     id: 2,
@@ -23,7 +27,7 @@ const caseStudies = [
     before: "חור בחיוך לאחר חבלה",
     after: "שתל + כתר זירקוניה",
     duration: "5 חודשים",
-    unsplash: "photo-1579684385127-1ef15d508118",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
   {
     id: 3,
@@ -33,7 +37,7 @@ const caseStudies = [
     before: "שיניים עקומות ומרוכזות",
     after: "Invisalign — יישור מלא",
     duration: "18 חודשים",
-    unsplash: "photo-1559757148-5c350d0d3c56",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
   {
     id: 4,
@@ -43,7 +47,7 @@ const caseStudies = [
     before: "כתמים מקפה ותה",
     after: "הלבנה מקצועית LED",
     duration: "ביקור אחד",
-    unsplash: "photo-1612349317150-e413f6a5b16d",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
   {
     id: 5,
@@ -53,7 +57,7 @@ const caseStudies = [
     before: "שן סדוקה אחרי טיפול שורש",
     after: "כתר זירקוניה CEREC",
     duration: "יום אחד",
-    unsplash: "photo-1588776814546-1ffbb2e8c3e3",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
   {
     id: 6,
@@ -63,7 +67,7 @@ const caseStudies = [
     before: "מספר שיניים חסרות + שיניים ישנות",
     after: "4 שתלים + 6 כתרים",
     duration: "8 חודשים",
-    unsplash: "photo-1629909613654-28e377c37b09",
+    beforePhoto: SMILE_BEFORE, afterPhoto: SMILE_AFTER,
   },
 ];
 
@@ -129,21 +133,8 @@ export default function ResultsPage() {
                 style={{ border: "1px solid var(--text)" }}
                 aria-labelledby={`case-${c.id}`}
               >
-                {/* Image placeholder */}
-                <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                  <img
-                    src={`https://images.unsplash.com/${c.unsplash}?w=600&q=80&auto=format`}
-                    alt={`לאחר טיפול — ${c.tag}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 text-white"
-                      style={{ backgroundColor: "var(--accent)" }}>
-                      {c.tag}
-                    </span>
-                  </div>
-                </div>
+                {/* Before / After slider */}
+                <BeforeAfterSlider beforeSrc={c.beforePhoto} afterSrc={c.afterPhoto} label={c.tag} />
 
                 {/* Content */}
                 <div className="p-6 flex-1 flex flex-col"
@@ -153,21 +144,21 @@ export default function ResultsPage() {
                     &ldquo;{c.quote}&rdquo;
                   </blockquote>
 
-                  <div className="space-y-3 text-xs" style={{ color: "var(--text-muted)" }}>
-                    <div className="flex gap-4">
-                      <div>
-                        <div className="font-bold uppercase tracking-widest mb-0.5">לפני</div>
+                  <div className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    <div className="flex" style={{ border: "1px solid var(--text)" }}>
+                      <div className="flex-1 p-3" style={{ borderLeft: "1px solid var(--text)" }}>
+                        <div className="font-bold uppercase tracking-widest mb-1">לפני</div>
                         <div>{c.before}</div>
                       </div>
-                      <div>
-                        <div className="font-bold uppercase tracking-widest mb-0.5"
+                      <div className="flex-1 p-3">
+                        <div className="font-bold uppercase tracking-widest mb-1"
                           style={{ color: "var(--accent)" }}>
                           אחרי
                         </div>
                         <div>{c.after}</div>
                       </div>
                     </div>
-                    <div className="pt-2" style={{ borderTop: "1px solid var(--border)" }}>
+                    <div className="mt-3 pt-2 text-xs" style={{ borderTop: "1px solid var(--border)", color: "var(--text-muted)" }}>
                       <span className="font-bold uppercase">{c.name}</span>
                       <span className="mx-2 opacity-40">·</span>
                       <span>{c.duration}</span>

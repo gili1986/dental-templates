@@ -18,13 +18,14 @@ import {
   Award,
   Droplets,
 } from "lucide-react";
+import Link from "next/link";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import HeaderP2 from "@/components/layout/HeaderP2";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* ── icon map ── */
 const iconMap = {
@@ -51,14 +52,15 @@ const fadeUp = {
 
 export default function Premium2() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   return (
     <div
       className="theme-p2 min-h-screen"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)", fontFamily: "var(--font-body)" }}
     >
-      <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      <AccessibilityWidget />
 
       <HeaderP2 />
 
@@ -95,8 +97,9 @@ export default function Premium2() {
                       קביעת תור עכשיו <ArrowLeft size={16} aria-hidden="true" />
                     </a>
                     <a href={`tel:${clinicData.phone}`}
-                      className="px-7 py-3 font-extrabold text-base border-2 hover:bg-black hover:text-white transition-colors"
+                      className="px-7 py-3 font-extrabold text-base border-2 hover:bg-black hover:text-white transition-colors flex items-center gap-2"
                       style={{ borderColor: "var(--text)", color: "var(--text)" }}>
+                      <Phone size={15} aria-hidden="true" />
                       {clinicData.phone}
                     </a>
                   </div>
@@ -144,23 +147,25 @@ export default function Premium2() {
               id="services-heading-p2"
               className="text-4xl font-extrabold mb-10 border-b-4 pb-4"
               style={{ fontFamily: "var(--font-heading)", borderColor: "var(--accent)" }}>
-              השירותים שלנו
+              טיפולים
             </motion.h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border" style={{ borderColor: "var(--border)" }}>
               {services.map((s, i) => (
-                <motion.div key={s.id} variants={fadeUp} custom={i} initial="hidden"
-                  whileInView="show" viewport={{ once: true }}
-                  className="p-6 border-l border-b group hover:bg-black hover:text-white transition-colors"
-                  style={{ borderColor: "var(--border)" }}>
-                  <div
-                    className="flex justify-start mb-3 group-hover:scale-110 transition-transform"
-                    style={{ color: "var(--accent)" }}
-                    aria-hidden="true"
-                  >
-                    {iconMap[s.id as keyof typeof iconMap]}
-                  </div>
-                  <h3 className="font-extrabold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
-                </motion.div>
+                <Link key={s.id} href={`/premium-2/treatments#treatment-${s.id}`}>
+                  <motion.div variants={fadeUp} custom={i} initial="hidden"
+                    whileInView="show" viewport={{ once: true }}
+                    className="p-6 border-l border-b group hover:bg-black hover:text-white transition-colors cursor-pointer"
+                    style={{ borderColor: "var(--border)" }}>
+                    <div
+                      className="flex justify-start mb-3 group-hover:scale-110 transition-transform"
+                      style={{ color: "var(--accent)" }}
+                      aria-hidden="true"
+                    >
+                      {iconMap[s.id as keyof typeof iconMap]}
+                    </div>
+                    <h3 className="font-extrabold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
@@ -235,17 +240,18 @@ export default function Premium2() {
                   className="border-b-2" style={{ borderColor: "var(--text)" }}>
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
-                    className="w-full flex items-center justify-between py-5 text-right font-extrabold text-sm hover:text-[var(--accent)] transition-colors"
+                    aria-controls={`faq-panel-p2-${i}`}
+                    className="w-full flex items-center justify-between py-5 text-right font-extrabold text-sm hover:text-[var(--accent)] transition-colors cursor-pointer"
                     style={{ fontFamily: "var(--font-heading)" }}>
                     <span>{faq.q}</span>
                     <ChevronDown size={15} aria-hidden="true"
                       className={cn("transition-transform flex-shrink-0 mr-3", openFaq === i && "rotate-180")} />
                   </button>
-                  {openFaq === i && (
-                    <div className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                      {faq.a}
-                    </div>
-                  )}
+                  <div id={`faq-panel-p2-${i}`} role="region" aria-label={faq.q}
+                    hidden={openFaq !== i}
+                    className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                    {faq.a}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -255,17 +261,17 @@ export default function Premium2() {
         <InsuranceStrip />
 
         {/* ── CONTACT ── */}
-        <section id="contact" className="py-20" style={{ backgroundColor: "var(--accent)" }}
+        <section id="contact" className="py-20" style={{ backgroundColor: "#FDEAEA" }}
           aria-labelledby="contact-heading-p2">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               className="space-y-6">
               <h2 id="contact-heading-p2"
-                className="text-4xl font-extrabold text-white"
-                style={{ fontFamily: "var(--font-heading)" }}>
+                className="text-4xl font-extrabold"
+                style={{ fontFamily: "var(--font-heading)", color: "var(--text)" }}>
                 קבעו תור היום
               </h2>
-              <p className="text-white/80 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                 נשמח לפגוש אתכם ולהיות הרופאים שלכם לכל החיים
               </p>
               <div className="space-y-3">
@@ -275,31 +281,31 @@ export default function Premium2() {
                   { icon: Clock, text: clinicData.hours.weekdays, href: "#" },
                 ].map((item, i) => (
                   <a key={i} href={item.href}
-                    className="flex items-center gap-3 text-sm text-white/80 hover:text-white">
+                    className="flex items-center gap-3 text-sm hover:opacity-70" style={{ color: "var(--text)" }}>
                     <item.icon size={15} aria-hidden="true" />
                     {item.text}
                   </a>
                 ))}
               </div>
               <a href={`https://wa.me/${clinicData.whatsapp}`} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3 font-extrabold bg-white hover:bg-gray-100"
-                style={{ color: "var(--accent)" }}>
+                className="inline-flex items-center gap-2 px-7 py-3 font-extrabold text-white hover:opacity-90"
+                style={{ backgroundColor: "var(--accent)" }}>
                 קביעת תור בוואטסאפ ←
               </a>
             </motion.div>
             <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }}
-              className="min-h-60 flex items-center justify-center bg-white/10 rounded"
+              className="min-h-60 flex items-center justify-center bg-white rounded"
               role="img" aria-label="מפת מיקום המרפאה">
               <div className="text-center">
-                <MapPin size={32} className="text-white mx-auto mb-2" aria-hidden="true" />
-                <p className="text-sm text-white">{clinicData.address}</p>
+                <MapPin size={32} className="mx-auto mb-2" style={{ color: "var(--accent)" }} aria-hidden="true" />
+                <p className="text-sm" style={{ color: "var(--text)" }}>{clinicData.address}</p>
               </div>
             </motion.div>
           </div>
         </section>
       </main>
 
-      <footer style={{ backgroundColor: "var(--text)", color: "var(--bg)" }} className="py-10">
+      <footer role="contentinfo" style={{ backgroundColor: "var(--text)", color: "var(--bg)" }} className="py-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-3 gap-8 mb-6 text-sm">
             <div>

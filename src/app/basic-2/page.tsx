@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews } from "@/lib/mock-data";
+import { useEffect } from "react";
 
 const b2NavLinks = [
   { label: "שירותים", href: "#services" },
@@ -51,13 +52,14 @@ const fadeUp = {
 };
 
 export default function Basic2() {
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
   return (
     <div
       className="theme-b2 min-h-screen"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)", fontFamily: "var(--font-body)" }}
     >
-      <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      <AccessibilityWidget />
 
       {/* ── HEADER ── */}
       <header
@@ -408,7 +410,7 @@ export default function Basic2() {
         </section>
       </main>
 
-      <footer style={{ backgroundColor: "var(--primary)", color: "white" }} className="py-10">
+      <footer role="contentinfo" style={{ backgroundColor: "var(--primary)", color: "white" }} className="py-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-3 gap-8 mb-6">
             <div>

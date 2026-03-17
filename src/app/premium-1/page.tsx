@@ -24,7 +24,7 @@ import HeaderP1 from "@/components/layout/HeaderP1";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews, faqs, navLinks } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* ── icon map ── */
 const iconMap = {
@@ -52,14 +52,15 @@ const fadeUp = {
 export default function Premium1() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [servicesOpen, setServicesOpen] = useState(false);
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   return (
     <div
       className="theme-p1 min-h-screen"
       style={{ backgroundColor: "var(--bg)", color: "var(--text)", fontFamily: "var(--font-body)" }}
     >
-      <AccessibilityWidget />
       <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      <AccessibilityWidget />
 
       <HeaderP1 />
 
@@ -260,18 +261,19 @@ export default function Premium1() {
                   className="border-b" style={{ borderColor: "var(--border)" }}>
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
-                    className="w-full flex items-center justify-between py-5 text-right text-sm font-semibold hover:opacity-70"
+                    aria-controls={`faq-panel-p1-${i}`}
+                    className="w-full flex items-center justify-between py-5 text-right text-sm font-semibold hover:opacity-70 cursor-pointer"
                     style={{ fontFamily: "var(--font-heading)" }}>
                     <span>{faq.q}</span>
                     <ChevronDown size={15} aria-hidden="true"
                       className={cn("transition-transform flex-shrink-0 mr-3", openFaq === i && "rotate-180")}
                       style={{ color: "var(--accent)" }} />
                   </button>
-                  {openFaq === i && (
-                    <div className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text)" }}>
-                      {faq.a}
-                    </div>
-                  )}
+                  <div id={`faq-panel-p1-${i}`} role="region" aria-label={faq.q}
+                    hidden={openFaq !== i}
+                    className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+                    {faq.a}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -324,7 +326,7 @@ export default function Premium1() {
         </section>
       </main>
 
-      <footer style={{ backgroundColor: "var(--primary)", color: "var(--bg)" }} className="py-10">
+      <footer role="contentinfo" style={{ backgroundColor: "var(--primary)", color: "var(--bg)" }} className="py-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-3 gap-8 mb-6 text-sm">
             <div>

@@ -32,14 +32,14 @@ const insuranceCompanies = [
 
 function LogoItem({ name, logoUrl }: { name: string; logoUrl: string }) {
   return (
-    <div className="flex items-center justify-center opacity-50 hover:opacity-90 transition-opacity">
+    <div className="flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
       {/* Fixed 96×24 bounding box — normalises all logos to equal visual weight */}
       <div style={{ width: 96, height: 24, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <img
           src={logoUrl}
           alt={name}
           style={{ maxWidth: "96px", maxHeight: "24px", width: "auto", height: "auto", objectFit: "contain" }}
-          className="grayscale"
+          className=""
           onError={(e) => {
             const t = e.currentTarget;
             t.style.display = "none";

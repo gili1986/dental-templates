@@ -56,7 +56,7 @@ export default function AboutPage() {
         >
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-sm font-medium mb-4" style={{ color: "var(--accent)" }}>
+              <p className="text-sm font-medium mb-4" style={{ color: "var(--text)" }}>
                 הכירו אותנו
               </p>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6"
@@ -99,7 +99,7 @@ export default function AboutPage() {
                   className="p-8 rounded-2xl text-center"
                   style={{ backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border)" }}
                 >
-                  <div className="mb-4" style={{ color: "var(--accent)" }}>{p.icon}</div>
+                  <div className="mb-4 flex justify-center" style={{ color: "var(--accent)" }}>{p.icon}</div>
                   <h3 className="font-bold mb-3" style={{ fontFamily: "var(--font-heading)" }}>{p.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.desc}</p>
                 </div>
@@ -124,17 +124,17 @@ export default function AboutPage() {
               {timeline.map((t, i) => (
                 <div
                   key={t.year}
-                  className="grid grid-cols-[80px_1fr] gap-6 pb-10"
+                  className="grid grid-cols-[112px_1fr] gap-6 pb-10 items-center"
                   style={{
                     borderBottom: i < timeline.length - 1 ? "1px solid var(--border)" : "none",
                     paddingTop: i > 0 ? "2.5rem" : "0",
                   }}
                 >
-                  <div className="text-2xl font-bold" style={{ color: "var(--accent)", fontFamily: "var(--font-heading)" }}>
+                  <div className="text-5xl font-bold" style={{ color: "var(--accent)", fontFamily: "var(--font-heading)" }}>
                     {t.year}
                   </div>
                   <div>
-                    <h3 className="font-bold mb-2" style={{ fontFamily: "var(--font-heading)" }}>{t.title}</h3>
+                    <h3 className="font-bold mb-0" style={{ fontFamily: "var(--font-heading)" }}>{t.title}</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{t.desc}</p>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
         <section className="py-20 px-4 sm:px-6" aria-labelledby="team-heading">
           <div className="max-w-6xl mx-auto">
             <h2 id="team-heading"
-              className="text-3xl font-bold mb-12"
+              className="text-3xl font-bold mb-12 text-center"
               style={{ fontFamily: "var(--font-heading)", color: "var(--primary)" }}>
               הצוות שלנו
             </h2>
@@ -169,14 +169,14 @@ export default function AboutPage() {
                   name: "נועה ברקוביץ",
                   role: "היגיינאית דנטלית",
                   spec: "ניקוי מקצועי ומניעה",
-                  img: "photo-1494790108755-2616b612b977",
+                  img: "photo-1594824476967-48c8b964273f",
                 },
               ].map((member) => (
                 <div key={member.name} className="text-center">
                   <img
                     src={`https://images.unsplash.com/${member.img}?w=400&q=80&auto=format&fit=crop`}
                     alt={member.name}
-                    className="w-32 h-32 rounded-full object-cover mx-auto mb-4"
+                    className="w-32 h-32 rounded-full object-cover object-top mx-auto mb-4"
                   />
                   <h3 className="font-bold" style={{ fontFamily: "var(--font-heading)" }}>{member.name}</h3>
                   <p className="text-sm" style={{ color: "var(--accent)" }}>{member.role}</p>

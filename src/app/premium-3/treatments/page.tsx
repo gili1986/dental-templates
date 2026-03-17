@@ -117,7 +117,7 @@ export default function TreatmentsPage() {
       <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
         {/* Page header */}
         <div className="mb-16 text-center">
-          <p className="text-sm font-medium mb-3" style={{ color: "var(--accent)" }}>כל הטיפולים</p>
+          <p className="text-sm font-medium mb-3" style={{ color: "var(--text)" }}>כל הטיפולים</p>
           <h1 className="text-5xl lg:text-6xl font-bold"
             style={{ fontFamily: "var(--font-heading)", color: "var(--primary)" }}>
             הטיפולים שלנו
@@ -143,30 +143,27 @@ export default function TreatmentsPage() {
                 <div className="grid lg:grid-cols-5 gap-0">
                   {/* Icon + title side */}
                   <div
-                    className="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-between"
+                    className="lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center gap-6"
                     style={{
-                      backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--accent)",
+                      backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--primary-light)",
                       color: "white",
                     }}
                   >
-                    <div className="opacity-80 mb-6">
+                    <div>
                       {iconMap[service.id]}
                     </div>
                     <div>
-                      <div className="text-4xl font-black opacity-10 mb-2"
-                        style={{ fontFamily: "var(--font-heading)" }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
+
                       <h2 id={`t-${service.id}`}
                         className="text-2xl lg:text-3xl font-bold mb-3"
                         style={{ fontFamily: "var(--font-heading)" }}>
                         {service.title}
                       </h2>
-                      <p className="text-sm leading-relaxed opacity-85">
+                      <p className="text-sm leading-relaxed">
                         {content.story}
                       </p>
                     </div>
-                    <div className="mt-6 text-xs opacity-70 border-t border-white/20 pt-4">
+                    <div className="text-xs border-t border-white/20 pt-4">
                       {content.note}
                     </div>
                   </div>
@@ -177,20 +174,20 @@ export default function TreatmentsPage() {
                       style={{ color: "var(--text-muted)" }}>
                       תהליך הטיפול
                     </h3>
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-2">
                       {content.steps.map((step, j) => (
                         <div key={j}
                           className="flex gap-3 p-4 rounded-xl"
                           style={{ backgroundColor: "var(--bg)", border: "1px solid var(--border)" }}>
                           <div
                             className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                            style={{ backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--accent)" }}
+                            style={{ backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--primary-light)" }}
                           >
                             {j + 1}
                           </div>
                           <div>
-                            <div className="text-xs font-bold mb-1">{step.label}</div>
-                            <div className="text-xs leading-relaxed"
+                            <div className="text-sm font-bold">{step.label}</div>
+                            <div className="text-sm leading-relaxed"
                               style={{ color: "var(--text-muted)" }}>
                               {step.text}
                             </div>
@@ -203,7 +200,7 @@ export default function TreatmentsPage() {
                       href={`https://wa.me/${clinicData.whatsapp}`}
                       target="_blank" rel="noopener noreferrer"
                       className="mt-6 inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white rounded-full hover:opacity-90 transition-opacity"
-                      style={{ backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--accent)" }}
+                      style={{ backgroundColor: i % 2 === 0 ? "var(--primary)" : "var(--primary-light)" }}
                       aria-label={`קביעת תור ל${service.title}`}
                     >
                       קביעת תור לטיפול זה

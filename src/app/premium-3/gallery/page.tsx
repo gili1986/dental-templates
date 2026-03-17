@@ -13,63 +13,63 @@ const galleryImages = [
     category: "מרפאה",
     caption: "חדר הטיפולים הראשי — ציוד CEREC ו-iTero",
     unsplash: "photo-1629909613654-28e377c37b09",
-    size: "lg",
+    aspect: "4/3",
   },
   {
     id: 2,
-    category: "מרפאה",
-    caption: "חדר קבלה נעים ומרגיע",
-    unsplash: "photo-1588776814546-1ffbb2e8c3e3",
-    size: "sm",
+    category: "צוות",
+    caption: "ד\"ר יעל כהן בטיפול",
+    unsplash: "photo-1594824476967-48c8b964273f",
+    aspect: "4/3",
   },
   {
     id: 3,
     category: "תוצאות",
     caption: "ציפויי חרסינה — לפני ואחרי",
-    unsplash: "photo-1612349317150-e413f6a5b16d",
-    size: "sm",
+    unsplash: "photo-1606811971618-4486d14f3f99",
+    aspect: "4/3",
   },
   {
     id: 4,
-    category: "צוות",
-    caption: "ד\"ר יעל כהן בטיפול",
-    unsplash: "photo-1559839734-2b71ea197ec2",
-    size: "lg",
+    category: "מרפאה",
+    caption: "חדר קבלה נעים ומרגיע",
+    unsplash: "photo-1519494026892-80bbd2d6fd0d",
+    aspect: "4/3",
   },
   {
     id: 5,
-    category: "תוצאות",
-    caption: "שיקום חיוך מלא — 6 שתלים",
-    unsplash: "photo-1579684385127-1ef15d508118",
-    size: "sm",
+    category: "צוות",
+    caption: "הצוות המסור שלנו",
+    unsplash: "photo-1527613426441-4da17471b66d",
+    aspect: "4/3",
   },
   {
     id: 6,
-    category: "מרפאה",
-    caption: "מערכת סריקה תלת-ממדית iTero",
-    unsplash: "photo-1559757148-5c350d0d3c56",
-    size: "sm",
+    category: "תוצאות",
+    caption: "שיקום חיוך מלא — 6 שתלים",
+    unsplash: "photo-1559839734-2b71ea197ec2",
+    aspect: "4/3",
   },
   {
     id: 7,
-    category: "צוות",
-    caption: "הצוות המסור שלנו",
-    unsplash: "photo-1494790108755-2616b612b977",
-    size: "lg",
+    category: "מרפאה",
+    caption: "מערכת סריקה תלת-ממדית iTero",
+    unsplash: "photo-1551076805-e1869033e561",
+    aspect: "4/3",
   },
   {
     id: 8,
     category: "תוצאות",
     caption: "הלבנה מקצועית — תוצאות מיידיות",
-    unsplash: "photo-1606811971618-4486d14f3f99",
-    size: "sm",
+    unsplash: "photo-1573496359142-b8d87734a5a2",
+    aspect: "4/3",
   },
   {
     id: 9,
     category: "מרפאה",
     caption: "אזור ההמתנה הנוח",
-    unsplash: "photo-1519494026892-80bbd2d6fd0d",
-    size: "sm",
+    unsplash: "photo-1629909615184-74f495363b67",
+    aspect: "4/3",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function GalleryPage() {
       <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
         {/* Page header */}
         <div className="mb-12 text-center">
-          <p className="text-sm font-medium mb-3" style={{ color: "var(--accent)" }}>תמונות</p>
+          <p className="text-sm font-medium mb-3" style={{ color: "var(--text)" }}>תמונות</p>
           <h1 className="text-5xl lg:text-6xl font-bold"
             style={{ fontFamily: "var(--font-heading)", color: "var(--primary)" }}>
             הגלריה שלנו
@@ -124,29 +124,28 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Masonry-style grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4" aria-label="תמונות גלריה">
+        {/* Pinterest masonry — CSS columns, natural image heights */}
+        <div className="columns-2 lg:columns-3 gap-4" aria-label="תמונות גלריה">
           {filteredImages.map((img) => (
             <figure
               key={img.id}
-              className={`overflow-hidden rounded-2xl group ${img.size === "lg" ? "lg:col-span-2" : ""}`}
+              className="break-inside-avoid mb-4 overflow-hidden rounded-2xl group relative"
             >
-              <div className="relative overflow-hidden"
-                style={{ aspectRatio: img.size === "lg" ? "16/9" : "4/3" }}>
+              <div className="relative overflow-hidden">
                 <img
                   src={`https://images.unsplash.com/${img.unsplash}?w=800&q=80&auto=format`}
                   alt={img.caption}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
-                  style={{ background: "linear-gradient(to top, rgba(74,55,40,0.8), transparent)" }}
+                  style={{ background: "linear-gradient(to top, rgba(74,55,40,0.85), transparent)" }}
                 >
                   <div>
                     <span
                       className="inline-block text-xs font-bold uppercase tracking-widest px-2 py-0.5 rounded mb-1"
-                      style={{ backgroundColor: "var(--accent)", color: "white" }}
+                      style={{ backgroundColor: "var(--primary)", color: "white" }}
                     >
                       {img.category}
                     </span>

@@ -29,7 +29,7 @@ import {
   navLinks,
 } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* ── icon map ── */
 const iconMap = {
@@ -57,6 +57,7 @@ const fadeUp = {
 
 export default function Basic1() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   return (
     <div
@@ -67,11 +68,11 @@ export default function Basic1() {
         fontFamily: "var(--font-body)",
       }}
     >
-      {/* Accessibility */}
-      <AccessibilityWidget />
+      {/* Skip link must be first focusable element — WCAG 2.4.1 */}
       <a href="#main-content" className="skip-link">
         דלג לתוכן הראשי
       </a>
+      <AccessibilityWidget />
 
       {/* ── HEADER ── */}
       <header
@@ -498,7 +499,8 @@ export default function Basic1() {
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
-                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-sm hover:opacity-80 transition-opacity"
+                    aria-controls={`faq-panel-b1-${i}`}
+                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-sm hover:opacity-80 transition-opacity cursor-pointer"
                     style={{ backgroundColor: "var(--bg)" }}
                   >
                     <span>{faq.q}</span>
@@ -512,19 +514,21 @@ export default function Basic1() {
                       style={{ color: "var(--primary)" }}
                     />
                   </button>
-                  {openFaq === i && (
-                    <div
-                      className="px-4 pb-4 text-sm leading-relaxed"
-                      style={{
-                        color: "var(--text-muted)",
-                        backgroundColor: "var(--bg)",
-                        borderTop: "1px solid var(--border)",
-                        paddingTop: "12px",
-                      }}
-                    >
-                      {faq.a}
-                    </div>
-                  )}
+                  <div
+                    id={`faq-panel-b1-${i}`}
+                    role="region"
+                    aria-label={faq.q}
+                    hidden={openFaq !== i}
+                    className="px-4 pb-4 text-sm leading-relaxed"
+                    style={{
+                      color: "var(--text-muted)",
+                      backgroundColor: "var(--bg)",
+                      borderTop: "1px solid var(--border)",
+                      paddingTop: "12px",
+                    }}
+                  >
+                    {faq.a}
+                  </div>
                 </motion.div>
               ))}
             </div>
