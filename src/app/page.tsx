@@ -173,7 +173,7 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const blockLo = isD ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.07)";
 
   return (
-    <div style={{ width: "100%", height: "200px", borderRadius: "8px 8px 0 0", overflow: "hidden", backgroundColor: t.bg }}>
+    <div style={{ width: "100%", height: "160px", borderRadius: "8px 8px 0 0", overflow: "hidden", backgroundColor: t.bg }}>
 
       {/* ── Navbar ── */}
       <div style={{
@@ -196,7 +196,7 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
 
       {/* ── Hero ── */}
       <div style={{
-        height: "180px", backgroundColor: t.sectionColors[0],
+        height: "140px", backgroundColor: t.sectionColors[0],
         display: "flex", alignItems: "stretch",
       }}>
         {/* Image placeholder — left */}
