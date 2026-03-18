@@ -464,7 +464,7 @@ export default function Home() {
                     fontSize: "1.05rem",
                     fontWeight: "800",
                     color: N[950],
-                    marginBottom: "4px",
+                    marginBottom: "12px",
                     fontFamily: "'Google Sans', sans-serif",
                     lineHeight: 1.2,
                   }}>
