@@ -475,15 +475,15 @@ export default function Home() {
                   {/* Fit tag */}
                   <div style={{
                     display: "flex",
-                    alignItems: "flex-start",
-                    gap: "6px",
+                    flexDirection: "column",
+                    gap: "3px",
                     backgroundColor: N[50],
                     borderRadius: "8px",
                     padding: "8px 12px",
                     marginBottom: "16px",
                   }}>
-                    <span style={{ fontSize: "0.75rem", color: N[400], flexShrink: 0 }}>הכי מתאים ל:</span>
-                    <span style={{ fontSize: "0.75rem", color: N[600], fontWeight: "600", lineHeight: 1.5 }}>
+                    <span style={{ fontSize: "0.65rem", color: N[400], textTransform: "uppercase", letterSpacing: "0.05em" }}>הכי מתאים ל:</span>
+                    <span style={{ fontSize: "0.75rem", color: N[600], fontWeight: "600", lineHeight: 1.4 }}>
                       {t.fit}
                     </span>
                   </div>
