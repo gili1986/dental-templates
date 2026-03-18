@@ -107,7 +107,7 @@ export default function TreatmentsPage() {
               style={{ color: "var(--accent)" }}>
               כל הטיפולים
             </p>
-            <h1 className="text-6xl lg:text-8xl font-black uppercase leading-none"
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black uppercase leading-none"
               style={{ fontFamily: "var(--font-heading)" }}>
               טיפולים
             </h1>
@@ -130,7 +130,7 @@ export default function TreatmentsPage() {
                 >
                   {/* Tag + number col — always right */}
                   <div
-                    className="p-10 lg:p-16 flex flex-col justify-between"
+                    className="p-6 lg:p-16 flex flex-col justify-between"
                     style={{ backgroundColor: "var(--bg)" }}
                   >
                     <div>
@@ -150,7 +150,7 @@ export default function TreatmentsPage() {
                       </div>
 
                       <h2 id={`treatment-title-${service.id}`}
-                        className="text-3xl lg:text-4xl font-black uppercase mb-4"
+                        className="text-2xl lg:text-4xl font-black uppercase mb-4"
                         style={{ fontFamily: "var(--font-heading)" }}>
                         {service.title}
                       </h2>
@@ -180,7 +180,7 @@ export default function TreatmentsPage() {
 
                   {/* Bullets col — always left */}
                   <div
-                    className="p-10 lg:p-16 flex flex-col justify-center"
+                    className="p-6 lg:p-16 flex flex-col justify-center"
                     style={{ backgroundColor: "var(--bg-secondary)" }}
                   >
                     <h3 className="text-xs font-bold uppercase tracking-widest mb-6"
@@ -246,7 +246,7 @@ export default function TreatmentsPage() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between gap-4 text-sm opacity-60">
           <div>{clinicData.name} · {clinicData.address}</div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4">
             <Link href="/premium-2" className="hover:opacity-70">בית</Link>
             <Link href="/premium-2/treatments" className="hover:opacity-70">טיפולים</Link>
             <Link href="/premium-2/results" className="hover:opacity-70">תוצאות</Link>

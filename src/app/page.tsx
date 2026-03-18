@@ -387,7 +387,7 @@ export default function Home() {
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))",
           gap: "24px",
           marginBottom: "64px",
         }}>
@@ -579,13 +579,7 @@ export default function Home() {
             <p style={{ fontSize: "0.82rem", color: N[400] }}>בחר את הרמה שמתאימה לך</p>
           </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "16px",
-            maxWidth: "1060px",
-            margin: "0 auto",
-          }}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[1060px] mx-auto">
             {/* בייסיק */}
             <div style={{
               backgroundColor: "white",

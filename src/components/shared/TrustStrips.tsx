@@ -63,14 +63,14 @@ function Strip({
   align?: "center" | "end";
 }) {
   return (
-    <div className="py-6" style={{ borderBottom: "1px solid var(--border)" }}>
-      <div className={`${align === "end" ? "max-w-6xl" : "max-w-5xl"} mx-auto px-4 sm:px-6 flex flex-col gap-4 ${align === "end" ? "items-start" : "items-center"}`}>
+    <div className="py-4 sm:py-6" style={{ borderBottom: "1px solid var(--border)" }}>
+      <div className={`${align === "end" ? "max-w-6xl" : "max-w-5xl"} mx-auto px-4 sm:px-6 flex flex-col gap-3 sm:gap-4 ${align === "end" ? "items-start" : "items-center"}`}>
         <span
           className="text-xs font-medium tracking-widest uppercase"
           style={{ color: "var(--text)", fontFamily: "var(--font-body)", opacity: 0.4 }}>
           {title}
         </span>
-        <div className={`flex items-center flex-wrap ${align === "end" ? "justify-start" : "justify-center"}`} style={{ gap: 48 }}>
+        <div className={`flex items-center flex-nowrap gap-6 sm:gap-12 ${align === "end" ? "justify-start" : "justify-center"}`}>
           {items.map((item) => (
             <LogoItem key={item.name} {...item} />
           ))}

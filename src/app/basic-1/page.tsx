@@ -9,6 +9,8 @@ import {
   ChevronDown,
   CheckCircle,
   ArrowLeft,
+  Menu,
+  X,
   Layers,
   Sparkles,
   Zap,
@@ -57,6 +59,8 @@ const fadeUp = {
 
 export default function Basic1() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMobile = () => setMobileOpen(false);
   useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
 
   return (
@@ -100,9 +104,9 @@ export default function Basic1() {
             </span>
           </div>
 
-          {/* Nav */}
-          <nav aria-label="ניווט ראשי">
-            <ul className="hidden md:flex items-center gap-6 list-none">
+          {/* Desktop Nav */}
+          <nav aria-label="ניווט ראשי" className="hidden md:block">
+            <ul className="flex items-center gap-6 list-none">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -117,17 +121,56 @@ export default function Basic1() {
             </ul>
           </nav>
 
-          {/* CTA */}
+          {/* Desktop CTA */}
           <a
             href={`tel:${clinicData.phone}`}
             aria-label={`התקשרו אלינו: ${clinicData.phone}`}
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: "var(--primary)" }}
           >
             <Phone size={15} aria-hidden="true" />
             {clinicData.phone}
           </a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 -ml-1"
+            aria-label={mobileOpen ? "סגור תפריט" : "פתח תפריט"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-b1"
+            style={{ color: "var(--text)" }}>
+            {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <nav id="mobile-nav-b1" aria-label="ניווט נייד"
+            className="md:hidden border-t"
+            style={{ backgroundColor: "var(--bg)", borderColor: "var(--border)" }}>
+            <ul className="list-none py-2">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}
+                    className="block px-4 py-3 text-sm font-medium hover:opacity-70"
+                    style={{ color: "var(--text-muted)", borderBottom: "1px solid var(--border)" }}
+                    onClick={closeMobile}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li className="px-4 py-3">
+                <a href={`tel:${clinicData.phone}`}
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg text-sm font-semibold text-white hover:opacity-90"
+                  style={{ backgroundColor: "var(--primary)" }}
+                  onClick={closeMobile}>
+                  <Phone size={14} aria-hidden="true" /> {clinicData.phone}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        )}
       </header>
 
       {/* ── HERO ── */}
@@ -249,7 +292,7 @@ export default function Basic1() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4 border"
+                className="hidden sm:block absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4 border"
                 style={{ borderColor: "var(--border)" }}
               >
                 <div className="flex items-center gap-2">

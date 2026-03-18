@@ -114,7 +114,7 @@ export default function Premium3() {
               </div>
               {/* Floating review badge */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
-                className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg p-4"
+                className="hidden sm:block absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg p-4"
                 style={{ border: "1px solid var(--border)" }}>
                 <div className="flex text-yellow-500 mb-1">
                   {[...Array(5)].map((_, i) => <Star key={i} size={11} fill="currentColor" aria-hidden="true" />)}

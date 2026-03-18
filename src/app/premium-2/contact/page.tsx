@@ -26,7 +26,7 @@ export default function ContactPage() {
               style={{ color: "var(--accent)" }}>
               יצירת קשר
             </p>
-            <h1 className="text-6xl lg:text-8xl font-black uppercase leading-none"
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black uppercase leading-none"
               style={{ fontFamily: "var(--font-heading)" }}>
               דברו<br />איתנו
             </h1>
@@ -228,7 +228,7 @@ export default function ContactPage() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between gap-4 text-sm opacity-60">
           <div>{clinicData.name} · {clinicData.address}</div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4">
             <Link href="/premium-2" className="hover:opacity-70">בית</Link>
             <Link href="/premium-2/treatments" className="hover:opacity-70">טיפולים</Link>
             <Link href="/premium-2/results" className="hover:opacity-70">תוצאות</Link>

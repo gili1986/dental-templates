@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, MapPin, Clock, Star, ArrowLeft, Heart, CheckCircle } from "lucide-react";
+import { Phone, MapPin, Clock, Star, ArrowLeft, Heart, CheckCircle, Menu, X } from "lucide-react";
 import { Tooth, Sparkle, Sun, ArrowsHorizontal, Baby, FirstAid, Crown, Drop } from "@phosphor-icons/react";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import AccessibilityWidget from "@/components/shared/AccessibilityWidget";
 import { HealthFundsStrip, InsuranceStrip } from "@/components/shared/TrustStrips";
 import { clinicData, services, reviews } from "@/lib/mock-data";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const b2NavLinks = [
   { label: "שירותים", href: "#services" },
@@ -52,6 +52,8 @@ const fadeUp = {
 };
 
 export default function Basic2() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMobile = () => setMobileOpen(false);
   useEffect(() => { document.title = `${clinicData.doctorName} | מרפאת שיניים`; }, []);
   return (
     <div
@@ -75,8 +77,9 @@ export default function Basic2() {
               {clinicData.doctorTitle}
             </span>
           </div>
-          <nav aria-label="ניווט ראשי">
-            <ul className="hidden md:flex items-center gap-6 list-none">
+          {/* Desktop nav */}
+          <nav aria-label="ניווט ראשי" className="hidden md:block">
+            <ul className="flex items-center gap-6 list-none">
               {b2NavLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="text-sm font-medium hover:opacity-70 transition-opacity"
@@ -87,16 +90,57 @@ export default function Basic2() {
               ))}
             </ul>
           </nav>
+
+          {/* Desktop phone */}
           <a
             href={`tel:${clinicData.phone}`}
             aria-label={`התקשרו: ${clinicData.phone}`}
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white hover:opacity-90"
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white hover:opacity-90"
             style={{ backgroundColor: "var(--primary)" }}
           >
             <Phone size={14} aria-hidden="true" />
             {clinicData.phone}
           </a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 -ml-1"
+            aria-label={mobileOpen ? "סגור תפריט" : "פתח תפריט"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-b2"
+            style={{ color: "var(--text)" }}>
+            {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <nav id="mobile-nav-b2" aria-label="ניווט נייד"
+            className="md:hidden border-t-2"
+            style={{ backgroundColor: "var(--bg)", borderColor: "var(--border)" }}>
+            <ul className="list-none py-2">
+              {b2NavLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}
+                    className="block px-4 py-3 text-sm font-medium hover:opacity-70"
+                    style={{ color: "var(--text-muted)", borderBottom: "1px solid var(--border)" }}
+                    onClick={closeMobile}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li className="px-4 py-3">
+                <a href={`tel:${clinicData.phone}`}
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-sm font-semibold text-white hover:opacity-90"
+                  style={{ backgroundColor: "var(--primary)" }}
+                  onClick={closeMobile}>
+                  <Phone size={14} aria-hidden="true" /> {clinicData.phone}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        )}
       </header>
 
       <main id="main-content">

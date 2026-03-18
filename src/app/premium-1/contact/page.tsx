@@ -267,7 +267,7 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between gap-4 text-sm"
           style={{ color: "var(--text-muted)" }}>
           <div>{clinicData.name} · {clinicData.address}</div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-4">
             <Link href="/premium-1" className="hover:opacity-70">בית</Link>
             <Link href="/premium-1/contact" className="hover:opacity-70">צרו קשר</Link>
             <Link href="/נגישות" className="hover:opacity-70 underline">נגישות</Link>

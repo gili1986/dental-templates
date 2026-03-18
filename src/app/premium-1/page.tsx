@@ -119,19 +119,19 @@ export default function Premium1() {
               <div className="absolute bottom-0 right-0 w-2 h-2 translate-x-1/2 translate-y-1/2" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "24px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>98%</div>
                 <div className="text-xs" style={{ color: "var(--text)" }}>ממליצים</div>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.15 }}
-                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "120px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>15+</div>
                 <div className="text-xs" style={{ color: "var(--text)" }}>שנות ניסיון</div>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
-                className="absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
+                className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "216px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>340+</div>
                 <div className="text-xs" style={{ color: "var(--text)" }}>מטופלים מרוצים</div>
