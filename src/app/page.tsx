@@ -168,104 +168,29 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
     <div
       style={{
         width: "100%",
-        height: "160px",
+        height: "200px",
         backgroundColor: t.bg,
         borderRadius: "8px 8px 0 0",
         overflow: "hidden",
         position: "relative",
       }}
     >
-      {/* Nav bar */}
-      <div
+      <iframe
+        src={t.path}
+        loading="lazy"
+        scrolling="no"
+        tabIndex={-1}
+        aria-hidden="true"
         style={{
-          height: "16px",
-          backgroundColor: t.dark ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.9)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 8px",
-          borderBottom: t.dark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
+          width: "1280px",
+          height: "800px",
+          transform: "scale(0.27)",
+          transformOrigin: "top right",
+          pointerEvents: "none",
+          border: "none",
+          display: "block",
         }}
-      >
-        <div style={{ width: "40px", height: "4px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.9 }} />
-        <div style={{ display: "flex", gap: "4px" }}>
-          {[22, 18, 26, 20].map((w, i) => (
-            <div key={i} style={{
-              width: `${w}px`, height: "3px", borderRadius: "1.5px",
-              backgroundColor: t.dark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.2)",
-            }} />
-          ))}
-        </div>
-      </div>
-
-      {/* Hero section */}
-      <div
-        style={{
-          height: "55px",
-          backgroundColor: t.sectionColors[0],
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "4px",
-          padding: "0 8px",
-        }}
-      >
-        <div style={{ width: "90px", height: "6px", borderRadius: "3px", backgroundColor: t.dark || t.tier === "premium" ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.9)" }} />
-        <div style={{ width: "60px", height: "3px", borderRadius: "2px", backgroundColor: "rgba(255,255,255,0.4)" }} />
-        <div style={{ width: "44px", height: "14px", borderRadius: "3px", backgroundColor: t.accent, opacity: 0.9, marginTop: "4px" }} />
-      </div>
-
-      {/* Section 2 */}
-      <div
-        style={{
-          height: "32px",
-          backgroundColor: t.sectionColors[1],
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "6px",
-          padding: "0 8px",
-        }}
-      >
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} style={{
-            flex: 1,
-            height: "18px",
-            borderRadius: "3px",
-            backgroundColor: t.dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)",
-            border: t.dark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
-          }} />
-        ))}
-      </div>
-
-      {/* Section 3 */}
-      <div
-        style={{
-          height: "28px",
-          backgroundColor: t.sectionColors[2] ?? "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "3px",
-          padding: "0 16px",
-        }}
-      >
-        <div style={{ width: "70%", height: "4px", borderRadius: "2px", backgroundColor: t.dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)" }} />
-        <div style={{ width: "50%", height: "3px", borderRadius: "1.5px", backgroundColor: t.dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)" }} />
-      </div>
-
-      {/* Footer strip */}
-      <div style={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: "12px",
-        backgroundColor: t.sectionColors[t.sectionColors.length - 1],
-        opacity: 0.9,
-      }} />
+      />
     </div>
   );
 }
