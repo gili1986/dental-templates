@@ -619,7 +619,7 @@ export default function Home() {
               backgroundColor: "white",
               borderRadius: "14px",
               padding: "24px",
-              border: "2px solid #C4704A",
+              border: `1px solid ${N[100]}`,
               display: "flex",
               flexDirection: "column",
             }}>
