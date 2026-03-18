@@ -200,7 +200,7 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
         {/* Text block — right (first = right in RTL) */}
         <div style={{
           flex: 1, display: "flex", flexDirection: "column",
-          alignItems: "flex-end", justifyContent: "center", gap: "9px",
+          alignItems: "flex-start", justifyContent: "center", gap: "9px",
         }}>
           {/* Tag */}
           <div style={{ width: "44px", height: "10px", borderRadius: pill, backgroundColor: p.cta }} />
