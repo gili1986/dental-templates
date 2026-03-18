@@ -165,102 +165,85 @@ function WhatsAppIcon({ size = 20 }: { size?: number }) {
 
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const isD = t.dark;
-  const textHigh   = isD ? "rgba(255,255,255,0.90)" : "rgba(255,255,255,0.95)";
-  const textMid    = isD ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.55)";
-  const cardBg     = isD ? "rgba(255,255,255,0.07)" : "rgba(255,255,255,0.92)";
-  const cardBorder = isD ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.07)";
-  const sectionBg  = isD ? "rgba(0,0,0,0.25)"       : "rgba(255,255,255,0.18)";
+  const hi  = isD ? "rgba(255,255,255,0.90)" : "rgba(255,255,255,0.95)";
+  const lo  = isD ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.50)";
+  const navBg  = isD ? "rgba(0,0,0,0.50)" : "rgba(255,255,255,0.95)";
+  const navDot = isD ? "rgba(255,255,255,0.20)" : "rgba(0,0,0,0.15)";
+  const sec2Bg = isD ? "rgba(0,0,0,0.20)" : "rgba(255,255,255,0.95)";
+  const blockLo = isD ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.07)";
 
   return (
-    <div style={{ width: "100%", height: "200px", borderRadius: "8px 8px 0 0", overflow: "hidden", position: "relative", backgroundColor: t.bg }}>
+    <div style={{ width: "100%", height: "200px", borderRadius: "8px 8px 0 0", overflow: "hidden", backgroundColor: t.bg }}>
 
       {/* ── Navbar ── */}
       <div style={{
-        height: "22px",
-        backgroundColor: isD ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.96)",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 10px",
-        borderBottom: `1px solid ${isD ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)"}`,
-        backdropFilter: "blur(4px)",
+        height: "20px", backgroundColor: navBg,
+        display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px",
       }}>
-        {/* Logo blob */}
-        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          <div style={{ width: "16px", height: "16px", borderRadius: "4px", backgroundColor: t.color, opacity: 0.9 }} />
-          <div style={{ width: "36px", height: "4px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.8 }} />
+        {/* Logo — right */}
+        <div style={{ display: "flex", alignItems: "center", gap: "4px", order: 1, marginRight: "auto" }}>
+          <div style={{ width: "14px", height: "14px", borderRadius: "3px", backgroundColor: t.color }} />
+          <div style={{ width: "32px", height: "4px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.7 }} />
         </div>
-        {/* Nav links */}
-        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-          {[24, 18, 28, 20].map((w, i) => (
-            <div key={i} style={{ width: `${w}px`, height: "3px", borderRadius: "1.5px", backgroundColor: isD ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.18)" }} />
+        {/* Nav + CTA — left */}
+        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+          {[20, 16, 24].map((w, i) => (
+            <div key={i} style={{ width: `${w}px`, height: "3px", borderRadius: "1.5px", backgroundColor: navDot }} />
           ))}
-          <div style={{ width: "36px", height: "14px", borderRadius: "3px", backgroundColor: t.color, opacity: 0.9 }} />
+          <div style={{ width: "30px", height: "12px", borderRadius: "3px", backgroundColor: t.color, opacity: 0.85, marginRight: "2px" }} />
         </div>
       </div>
 
       {/* ── Hero ── */}
       <div style={{
-        height: "94px",
-        backgroundColor: t.sectionColors[0],
-        display: "flex", flexDirection: "column",
-        alignItems: "flex-end", justifyContent: "center",
-        padding: "0 14px", gap: "5px", position: "relative", overflow: "hidden",
+        height: "104px", backgroundColor: t.sectionColors[0],
+        display: "flex", alignItems: "stretch",
       }}>
-        {/* BG texture blob */}
-        <div style={{ position: "absolute", left: "10px", top: "8px", width: "60px", height: "60px", borderRadius: "50%", backgroundColor: t.accent, opacity: 0.12 }} />
-        <div style={{ position: "absolute", left: "30px", bottom: "-10px", width: "40px", height: "40px", borderRadius: "50%", backgroundColor: t.color, opacity: 0.10 }} />
-        {/* Tag pill */}
-        <div style={{ width: "52px", height: "8px", borderRadius: "4px", backgroundColor: t.accent, opacity: 0.75 }} />
-        {/* Title */}
-        <div style={{ width: "110px", height: "8px", borderRadius: "4px", backgroundColor: textHigh }} />
-        <div style={{ width: "80px", height: "5px", borderRadius: "3px", backgroundColor: textMid }} />
-        {/* Subtitle */}
-        <div style={{ width: "90px", height: "4px", borderRadius: "2px", backgroundColor: textMid, marginTop: "2px" }} />
-        {/* CTA */}
-        <div style={{ width: "56px", height: "16px", borderRadius: "5px", backgroundColor: t.accent, marginTop: "4px", boxShadow: `0 2px 8px ${t.accent}55` }} />
+        {/* Image placeholder — left */}
+        <div style={{
+          width: "42%", backgroundColor: t.accent, opacity: 0.28,
+          flexShrink: 0,
+        }} />
+        {/* Text — right */}
+        <div style={{
+          flex: 1, display: "flex", flexDirection: "column",
+          alignItems: "flex-end", justifyContent: "center",
+          padding: "0 12px", gap: "6px",
+        }}>
+          <div style={{ width: "80px", height: "7px", borderRadius: "3px", backgroundColor: hi }} />
+          <div style={{ width: "60px", height: "5px", borderRadius: "3px", backgroundColor: hi, opacity: 0.7 }} />
+          <div style={{ width: "95px", height: "4px", borderRadius: "2px", backgroundColor: lo }} />
+          <div style={{ width: "48px", height: "14px", borderRadius: "4px", backgroundColor: t.accent, marginTop: "2px" }} />
+        </div>
       </div>
 
       {/* ── Features row ── */}
       <div style={{
-        height: "52px",
-        backgroundColor: isD ? t.sectionColors[1] : "rgba(255,255,255,0.97)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        gap: "6px", padding: "0 10px",
+        height: "44px", backgroundColor: sec2Bg,
+        display: "flex", alignItems: "center", justifyContent: "flex-end",
+        gap: "5px", padding: "0 10px",
       }}>
-        {[0, 1, 2].map((i) => (
+        {[0, 1, 2, 3].map((i) => (
           <div key={i} style={{
-            flex: 1, height: "36px", borderRadius: "6px",
-            backgroundColor: cardBg,
-            border: `1px solid ${cardBorder}`,
+            flex: 1, height: "28px", borderRadius: "5px",
+            backgroundColor: i === 0 ? `${t.color}18` : blockLo,
             display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", gap: "4px",
-            boxShadow: isD ? "none" : "0 1px 4px rgba(0,0,0,0.06)",
+            alignItems: "center", justifyContent: "center", gap: "3px",
           }}>
-            <div style={{ width: "14px", height: "14px", borderRadius: "3px", backgroundColor: t.color, opacity: 0.25 + i * 0.1 }} />
-            <div style={{ width: "28px", height: "3px", borderRadius: "1.5px", backgroundColor: isD ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)" }} />
+            <div style={{ width: "10px", height: "10px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.3 + i * 0.05 }} />
+            <div style={{ width: "22px", height: "2.5px", borderRadius: "1px", backgroundColor: isD ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.12)" }} />
           </div>
         ))}
       </div>
 
-      {/* ── Testimonial strip ── */}
+      {/* ── Bottom strip ── */}
       <div style={{
-        height: "32px",
-        backgroundColor: sectionBg,
-        backdropFilter: "blur(2px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        height: "32px", backgroundColor: isD ? "rgba(0,0,0,0.30)" : `${t.color}0F`,
+        display: "flex", alignItems: "center", justifyContent: "flex-end",
         gap: "8px", padding: "0 10px",
-        borderTop: `1px solid ${isD ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)"}`,
       }}>
-        {[0, 1].map((i) => (
-          <div key={i} style={{
-            flex: 1, height: "20px", borderRadius: "10px",
-            backgroundColor: cardBg,
-            border: `1px solid ${cardBorder}`,
-            display: "flex", alignItems: "center",
-            padding: "0 6px", gap: "4px",
-          }}>
-            <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: t.color, opacity: 0.35 }} />
-            <div style={{ flex: 1, height: "3px", borderRadius: "1.5px", backgroundColor: isD ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.12)" }} />
-          </div>
+        {[70, 50, 60].map((w, i) => (
+          <div key={i} style={{ width: `${w}px`, height: "3px", borderRadius: "1.5px", backgroundColor: isD ? "rgba(255,255,255,0.12)" : `${t.color}30` }} />
         ))}
       </div>
 
