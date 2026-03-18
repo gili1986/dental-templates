@@ -189,13 +189,13 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
           alignItems: "flex-start", justifyContent: "center", gap: "9px",
         }}>
           {/* Tag */}
-          <div style={{ width: "44px", height: "10px", borderRadius: pill, backgroundColor: p.cta }} />
+          <div style={{ width: "36px", height: "10px", borderRadius: pill, backgroundColor: p.cta }} />
           {/* Title */}
-          <div style={{ width: "100%", height: "12px", borderRadius: pill, backgroundColor: p.textLo }} />
+          <div style={{ width: "70%", height: "12px", borderRadius: pill, backgroundColor: p.textLo }} />
           {/* Subtitle */}
-          <div style={{ width: "80%", height: "12px", borderRadius: pill, backgroundColor: p.textLo, opacity: 0.7 }} />
+          <div style={{ width: "55%", height: "12px", borderRadius: pill, backgroundColor: p.textLo, opacity: 0.7 }} />
           {/* CTA */}
-          <div style={{ width: "60px", height: "20px", borderRadius: pill, backgroundColor: p.cta, marginTop: "2px" }} />
+          <div style={{ width: "52px", height: "20px", borderRadius: pill, backgroundColor: p.cta, marginTop: "2px" }} />
         </div>
 
         {/* Image frame — left (second = left in RTL) */}
