@@ -493,7 +493,7 @@ export default function Home() {
                     paddingTop: "12px",
                     borderTop: `1px solid ${N[100]}`,
                   }}>
-                    <span style={{ fontSize: "0.7rem", color: N[200] }}>
+                    <span style={{ fontSize: "0.7rem", color: N[400] }}>
                       {t.sections.length} עמודים/סקשנים
                     </span>
                     <span style={{
