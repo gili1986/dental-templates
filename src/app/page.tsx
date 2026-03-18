@@ -196,7 +196,7 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
 
       {/* ── Hero ── */}
       <div style={{
-        height: "104px", backgroundColor: t.sectionColors[0],
+        height: "180px", backgroundColor: t.sectionColors[0],
         display: "flex", alignItems: "stretch",
       }}>
         {/* Image placeholder — left */}
@@ -217,35 +217,6 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
         </div>
       </div>
 
-      {/* ── Features row ── */}
-      <div style={{
-        height: "44px", backgroundColor: sec2Bg,
-        display: "flex", alignItems: "center", justifyContent: "flex-end",
-        gap: "5px", padding: "0 10px",
-      }}>
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} style={{
-            flex: 1, height: "28px", borderRadius: "5px",
-            backgroundColor: i === 0 ? `${t.color}18` : blockLo,
-            display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", gap: "3px",
-          }}>
-            <div style={{ width: "10px", height: "10px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.3 + i * 0.05 }} />
-            <div style={{ width: "22px", height: "2.5px", borderRadius: "1px", backgroundColor: isD ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.12)" }} />
-          </div>
-        ))}
-      </div>
-
-      {/* ── Bottom strip ── */}
-      <div style={{
-        height: "32px", backgroundColor: isD ? "rgba(0,0,0,0.30)" : `${t.color}0F`,
-        display: "flex", alignItems: "center", justifyContent: "flex-end",
-        gap: "8px", padding: "0 10px",
-      }}>
-        {[70, 50, 60].map((w, i) => (
-          <div key={i} style={{ width: `${w}px`, height: "3px", borderRadius: "1.5px", backgroundColor: isD ? "rgba(255,255,255,0.12)" : `${t.color}30` }} />
-        ))}
-      </div>
 
     </div>
   );
