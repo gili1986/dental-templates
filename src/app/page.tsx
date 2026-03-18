@@ -177,23 +177,9 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
   return (
     <div style={{ width: "100%", height: "160px", borderRadius: "8px 8px 0 0", overflow: "hidden", backgroundColor: p.heroBg }}>
 
-      {/* ── Navbar ── */}
-      <div style={{
-        height: "26px", backgroundColor: p.navBg,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 12px", gap: "8px",
-      }}>
-        {/* Circle avatar — right */}
-        <div style={{ width: "19px", height: "19px", borderRadius: "50%", backgroundColor: t.color, flexShrink: 0 }} />
-        {/* Long nav bar — center */}
-        <div style={{ flex: 1, height: "8px", borderRadius: pill, backgroundColor: navBar, margin: "0 8px" }} />
-        {/* CTA pill — left */}
-        <div style={{ width: "52px", height: "17px", borderRadius: pill, backgroundColor: t.color }} />
-      </div>
-
       {/* ── Hero ── */}
       <div style={{
-        height: "134px", backgroundColor: p.heroBg,
+        height: "160px", backgroundColor: p.heroBg,
         display: "flex", alignItems: "center",
         padding: "12px 14px", gap: "12px",
       }}>
