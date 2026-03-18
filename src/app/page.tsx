@@ -66,7 +66,7 @@ const templates = [
     fit: "רופאים שרוצים להקרין אמינות ומקצועיות",
     sections: ["hero", "services", "about", "reviews", "faq", "contact"],
     sectionColors: ["#1B4F8A", "#F0F7FF", "#ffffff", "#F0F7FF", "#ffffff", "#1B4F8A"],
-    preview: { navBg: "#ffffff", navDark: false, heroBg: "#1B4F8A", imgBg: "#4A7FBF", textHi: "rgba(255,255,255,0.93)", textLo: "rgba(255,255,255,0.45)", cta: "#4FC3F7" },
+    preview: { navBg: "#ffffff", navDark: false, heroBg: "#EEF4FB", imgBg: "#FFFFFF", textHi: "#1B4F8A", textLo: "#C8D8E8", cta: "#1B4F8A" },
   },
   {
     id: "basic-2",
@@ -82,7 +82,7 @@ const templates = [
     fit: "מרפאות משפחתיות עם דגש על קשר אישי",
     sections: ["hero", "about", "services", "reviews", "contact"],
     sectionColors: ["#C4704A", "#FDF3EC", "#ffffff", "#FDF3EC", "#C4704A"],
-    preview: { navBg: "#FFFDF9", navDark: false, heroBg: "#FDF3EC", imgBg: "#C4704A", textHi: "#2D1B12", textLo: "rgba(45,27,18,0.45)", cta: "#C4704A" },
+    preview: { navBg: "#FFFDF9", navDark: false, heroBg: "#FBF0E8", imgBg: "#FFFFFF", textHi: "#C4704A", textLo: "#DFC4B0", cta: "#C4704A" },
   },
   {
     id: "basic-3",
@@ -98,7 +98,7 @@ const templates = [
     fit: "קליניקות שמדגישות ציוד וטכנולוגיה מתקדמת",
     sections: ["hero", "tech", "services", "reviews", "contact"],
     sectionColors: ["#0D1B2A", "#0a1929", "#0F2035", "#0a1929", "#0D1B2A"],
-    preview: { navBg: "#0D1B2A", navDark: true, heroBg: "#0D1B2A", imgBg: "#16304E", textHi: "rgba(232,244,255,0.92)", textLo: "rgba(0,229,255,0.50)", cta: "#00E5FF" },
+    preview: { navBg: "#0D1B2A", navDark: true, heroBg: "#0D1B2A", imgBg: "#162840", textHi: "#00E5FF", textLo: "#1E3F5A", cta: "#00E5FF" },
   },
   {
     id: "premium-1",
@@ -114,7 +114,7 @@ const templates = [
     fit: "קליניקות יוקרה ורופאים עם מוניטין בינלאומי",
     sections: ["home", "services", "about", "contact"],
     sectionColors: ["#2C2C2C", "#F2F0EB", "#ffffff", "#2C2C2C"],
-    preview: { navBg: "#FAFAF8", navDark: false, heroBg: "#F2F0EB", imgBg: "#C0B49E", textHi: "#1A1A1A", textLo: "rgba(26,26,26,0.40)", cta: "#C9A96E" },
+    preview: { navBg: "#FAFAF8", navDark: false, heroBg: "#F2F0EB", imgBg: "#E2DDD4", textHi: "#2C2C2C", textLo: "#C8C2B8", cta: "#C9A96E" },
   },
   {
     id: "premium-2",
@@ -130,7 +130,7 @@ const templates = [
     fit: "רופאים שרוצים להיות מובילים שוק ובולטים",
     sections: ["home", "treatments", "results", "contact"],
     sectionColors: ["#1A1A1A", "#F8F8F8", "#ffffff", "#1A1A1A"],
-    preview: { navBg: "#ffffff", navDark: false, heroBg: "#ffffff", imgBg: "#1A1A1A", textHi: "#1A1A1A", textLo: "rgba(26,26,26,0.38)", cta: "#FF4D4D" },
+    preview: { navBg: "#ffffff", navDark: false, heroBg: "#F5F5F5", imgBg: "#E0E0E0", textHi: "#1A1A1A", textLo: "#C8C8C8", cta: "#FF4D4D" },
   },
   {
     id: "premium-3",
@@ -146,7 +146,7 @@ const templates = [
     fit: "רופאים שמספרים סיפור ומבנים קשר עמוק עם מטופלים",
     sections: ["home", "about", "treatments", "gallery"],
     sectionColors: ["#4A3728", "#F0E8DE", "#ffffff", "#4A3728"],
-    preview: { navBg: "#FAF6F1", navDark: false, heroBg: "#F0E8DE", imgBg: "#B8997A", textHi: "#2E2218", textLo: "rgba(46,34,24,0.42)", cta: "#4A3728" },
+    preview: { navBg: "#FAF6F1", navDark: false, heroBg: "#EDE3D8", imgBg: "#D8C8B4", textHi: "#4A3728", textLo: "#C4B09A", cta: "#4A3728" },
   },
 ];
 
@@ -171,52 +171,51 @@ function WhatsAppIcon({ size = 20 }: { size?: number }) {
 
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const p = t.preview;
-  const navDot = p.navDark ? "rgba(255,255,255,0.22)" : "rgba(0,0,0,0.16)";
+  const pill = 999;
+  const navBar = p.navDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.10)";
 
   return (
     <div style={{ width: "100%", height: "160px", borderRadius: "8px 8px 0 0", overflow: "hidden", backgroundColor: p.heroBg }}>
 
       {/* ── Navbar ── */}
       <div style={{
-        height: "22px", backgroundColor: p.navBg,
-        display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px",
+        height: "26px", backgroundColor: p.navBg,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 12px", gap: "8px",
       }}>
-        {/* Logo — right (first = right in RTL) */}
-        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          <div style={{ width: "13px", height: "13px", borderRadius: "3px", backgroundColor: t.color }} />
-          <div style={{ width: "30px", height: "3.5px", borderRadius: "2px", backgroundColor: t.color, opacity: 0.75 }} />
-        </div>
-        {/* Nav + CTA — left */}
-        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-          {[18, 14, 22].map((w, i) => (
-            <div key={i} style={{ width: `${w}px`, height: "2.5px", borderRadius: "1.5px", backgroundColor: navDot }} />
-          ))}
-          <div style={{ width: "28px", height: "13px", borderRadius: "3px", backgroundColor: t.color, opacity: 0.88 }} />
-        </div>
+        {/* CTA pill — right */}
+        <div style={{ width: "52px", height: "17px", borderRadius: pill, backgroundColor: t.color }} />
+        {/* Long nav bar — center */}
+        <div style={{ flex: 1, height: "8px", borderRadius: pill, backgroundColor: navBar, margin: "0 8px" }} />
+        {/* Circle avatar — left */}
+        <div style={{ width: "19px", height: "19px", borderRadius: "50%", backgroundColor: t.color, flexShrink: 0 }} />
       </div>
 
       {/* ── Hero ── */}
       <div style={{
-        height: "138px", backgroundColor: p.heroBg,
-        display: "flex", alignItems: "center", padding: "10px", gap: "10px",
+        height: "134px", backgroundColor: p.heroBg,
+        display: "flex", alignItems: "center",
+        padding: "12px 14px", gap: "12px",
       }}>
-        {/* Text — right (first = right in RTL) */}
+        {/* Text block — right (first = right in RTL) */}
         <div style={{
           flex: 1, display: "flex", flexDirection: "column",
-          alignItems: "flex-end", justifyContent: "center", gap: "7px",
+          alignItems: "flex-end", justifyContent: "center", gap: "9px",
         }}>
-          <div style={{ width: "40px", height: "5px", borderRadius: "3px", backgroundColor: p.cta, opacity: 0.65 }} />
-          <div style={{ width: "88px", height: "8px", borderRadius: "4px", backgroundColor: p.textHi }} />
-          <div style={{ width: "64px", height: "6px", borderRadius: "3px", backgroundColor: p.textHi, opacity: 0.60 }} />
-          <div style={{ width: "96px", height: "3.5px", borderRadius: "2px", backgroundColor: p.textLo }} />
-          <div style={{ width: "72px", height: "3.5px", borderRadius: "2px", backgroundColor: p.textLo, opacity: 0.65 }} />
-          <div style={{ width: "52px", height: "16px", borderRadius: "5px", backgroundColor: p.cta, marginTop: "3px" }} />
+          {/* Tag */}
+          <div style={{ width: "44px", height: "10px", borderRadius: pill, backgroundColor: p.cta }} />
+          {/* Title */}
+          <div style={{ width: "100%", height: "12px", borderRadius: pill, backgroundColor: p.textLo }} />
+          {/* Subtitle */}
+          <div style={{ width: "80%", height: "12px", borderRadius: pill, backgroundColor: p.textLo, opacity: 0.7 }} />
+          {/* CTA */}
+          <div style={{ width: "60px", height: "20px", borderRadius: pill, backgroundColor: p.cta, marginTop: "2px" }} />
         </div>
 
-        {/* Image frame — left (second = left in RTL), inset with rounded corners */}
+        {/* Image frame — left (second = left in RTL) */}
         <div style={{
-          width: "36%", height: "110px", borderRadius: "8px",
-          backgroundColor: p.imgBg, flexShrink: 0, opacity: 0.88,
+          width: "38%", height: "108px", borderRadius: "10px",
+          backgroundColor: p.imgBg, flexShrink: 0,
         }} />
       </div>
 
