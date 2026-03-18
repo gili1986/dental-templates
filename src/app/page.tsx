@@ -183,12 +183,12 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 12px", gap: "8px",
       }}>
-        {/* CTA pill — right */}
-        <div style={{ width: "52px", height: "17px", borderRadius: pill, backgroundColor: t.color }} />
+        {/* Circle avatar — right */}
+        <div style={{ width: "19px", height: "19px", borderRadius: "50%", backgroundColor: t.color, flexShrink: 0 }} />
         {/* Long nav bar — center */}
         <div style={{ flex: 1, height: "8px", borderRadius: pill, backgroundColor: navBar, margin: "0 8px" }} />
-        {/* Circle avatar — left */}
-        <div style={{ width: "19px", height: "19px", borderRadius: "50%", backgroundColor: t.color, flexShrink: 0 }} />
+        {/* CTA pill — left */}
+        <div style={{ width: "52px", height: "17px", borderRadius: pill, backgroundColor: t.color }} />
       </div>
 
       {/* ── Hero ── */}
