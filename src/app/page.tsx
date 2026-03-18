@@ -176,7 +176,7 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
       }}
     >
       <iframe
-        src={t.path}
+        src={`/${t.id}`}
         loading="lazy"
         scrolling="no"
         tabIndex={-1}
