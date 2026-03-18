@@ -470,7 +470,6 @@ export default function Home() {
                   }}>
                     {t.nameHe}
                   </h2>
-                  <p style={{ fontSize: "0.68rem", color: N[200], marginBottom: "8px" }}>{t.name}</p>
 
                   {/* Fit tag */}
                   <div style={{
