@@ -32,7 +32,7 @@ export default function AccessibilityWidget() {
   };
 
   return (
-    <div className="fixed top-4 left-4 z-50" dir="rtl">
+    <div className="fixed bottom-[88px] left-6 z-50" dir="rtl">
       <button
         onClick={() => setOpen(!open)}
         aria-label="פתח תפריט נגישות"
@@ -46,7 +46,7 @@ export default function AccessibilityWidget() {
         <div
           role="dialog"
           aria-label="אפשרויות נגישות"
-          className="absolute top-12 left-0 bg-white border border-gray-200 rounded-xl shadow-xl p-4 w-52 text-sm"
+          className="absolute bottom-full mb-2 left-0 bg-white border border-gray-200 rounded-xl shadow-xl p-4 w-52 text-sm"
         >
           <p className="font-bold text-gray-800 mb-3 text-base">נגישות</p>
 
