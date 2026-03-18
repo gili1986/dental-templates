@@ -476,9 +476,7 @@ export default function Home() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "3px",
-                    backgroundColor: N[50],
-                    borderRadius: "8px",
-                    padding: "8px 12px",
+                    padding: "0 0 4px",
                     marginBottom: "16px",
                   }}>
                     <span style={{ fontSize: "0.65rem", color: N[400], textTransform: "uppercase", letterSpacing: "0.05em" }}>הכי מתאים ל:</span>
