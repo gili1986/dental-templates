@@ -438,7 +438,7 @@ export default function Home() {
                     borderTop: `1px solid ${N[100]}`,
                   }}>
                     <span style={{ fontSize: "0.7rem", color: N[400] }}>
-                      {t.sections.length} עמודים/סקשנים
+                      {t.sections.length} {t.tier === "basic" ? "סקשנים" : "עמודים"}
                     </span>
                     <span style={{
                       fontSize: "0.8rem",
