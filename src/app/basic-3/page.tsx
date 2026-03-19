@@ -232,7 +232,7 @@ export default function Basic3() {
                 </a>
                 <a href={`tel:${clinicData.phone}`}
                   className="px-6 py-3 rounded text-sm font-semibold border flex items-center gap-2 hover:opacity-80"
-                  style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
+                  style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "#092138" }}>
                   <Phone size={14} aria-hidden="true" /> {clinicData.phone}
                 </a>
               </div>
