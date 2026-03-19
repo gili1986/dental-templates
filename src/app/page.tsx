@@ -443,7 +443,7 @@ export default function Home() {
                     <span style={{
                       fontSize: "0.8rem",
                       fontWeight: "700",
-                      color: t.color,
+                      color: "#2285E4",
                       display: "flex",
                       alignItems: "center",
                       gap: "4px",
