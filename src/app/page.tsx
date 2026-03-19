@@ -348,7 +348,7 @@ export default function Home() {
                   backgroundColor: "white",
                   borderRadius: "14px",
                   overflow: "hidden",
-                  border: hoveredId === t.id ? `2px solid #2285E466` : `2px solid transparent`,
+                  border: hoveredId === t.id ? `2px solid #2285E433` : `2px solid transparent`,
                   boxShadow: hoveredId === t.id
                     ? `0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px #2285E420`
                     : `0 2px 8px rgba(65,130,220,0.08)`,
