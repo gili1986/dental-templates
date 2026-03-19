@@ -76,7 +76,7 @@ export default function Premium1() {
           aria-labelledby="hero-heading-p1">
           <div className="absolute inset-0 bg-[var(--bg)] opacity-85 pointer-events-none" aria-hidden="true" />
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div variants={fadeUp} initial="hidden" animate="show" className="space-y-8 pt-24 lg:pt-0">
+            <motion.div variants={fadeUp} initial="hidden" animate="show" className="space-y-8 pt-6 lg:pt-0">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
                 <span className="text-xs tracking-widest uppercase" style={{ color: "var(--accent)" }}>
