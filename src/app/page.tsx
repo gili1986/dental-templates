@@ -274,8 +274,10 @@ export default function Home() {
 
       {/* ─── Hero ─── */}
       <section style={{
-        background: `linear-gradient(135deg, ${P[500]} 0%, ${P[900]} 100%)`,
-        color: "white",
+        backgroundImage: "url('/hero-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        color: "#1A3D7A",
         padding: "64px 24px 56px",
         textAlign: "center",
       }}>
@@ -284,14 +286,15 @@ export default function Home() {
             display: "inline-flex",
             alignItems: "center",
             gap: "6px",
-            backgroundColor: "rgba(255,255,255,0.12)",
-            border: "1px solid rgba(255,255,255,0.2)",
+            backgroundColor: "rgba(26,61,122,0.08)",
+            border: "1px solid rgba(26,61,122,0.15)",
             borderRadius: "20px",
             padding: "4px 16px",
             fontSize: "0.75rem",
             fontWeight: "600",
             marginBottom: "16px",
             letterSpacing: "0.02em",
+            color: "#1A3D7A",
           }}>
             <Icon icon="ph:sparkle-fill" width={12} height={12} />
             <span>6 תבניות מקצועיות · RTL עברית · נגישות SI 5568</span>
@@ -303,10 +306,11 @@ export default function Home() {
             lineHeight: 1.2,
             marginBottom: "16px",
             fontFamily: "'Google Sans', sans-serif",
+            color: "#0D1F3C",
           }}>
             בחר את התבנית שמתאימה<br />למרפאה שלך
           </h1>
-          <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.5, maxWidth: "480px", margin: "0 auto" }}>
+          <p style={{ fontSize: "1rem", color: "#3D5A8A", lineHeight: 1.5, maxWidth: "480px", margin: "0 auto" }}>
             אתרים מוכנים לפרסום, בעברית מלאה, מותאמים למובייל ועומדים בדרישות נגישות ישראל.
             כל תבנית כוללת מבנה שונה שמתאים לסגנון הקליניקה.
           </p>
