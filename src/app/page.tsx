@@ -175,12 +175,12 @@ function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const navBar = p.navDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.10)";
 
   return (
-    <div style={{ width: "100%", backgroundColor: "white", padding: "8px 8px 0 8px" }}>
+    <div style={{ width: "100%", backgroundColor: "white", padding: "8px 8px 8px 8px" }}>
 
       {/* ── Hero ── */}
       <div style={{
         height: "152px", backgroundColor: p.heroBg,
-        borderRadius: "8px 8px 0 0",
+        borderRadius: "8px",
         display: "flex", alignItems: "center",
         padding: "12px 14px", gap: "12px",
       }}>
