@@ -194,7 +194,7 @@ export default function Basic2() {
                 <a
                   href={`tel:${clinicData.phone}`}
                   className="px-7 py-3 rounded-full font-semibold text-base border-2 hover:opacity-80 flex items-center gap-2"
-                  style={{ borderColor: "var(--primary)", color: "var(--primary)" }}
+                  style={{ borderColor: "var(--primary)", color: "var(--primary)", backgroundColor: "#FFF4EB" }}
                 >
                   <Phone size={15} aria-hidden="true" /> התקשרו
                 </a>
