@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import BackToHomeButton from "@/components/shared/BackToHomeButton";
 
 export const metadata: Metadata = {
   title: "תבניות אתר לרופאי שיניים",
@@ -15,7 +16,10 @@ export default function RootLayout({
     <html lang="he" dir="rtl">
       {/* eslint-disable-next-line @next/next/no-sync-scripts */}
       <head><script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <BackToHomeButton />
+      </body>
     </html>
   );
 }

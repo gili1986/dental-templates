@@ -480,6 +480,10 @@ export default function Basic2() {
           </div>
           <div className="border-t border-white/20 pt-4 text-center text-xs opacity-50">
             © {new Date().getFullYear()} {clinicData.name}
+            {" · "}
+            <a href="/privacy" className="underline hover:opacity-100">מדיניות פרטיות</a>
+            {" · "}
+            <a href="/terms" className="underline hover:opacity-100">תנאי שימוש</a>
           </div>
         </div>
       </footer>

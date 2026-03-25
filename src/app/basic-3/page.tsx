@@ -281,7 +281,7 @@ export default function Basic3() {
           </div>
         </section>
 
-        <HealthFundsStrip />
+        <HealthFundsStrip invert />
 
         {/* ── TECHNOLOGY SHOWCASE ── */}
         <section id="technology" className="py-20"
@@ -458,7 +458,7 @@ export default function Basic3() {
           </div>
         </section>
 
-        <InsuranceStrip />
+        <InsuranceStrip invert />
 
         {/* ── CONTACT ── */}
         <section id="contact" className="py-20"
@@ -525,6 +525,10 @@ export default function Basic3() {
           <div className="border-t pt-4 text-center text-xs"
             style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
             © {new Date().getFullYear()} {clinicData.name}
+            {" · "}
+            <a href="/privacy" className="underline hover:opacity-80">מדיניות פרטיות</a>
+            {" · "}
+            <a href="/terms" className="underline hover:opacity-80">תנאי שימוש</a>
           </div>
         </div>
       </footer>

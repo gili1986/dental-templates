@@ -730,6 +730,10 @@ export default function Basic1() {
           </div>
           <div className="border-t border-white/20 pt-4 text-center text-xs opacity-60">
             © {new Date().getFullYear()} {clinicData.name} | כל הזכויות שמורות
+            {" · "}
+            <a href="/privacy" className="underline hover:opacity-100">מדיניות פרטיות</a>
+            {" · "}
+            <a href="/terms" className="underline hover:opacity-100">תנאי שימוש</a>
           </div>
         </div>
       </footer>

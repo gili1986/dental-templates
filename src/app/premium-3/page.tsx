@@ -316,6 +316,10 @@ export default function Premium3() {
           </div>
           <div className="border-t pt-4 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
             © {new Date().getFullYear()} {clinicData.name}
+            {" · "}
+            <a href="/privacy" className="underline hover:opacity-80">מדיניות פרטיות</a>
+            {" · "}
+            <a href="/terms" className="underline hover:opacity-80">תנאי שימוש</a>
           </div>
         </div>
       </footer>

@@ -3,7 +3,7 @@
 const healthFunds = [
   {
     name: "כללית",
-    logoUrl: "https://www.clalit.co.il/he/PublishingImages/SiteLogo/logo-clalit-newsite.svg",
+    logoUrl: "https://upload.wikimedia.org/wikipedia/he/4/4d/Clalit_Logo_Clean_2020.svg",
   },
   {
     name: "מכבי",
@@ -30,7 +30,7 @@ const insuranceCompanies = [
   },
 ];
 
-function LogoItem({ name, logoUrl }: { name: string; logoUrl: string }) {
+function LogoItem({ name, logoUrl, invert }: { name: string; logoUrl: string; invert?: boolean }) {
   return (
     <div className="flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
       {/* Fixed 96×24 bounding box — normalises all logos to equal visual weight */}
@@ -38,7 +38,7 @@ function LogoItem({ name, logoUrl }: { name: string; logoUrl: string }) {
         <img
           src={logoUrl}
           alt={name}
-          style={{ maxWidth: "96px", maxHeight: "24px", width: "auto", height: "auto", objectFit: "contain" }}
+          style={{ width: "96px", height: "24px", objectFit: "contain", filter: invert ? "brightness(0) invert(1)" : undefined }}
           className=""
           onError={(e) => {
             const t = e.currentTarget;
@@ -57,10 +57,12 @@ function Strip({
   title,
   items,
   align = "center",
+  invert,
 }: {
   title: string;
   items: { name: string; logoUrl: string }[];
   align?: "center" | "end";
+  invert?: boolean;
 }) {
   return (
     <div className="py-4 sm:py-6" style={{ borderBottom: "1px solid var(--border)" }}>
@@ -72,7 +74,7 @@ function Strip({
         </span>
         <div className={`flex items-center flex-nowrap gap-6 sm:gap-12 ${align === "end" ? "justify-start" : "justify-center"}`}>
           {items.map((item) => (
-            <LogoItem key={item.name} {...item} />
+            <LogoItem key={item.name} {...item} invert={invert} />
           ))}
         </div>
       </div>
@@ -80,18 +82,18 @@ function Strip({
   );
 }
 
-export function HealthFundsStrip({ align }: { align?: "center" | "end" }) {
+export function HealthFundsStrip({ align, invert }: { align?: "center" | "end"; invert?: boolean }) {
   return (
     <div style={{ backgroundColor: "var(--bg)" }}>
-      <Strip title="מכירים בקופות החולים" items={healthFunds} align={align} />
+      <Strip title="מכירים בקופות החולים" items={healthFunds} align={align} invert={invert} />
     </div>
   );
 }
 
-export function InsuranceStrip({ align }: { align?: "center" | "end" }) {
+export function InsuranceStrip({ align, invert }: { align?: "center" | "end"; invert?: boolean }) {
   return (
     <div style={{ borderTop: "1px solid var(--border)", backgroundColor: "var(--bg)" }}>
-      <Strip title="עובדים עם חברות ביטוח" items={insuranceCompanies} align={align} />
+      <Strip title="עובדים עם חברות ביטוח" items={insuranceCompanies} align={align} invert={invert} />
     </div>
   );
 }
