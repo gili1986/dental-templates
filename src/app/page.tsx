@@ -292,6 +292,13 @@ export default function Home() {
         .choose-btn { transition: all 0.18s ease; }
         .demo-btn { transition: background-color 0.18s ease, color 0.18s ease; }
         .demo-btn:hover { background-color: #DDE5F0 !important; color: #1E2D42 !important; }
+        @media (max-width: 640px) {
+          .hero-badge { font-size: 0.62rem !important; white-space: nowrap; }
+          .step-arrow { display: none !important; }
+          .step-card { flex: 1 1 100% !important; max-width: 100% !important; }
+          .steps-container { gap: 12px !important; }
+          .features-grid { grid-template-columns: 1fr !important; }
+        }
         .choose-btn:hover { background-color: #25D366 !important; color: white !important; }
         .choose-btn:hover .choose-icon { color: white !important; }
       `}</style>
@@ -352,7 +359,7 @@ export default function Home() {
             letterSpacing: "0.03em", color: "#1A3D7A",
           }}>
             <Icon icon="ph:seal-check-fill" width={13} height={13} />
-            <span>6 תבניות מקצועיות · עברית מלאה · נגישות SI 5568</span>
+            <span className="hero-badge">6 תבניות מקצועיות · עברית מלאה · נגישות SI 5568</span>
           </div>
 
           <h1 style={{
@@ -420,11 +427,11 @@ export default function Home() {
               3 שלבים והאתר שלך באוויר
             </h2>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center", gap: "0" }}>
+          <div className="steps-container" style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center", gap: "0" }}>
             {steps.map((step, i) => (
               <React.Fragment key={step.num}>
                 {/* Card */}
-                <div style={{
+                <div className="step-card" style={{
                   flex: "1 1 220px", maxWidth: "260px",
                   backgroundColor: N[50],
                   border: `1.5px solid ${N[100]}`,
@@ -443,7 +450,7 @@ export default function Home() {
 
                 {/* Arrow between steps */}
                 {i < steps.length - 1 && (
-                  <div key={`arrow-${i}`} style={{
+                  <div key={`arrow-${i}`} className="step-arrow" style={{
                     display: "flex", alignItems: "center", justifyContent: "center",
                     padding: "0 8px", flexShrink: 0, color: P[300], alignSelf: "center",
                   }}>
