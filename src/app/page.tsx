@@ -284,10 +284,14 @@ export default function Home() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Google Sans', sans-serif; }
         .btn-wa { transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease; }
-        .btn-wa:hover { background-color: #25D366 !important; color: white !important; transform: translateY(-1px); }
+        .btn-wa:hover { background-color: #1DB954 !important; color: white !important; transform: translateY(-1px); }
+        .btn-primary { transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease; }
+        .btn-primary:hover { background-color: #2A5CB8 !important; transform: translateY(-1px); }
         .template-card { transition: all 0.22s ease; }
         .template-card:hover { transform: translateY(-4px); }
         .choose-btn { transition: all 0.18s ease; }
+        .demo-btn { transition: background-color 0.18s ease, color 0.18s ease; }
+        .demo-btn:hover { background-color: #DDE5F0 !important; color: #1E2D42 !important; }
         .choose-btn:hover { background-color: #25D366 !important; color: white !important; }
         .choose-btn:hover .choose-icon { color: white !important; }
       `}</style>
@@ -370,6 +374,7 @@ export default function Home() {
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="#templates"
+              className="btn-primary"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: P[500], color: "white",
@@ -541,6 +546,7 @@ export default function Home() {
               }}>
                 <Link
                   href={`/${t.id}`}
+                  className="demo-btn"
                   style={{
                     flex: 1, textAlign: "center",
                     padding: "9px 12px", borderRadius: "10px",
@@ -640,6 +646,7 @@ export default function Home() {
               <div style={{ padding: "0 16px 16px", display: "flex", gap: "8px" }}>
                 <Link
                   href={`/${t.id}`}
+                  className="demo-btn"
                   style={{
                     flex: 1, textAlign: "center",
                     padding: "9px 12px", borderRadius: "10px",
