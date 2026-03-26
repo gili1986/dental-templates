@@ -370,7 +370,7 @@ export default function Home() {
             fontFamily: "'Google Sans', sans-serif",
             color: "#0D1F3C",
           }}>
-            בחרו את העיצוב שמדבר<br />למרפאה שלכם.
+            בחרו את העיצוב שמדבר<br />למרפאה שלכם
           </h1>
 
           <p style={{ fontSize: "1rem", color: "#3D5A8A", lineHeight: 1.6, maxWidth: "520px", margin: "0 auto 28px" }}>
