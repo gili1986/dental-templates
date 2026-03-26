@@ -1,36 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 
 // ─── Color System · Primary #4182DC ───────────────────────────────────────────
-//
-//  Primary scale (H214)
-//  50   #EBF2FF  — tint / badge bg
-//  100  #D3E5FA  — light surface
-//  200  #A8CCF5  — dividers, borders
-//  300  #6FA8EB  — icon secondary
-//  500  #4182DC  — primary (brand blue)
-//  700  #2A5CB8  — hover / gradient start
-//  900  #1A3D7A  — gradient end / deep
-//
-//  Neutral scale
-//  950  #0D1F3C  — text heading / footer bg
-//  800  #1E2D42  — text dark
-//  600  #3D4F65  — text body
-//  400  #7A8FA6  — text muted
-//  200  #B8C6D4  — text subtle
-//  100  #DDE5F0  — border
-//  50   #F4F7FD  — page bg
-//  white
-//
-//  Semantic (kept from template palette – not UI brand)
-//  premium accent:  #C4704A / #FDF3EC
-//  whatsapp:        #25D366
-//  star:            #F59E0B
-// ──────────────────────────────────────────────────────────────────────────────
-
 const P = {
   50:  "#EBF2FF",
   100: "#D3E5FA",
@@ -56,8 +30,9 @@ const templates = [
     id: "basic-1",
     name: "B1 — Clean Trust",
     nameHe: "נקי ומקצועי",
+    persona: "למרפאה שרוצה מראה קלאסי ומקצועי",
     tier: "basic",
-    tierLabel: "בייסיק 1",
+    tierLabel: "בסיסי",
     color: "#1B4F8A",
     accent: "#4FC3F7",
     bg: "#F0F7FF",
@@ -72,8 +47,9 @@ const templates = [
     id: "basic-2",
     name: "B2 — Warm Approachable",
     nameHe: "חם ומזמין",
+    persona: "לרופא שבונה קשר אישי עם המטופל",
     tier: "basic",
-    tierLabel: "בייסיק 2",
+    tierLabel: "בסיסי",
     color: "#C4704A",
     accent: "#E8907A",
     bg: "#FDF3EC",
@@ -88,8 +64,9 @@ const templates = [
     id: "basic-3",
     name: "B3 — Clinical High-Tech",
     nameHe: "טכנולוגי ומתקדם",
+    persona: "לקליניקה שמדגישה ציוד וטכנולוגיה מתקדמת",
     tier: "basic",
-    tierLabel: "בייסיק 3",
+    tierLabel: "בסיסי",
     color: "#0D1B2A",
     accent: "#00E5FF",
     bg: "#0F2035",
@@ -104,8 +81,9 @@ const templates = [
     id: "premium-1",
     name: "P1 — Nordic Minimal Luxury",
     nameHe: "נורדי מינימליסטי",
+    persona: "לרופא עם מוניטין וקליניקת יוקרה",
     tier: "premium",
-    tierLabel: "מתקדם 1",
+    tierLabel: "מתקדם",
     color: "#2C2C2C",
     accent: "#C9A96E",
     bg: "#F2F0EB",
@@ -120,8 +98,9 @@ const templates = [
     id: "premium-2",
     name: "P2 — Bold Editorial",
     nameHe: "אדיטוריאל נועז",
+    persona: "לרופא שרוצה לבלוט ולהוביל",
     tier: "premium",
-    tierLabel: "מתקדם 2",
+    tierLabel: "מתקדם",
     color: "#1A1A1A",
     accent: "#FF4D4D",
     bg: "#F8F8F8",
@@ -136,8 +115,9 @@ const templates = [
     id: "premium-3",
     name: "P3 — Warm Organic Premium",
     nameHe: "אורגני פרמיום",
+    persona: "לרופא שבונה מותג אישי וסיפור",
     tier: "premium",
-    tierLabel: "מתקדם 3",
+    tierLabel: "מתקדם",
     color: "#4A3728",
     accent: "#D4B896",
     bg: "#F0E8DE",
@@ -150,15 +130,67 @@ const templates = [
   },
 ];
 
-const features = [
-  { icon: "circle-flags:il",        label: "עברית מלאה RTL",      color: undefined     },
-  { icon: "ph:device-mobile-fill",  label: "מותאם למובייל",        color: P[500]        },
-  { icon: "ph:wheelchair-fill",     label: "נגישות SI 5568",        color: P[500]        },
-  { icon: "ph:whatsapp-logo",  label: "כפתור WhatsApp",       color: "#25D366"     },
-  { icon: "ph:first-aid-kit-fill",  label: "לוגואי קופות חולים",   color: P[500]        },
-  { icon: "ph:star-fill",           label: "ביקורות מטופלים",      color: "#F59E0B"     },
-  { icon: "ph:question-fill",       label: "שאלות נפוצות",         color: P[500]        },
-  { icon: "ph:map-trifold-fill",    label: "מפה וניווט",            color: P[500]        },
+const included = [
+  { icon: "circle-flags:il",        label: "עברית מלאה RTL"         },
+  { icon: "ph:device-mobile-fill",  label: "מותאם למובייל"          },
+  { icon: "ph:wheelchair-fill",     label: "נגישות SI 5568"          },
+  { icon: "ph:whatsapp-logo",       label: "כפתור WhatsApp",  color: "#25D366" },
+  { icon: "ph:first-aid-kit-fill",  label: "לוגואי קופות חולים"     },
+  { icon: "ph:star-fill",           label: "ביקורות מטופלים", color: "#F59E0B" },
+  { icon: "ph:question-fill",       label: "שאלות נפוצות"           },
+  { icon: "ph:map-trifold-fill",    label: "מפה וניווט"             },
+  { icon: "ph:magnifying-glass-fill", label: "בסיס SEO מוכן"       },
+  { icon: "ph:lock-key-fill",       label: "SSL + HTTPS"            },
+];
+
+const stats = [
+  { number: "73%", label: "מהמטופלים מחפשים רופא שיניים גוגל לפני שמתקשרים" },
+  { number: "8 שנ׳", label: "ממוצע גיל האתרים של רופאי שיניים בישראל" },
+  { number: "3 ימים", label: "הזמן שלוקח לנו להעלות את האתר שלך לאוויר" },
+];
+
+const steps = [
+  {
+    num: "01",
+    icon: "ph:cursor-click-fill",
+    title: "בוחרים תבנית",
+    desc: "עיינו ב-6 התבניות, לחצו על כל אחת לדמו חי, ובחרו את מה שמרגיש נכון לקליניקה שלכם. אפשר גם לשלב בין תבניות.",
+  },
+  {
+    num: "02",
+    icon: "ph:paper-plane-tilt-fill",
+    title: "שולחים תכנים",
+    desc: "לוגו, תמונות, טקסט קצר. שולחים ב-WhatsApp ואנחנו מעלים הכל לאתר.",
+  },
+  {
+    num: "03",
+    icon: "ph:rocket-launch-fill",
+    title: "עולים לאוויר",
+    desc: "האתר שלכם עולה חי עם דומיין, SSL ואופטימיזציה לגוגל. מתחילים לקבל מטופלים.",
+  },
+];
+
+const faqs = [
+  {
+    q: "כמה זמן לוקח להעלות את האתר?",
+    a: "ברגע שמקבלים ממך לוגו, טקסטים ותמונות, האתר עולה לאוויר תוך 3-5 ימי עסקים.",
+  },
+  {
+    q: "האם אני יכול לשנות את הטקסטים לאחר מכן?",
+    a: "כן. לאחר ההשקה תקבל גישה למערכת ניהול פשוטה לעדכון תכנים, או שנעדכן עבורך בתשלום שעתי.",
+  },
+  {
+    q: "מה ההבדל בין בסיסי למתקדם?",
+    a: "בסיסי הוא דף אחד ארוך עם כל המידע, מושלם להשקה מהירה. מתקדם כולל דפים נפרדים לכל טיפול, גלריה תוצאות ו-SEO חזק לחיפושים ספציפיים.",
+  },
+  {
+    q: "האם האתר מופיע בגוגל?",
+    a: "כן. כל תבנית בנויה עם בסיס SEO טכני — מבנה כותרות, מהירות טעינה, ו-sitemap. לתוצאות גוגל מתקדמות יש לנו חבילת SEO נפרדת.",
+  },
+  {
+    q: "יש עלות חודשית?",
+    a: "יש עלות אחסון חודשית קטנה. עלות ההקמה היא חד-פעמית. נשוחח על כל הפרטים ב-WhatsApp.",
+  },
 ];
 
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
@@ -172,40 +204,69 @@ function WhatsAppIcon({ size = 20 }: { size?: number }) {
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const p = t.preview;
   const pill = 999;
-  const navBar = p.navDark ? "rgba(255,255,255,0.14)" : "rgba(0,0,0,0.10)";
 
   return (
-    <div style={{ width: "100%", backgroundColor: "white", padding: "8px 8px 8px 8px" }}>
-
-      {/* ── Hero ── */}
+    <div style={{ width: "100%", backgroundColor: "white", padding: "8px" }}>
       <div style={{
-        height: "152px", backgroundColor: p.heroBg,
+        height: "152px",
+        backgroundColor: p.heroBg,
         borderRadius: "8px",
-        display: "flex", alignItems: "center",
-        padding: "12px 14px", gap: "12px",
+        display: "flex",
+        alignItems: "center",
+        padding: "12px 14px",
+        gap: "12px",
       }}>
-        {/* Text block — right (first = right in RTL) */}
-        <div style={{
-          flex: 1, display: "flex", flexDirection: "column",
-          alignItems: "flex-start", justifyContent: "center", gap: "9px",
-        }}>
-          {/* Tag */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", gap: "9px" }}>
           <div style={{ width: "36px", height: "10px", borderRadius: pill, backgroundColor: p.cta }} />
-          {/* Title */}
           <div style={{ width: "70%", height: "12px", borderRadius: pill, backgroundColor: p.textLo }} />
-          {/* Subtitle */}
           <div style={{ width: "55%", height: "12px", borderRadius: pill, backgroundColor: p.textLo, opacity: 0.7 }} />
-          {/* CTA */}
           <div style={{ width: "52px", height: "20px", borderRadius: pill, backgroundColor: p.cta, marginTop: "2px" }} />
         </div>
-
-        {/* Image frame — left (second = left in RTL) */}
-        <div style={{
-          width: "38%", height: "108px", borderRadius: "10px",
-          backgroundColor: p.imgBg, flexShrink: 0,
-        }} />
+        <div style={{ width: "38%", height: "108px", borderRadius: "10px", backgroundColor: p.imgBg, flexShrink: 0 }} />
       </div>
+    </div>
+  );
+}
 
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        backgroundColor: "white",
+        borderRadius: "12px",
+        border: `1px solid ${N[100]}`,
+        overflow: "hidden",
+        transition: "box-shadow 0.2s",
+      }}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "12px",
+          padding: "16px 20px",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "right",
+        }}
+      >
+        <span style={{ fontSize: "0.88rem", fontWeight: "700", color: N[950], lineHeight: 1.4, fontFamily: "'Google Sans', sans-serif" }}>{q}</span>
+        <Icon
+          icon={open ? "ph:minus-bold" : "ph:plus-bold"}
+          width={18} height={18}
+          style={{ flexShrink: 0, color: P[500], transition: "transform 0.2s" }}
+        />
+      </button>
+      {open && (
+        <div style={{ padding: "0 20px 16px", fontSize: "0.82rem", color: N[600], lineHeight: 1.7 }}>
+          {a}
+        </div>
+      )}
     </div>
   );
 }
@@ -214,10 +275,7 @@ export default function Home() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <div
-      dir="rtl"
-      style={{ backgroundColor: N[50], minHeight: "100vh", fontFamily: "'Google Sans', sans-serif" }}
-    >
+    <div dir="rtl" style={{ backgroundColor: N[50], minHeight: "100vh", fontFamily: "'Google Sans', sans-serif" }}>
       <style>{`
         @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
         @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
@@ -225,8 +283,13 @@ export default function Home() {
         @font-face { font-family: 'Google Sans'; src: url('/fonts/GoogleSans-Bold.ttf') format('truetype'); font-weight: 700 900; font-style: normal; font-display: swap; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Google Sans', sans-serif; }
-        .btn-whatsapp { transition: background-color 0.18s ease, transform 0.18s ease; }
-        .btn-whatsapp:hover { background-color: #1aab48 !important; transform: translateY(-1px); }
+        .btn-wa { transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease; }
+        .btn-wa:hover { background-color: #25D366 !important; color: white !important; transform: translateY(-1px); }
+        .template-card { transition: all 0.22s ease; }
+        .template-card:hover { transform: translateY(-4px); }
+        .choose-btn { transition: all 0.18s ease; }
+        .choose-btn:hover { background-color: #25D366 !important; color: white !important; }
+        .choose-btn:hover .choose-icon { color: white !important; }
       `}</style>
 
       {/* ─── Header ─── */}
@@ -237,7 +300,6 @@ export default function Home() {
         height: "64px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
         position: "sticky",
         top: 0,
         zIndex: 50,
@@ -245,25 +307,19 @@ export default function Home() {
         <div style={{ maxWidth: "1160px", width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <img src="/dentes-logo.svg" width={40} height={36} alt="DentalSites logo" style={{ flexShrink: 0 }} />
-            <div>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: "2px" }}>
               <div style={{ fontSize: "0.95rem", fontWeight: "800", color: N[950], lineHeight: 1 }}>DentalSites</div>
-              <div style={{ fontSize: "0.65rem", color: N[400], marginTop: "0px" }}>תבניות אתר לרופאי שיניים</div>
+              <div style={{ fontSize: "0.65rem", color: N[400], lineHeight: 1 }}>אתרים לרופאי שיניים</div>
             </div>
           </div>
           <a
             href="https://wa.me/972500000000"
-            className="btn-whatsapp"
+            className="btn-wa"
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              backgroundColor: "#25D366",
-              color: "white",
-              padding: "8px 16px",
-              borderRadius: "20px",
-              fontSize: "0.8rem",
-              fontWeight: "700",
-              textDecoration: "none",
+              display: "flex", alignItems: "center", gap: "6px",
+              backgroundColor: "#25D366", color: "white",
+              padding: "8px 16px", borderRadius: "20px",
+              fontSize: "0.8rem", fontWeight: "700", textDecoration: "none",
             }}
           >
             <WhatsAppIcon size={16} />
@@ -277,54 +333,151 @@ export default function Home() {
         backgroundImage: "url('/hero-bg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        color: "#1A3D7A",
-        padding: "64px 24px 56px",
+        padding: "72px 24px 64px",
         textAlign: "center",
       }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+
+          {/* Badge */}
           <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
+            display: "inline-flex", alignItems: "center", gap: "6px",
             backgroundColor: "rgba(26,61,122,0.08)",
             border: "1px solid rgba(26,61,122,0.15)",
-            borderRadius: "20px",
-            padding: "4px 16px",
-            fontSize: "0.75rem",
-            fontWeight: "600",
-            marginBottom: "16px",
-            letterSpacing: "0.02em",
-            color: "#1A3D7A",
+            borderRadius: "20px", padding: "4px 16px",
+            fontSize: "0.72rem", fontWeight: "600", marginBottom: "20px",
+            letterSpacing: "0.03em", color: "#1A3D7A",
           }}>
-            <Icon icon="ph:sparkle-fill" width={12} height={12} />
-            <span>6 תבניות מקצועיות · RTL עברית · נגישות SI 5568</span>
+            <Icon icon="ph:seal-check-fill" width={13} height={13} />
+            <span>6 תבניות מקצועיות · עברית מלאה · נגישות SI 5568</span>
           </div>
 
           <h1 style={{
-            fontSize: "clamp(1.9rem, 4vw, 2.9rem)",
+            fontSize: "clamp(2rem, 4.5vw, 3.1rem)",
             fontWeight: "900",
-            lineHeight: 1.2,
-            marginBottom: "16px",
+            lineHeight: 1.15,
+            marginBottom: "20px",
             fontFamily: "'Google Sans', sans-serif",
             color: "#0D1F3C",
           }}>
-            בחר את התבנית שמתאימה<br />למרפאה שלך
+            בחרו את העיצוב שמדבר<br />למרפאה שלכם.
           </h1>
-          <p style={{ fontSize: "1rem", color: "#3D5A8A", lineHeight: 1.5, maxWidth: "480px", margin: "0 auto" }}>
-            אתרים מוכנים לפרסום, בעברית מלאה, מותאמים למובייל ועומדים בדרישות נגישות ישראל.
-            כל תבנית כוללת מבנה שונה שמתאים לסגנון הקליניקה.
+
+          <p style={{ fontSize: "1rem", color: "#3D5A8A", lineHeight: 1.6, maxWidth: "520px", margin: "0 auto 28px" }}>
+            73% מהמטופלים מחפשים רופא שיניים בגוגל לפני שמתקשרים.
+            בחר תבנית, שלח תכנים, ואנחנו מעלים אותך לאוויר.
           </p>
+
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="#templates"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                backgroundColor: P[500], color: "white",
+                padding: "12px 24px", borderRadius: "24px",
+                fontSize: "0.9rem", fontWeight: "700", textDecoration: "none",
+                boxShadow: `0 4px 16px ${P[500]}55`,
+              }}
+            >
+              <Icon icon="ph:eye-fill" width={18} height={18} />
+              <span>לצפייה בתבניות</span>
+            </a>
+            <a
+              href="https://wa.me/972500000000"
+              className="btn-wa"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                backgroundColor: "white", color: N[950],
+                border: `1px solid ${N[100]}`,
+                padding: "12px 24px", borderRadius: "24px",
+                fontSize: "0.9rem", fontWeight: "700", textDecoration: "none",
+              }}
+            >
+              <WhatsAppIcon size={18} />
+              <span>יש לי שאלה</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ─── How It Works ─── */}
+      <section style={{ backgroundColor: "white", padding: "72px 24px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <div style={{
+              display: "inline-block", fontSize: "0.72rem", fontWeight: "700",
+              color: P[500], backgroundColor: P[50],
+              padding: "4px 14px", borderRadius: "10px", marginBottom: "12px", letterSpacing: "0.05em",
+            }}>
+              איך זה עובד
+            </div>
+            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)", fontWeight: "900", color: N[950], fontFamily: "'Google Sans', sans-serif" }}>
+              3 שלבים והאתר שלך באוויר
+            </h2>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center", gap: "0" }}>
+            {steps.map((step, i) => (
+              <React.Fragment key={step.num}>
+                {/* Card */}
+                <div style={{
+                  flex: "1 1 220px", maxWidth: "260px",
+                  backgroundColor: N[50],
+                  border: `1.5px solid ${N[100]}`,
+                  borderRadius: "16px",
+                  padding: "28px 24px",
+                  display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "6px",
+                }}>
+                  {/* Number */}
+                  <span style={{
+                    fontSize: "2.2rem", fontWeight: "900", color: P[200],
+                    fontFamily: "'Google Sans', sans-serif", lineHeight: 1,
+                  }}>{step.num}</span>
+                  <h3 style={{ fontSize: "1rem", fontWeight: "800", color: N[950], fontFamily: "'Google Sans', sans-serif", margin: 0 }}>{step.title}</h3>
+                  <p style={{ fontSize: "0.8rem", color: N[600], lineHeight: 1.6, margin: 0 }}>{step.desc}</p>
+                </div>
+
+                {/* Arrow between steps */}
+                {i < steps.length - 1 && (
+                  <div key={`arrow-${i}`} style={{
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    padding: "0 8px", flexShrink: 0, color: P[300], alignSelf: "center",
+                  }}>
+                    <Icon icon="ph:arrow-left-bold" width={24} height={24} />
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── Template Grid ─── */}
-      <main style={{ maxWidth: "1160px", margin: "0 auto", padding: "48px 24px" }}>
+      <section id="templates" style={{ maxWidth: "1160px", margin: "0 auto", padding: "72px 24px" }}>
 
-        {/* Section label */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-          <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
-          <span style={{ fontSize: "0.8rem", fontWeight: "700", color: N[400], whiteSpace: "nowrap", letterSpacing: "0.08em" }}>
-            3 בייסיק · 3 מתקדם
+        {/* Section header */}
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <div style={{
+            display: "inline-block", fontSize: "0.72rem", fontWeight: "700",
+            color: P[500], backgroundColor: P[50],
+            padding: "4px 14px", borderRadius: "10px", marginBottom: "12px", letterSpacing: "0.05em",
+          }}>
+            6 תבניות מוכנות
+          </div>
+          <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)", fontWeight: "900", color: N[950], fontFamily: "'Google Sans', sans-serif", marginBottom: "8px" }}>
+            צפו בדמו ובחרו את העיצוב המתאים לכם
+          </h2>
+          <p style={{ fontSize: "0.85rem", color: N[400], maxWidth: "480px", margin: "0 auto" }}>
+            לחצו על כל תבנית לצפייה מלאה. אפשר לשלב בין התבניות, לחצו על "בחר תבנית זו" להמשך תהליך בוואטסאפ.
+          </p>
+        </div>
+
+        {/* Tier divider — Basic */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+          <span style={{
+            fontSize: "0.72rem", fontWeight: "700", color: P[500],
+            backgroundColor: P[50], padding: "4px 14px", borderRadius: "10px", whiteSpace: "nowrap",
+          }}>
+            בסיסי - דף אחד
           </span>
           <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
         </div>
@@ -333,223 +486,233 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))",
           gap: "24px",
-          marginBottom: "64px",
+          marginBottom: "40px",
         }}>
-          {templates.map((t) => (
-            <Link
+          {templates.filter(t => t.tier === "basic").map((t) => (
+            <div
               key={t.id}
-              href={`/${t.id}`}
-              style={{ textDecoration: "none", color: "inherit", display: "block" }}
+              className="template-card"
+              onMouseEnter={() => setHoveredId(t.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              style={{
+                backgroundColor: "white",
+                borderRadius: "14px",
+                overflow: "hidden",
+                border: `2px solid transparent`,
+                boxShadow: hoveredId === t.id
+                  ? `0 16px 48px rgba(65,130,220,0.16)`
+                  : `0 2px 8px rgba(65,130,220,0.08)`,
+              }}
             >
-              <div
-                onMouseEnter={() => setHoveredId(t.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: "14px",
-                  overflow: "hidden",
-                  border: hoveredId === t.id ? `2px solid #2285E433` : `2px solid transparent`,
-                  boxShadow: hoveredId === t.id
-                    ? `0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px #2285E420`
-                    : `0 2px 8px rgba(65,130,220,0.08)`,
-                  transition: "all 0.22s ease",
-                  transform: hoveredId === t.id ? "translateY(-3px)" : "none",
-                  cursor: "pointer",
-                }}
-              >
-                {/* Preview */}
+              <Link href={`/${t.id}`} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
                 <TemplatePreview t={t} />
-
-                {/* Card body */}
-                <div style={{ padding: "16px" }}>
-
-                  {/* Badges row */}
+                <div style={{ padding: "10px 16px 8px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
                     <span style={{
-                      fontSize: "0.62rem",
-                      fontWeight: "700",
-                      padding: "2px 8px",
-                      borderRadius: "10px",
-                      backgroundColor: t.tier === "premium" ? "#FDF3EC" : P[50],
-                      color: t.tier === "premium" ? "#C4704A" : P[500],
-                      letterSpacing: "0.03em",
-                    }}>
-                      {t.tierLabel}
-                    </span>
+                      fontSize: "0.6rem", fontWeight: "700", padding: "2px 8px", borderRadius: "8px",
+                      backgroundColor: P[50], color: P[500],
+                    }}>{t.tierLabel}</span>
                     <span style={{
-                      fontSize: "0.62rem",
-                      fontWeight: "600",
-                      padding: "2px 8px",
-                      borderRadius: "10px",
-                      backgroundColor: N[50],
-                      color: N[400],
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "4px",
-                      whiteSpace: "nowrap",
+                      fontSize: "0.6rem", fontWeight: "600", padding: "2px 8px", borderRadius: "8px",
+                      backgroundColor: N[50], color: N[400],
+                      display: "inline-flex", alignItems: "center", gap: "4px",
                     }}>
-                      <Icon
-                        icon={t.structure === "מולטי-פייג׳" ? "ph:stack-fill" : "ph:file-text-fill"}
-                        width={12}
-                        height={12}
-                        style={{ flexShrink: 0 }}
-                      />
+                      <Icon icon="ph:file-text-fill" width={11} height={11} />
                       {t.structure}
                     </span>
-                    {/* Color dots */}
                     <div style={{ marginRight: "auto", display: "flex", gap: "4px" }}>
-                      <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: t.color }} />
-                      <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: t.accent }} />
+                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.color }} />
+                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.accent }} />
                     </div>
                   </div>
-
-                  {/* Name */}
-                  <h2 style={{
-                    fontSize: "1.05rem",
-                    fontWeight: "800",
-                    color: N[950],
-                    marginBottom: "12px",
-                    fontFamily: "'Google Sans', sans-serif",
-                    lineHeight: 1.2,
-                  }}>
+                  <h2 style={{ fontSize: "1.05rem", fontWeight: "800", color: N[950], marginBottom: "2px", fontFamily: "'Google Sans', sans-serif" }}>
                     {t.nameHe}
                   </h2>
-
-                  {/* Fit tag */}
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "3px",
-                    padding: "0 0 4px",
-                    marginBottom: "16px",
-                  }}>
-                    <span style={{ fontSize: "0.65rem", color: N[400], textTransform: "uppercase", letterSpacing: "0.05em" }}>הכי מתאים ל:</span>
-                    <span style={{ fontSize: "0.75rem", color: N[600], fontWeight: "600", lineHeight: 1.4 }}>
-                      {t.fit}
-                    </span>
-                  </div>
-
-                  {/* CTA */}
-                  <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    paddingTop: "12px",
-                    borderTop: `1px solid ${N[100]}`,
-                  }}>
-                    <span style={{ fontSize: "0.7rem", color: N[400] }}>
-                      {t.sections.length} {t.tier === "basic" ? "סקשנים" : "עמודים"}
-                    </span>
-                    <span style={{
-                      fontSize: "0.8rem",
-                      fontWeight: "700",
-                      color: "#2285E4",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "4px",
-                      opacity: hoveredId === t.id ? 1 : 0.7,
-                      transition: "opacity 0.2s",
-                    }}>
-                      צפה בדמו
-                      <Icon icon="ph:arrow-left-bold" width={14} height={14} />
-                    </span>
-                  </div>
+                  <p style={{ fontSize: "0.75rem", color: N[400], marginBottom: "14px", lineHeight: 1.4 }}>
+                    {t.persona}
+                  </p>
                 </div>
+              </Link>
+
+              {/* CTA row */}
+              <div style={{
+                padding: "0 16px 16px",
+                display: "flex", gap: "8px",
+              }}>
+                <Link
+                  href={`/${t.id}`}
+                  style={{
+                    flex: 1, textAlign: "center",
+                    padding: "9px 12px", borderRadius: "10px",
+                    fontSize: "0.78rem", fontWeight: "600",
+                    backgroundColor: N[50], color: N[600],
+                    textDecoration: "none", border: "none",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "5px",
+                  }}
+                >
+                  <Icon icon="ph:eye-fill" width={14} height={14} />
+                  צפה בדמו
+                </Link>
+                <a
+                  href={`https://wa.me/972500000000?text=${encodeURIComponent(`היי! רוצה לשמוע על תבנית ״${t.nameHe}״ לאתר המרפאה שלי`)}`}
+                  className="choose-btn"
+                  style={{
+                    flex: 2, textAlign: "center",
+                    padding: "9px 12px", borderRadius: "10px",
+                    fontSize: "0.78rem", fontWeight: "700",
+                    backgroundColor: "#f0fdf4", color: "#16a34a",
+                    textDecoration: "none", border: "none",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                  }}
+                >
+                  <span className="choose-icon" style={{ color: "#16a34a" }}>
+                    <WhatsAppIcon size={14} />
+                  </span>
+                  בחר תבנית זו
+                </a>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
-        {/* ─── Features Grid ─── */}
-        <div style={{ marginBottom: "64px" }}>
-          <div style={{ textAlign: "center", marginBottom: "32px" }}>
-            <h2 style={{
-              fontSize: "1.4rem",
-              fontWeight: "900",
-              color: N[950],
-              fontFamily: "'Google Sans', sans-serif",
-              marginBottom: "8px",
-            }}>
-              כל תבנית כוללת
-            </h2>
-            <p style={{ fontSize: "0.82rem", color: N[400] }}>
-              ללא עלות נוספת — הכל כלול בכל אחת מהתבניות
-            </p>
-          </div>
-          <div style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "12px",
+        {/* Tier divider — Premium */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+          <span style={{
+            fontSize: "0.72rem", fontWeight: "700", color: "#F06A10",
+            backgroundColor: "#FFF3E8", padding: "4px 14px", borderRadius: "10px", whiteSpace: "nowrap",
           }}>
-            {features.map((f, i) => (
-              <div
-                key={i}
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: "10px",
-                  padding: "16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "8px",
-                  border: `1px solid ${N[100]}`,
-                  width: "200px",
-                }}
-              >
-                <Icon icon={f.icon} width={20} height={20} style={{ flexShrink: 0, color: f.color }} />
-                <span style={{ fontSize: "0.82rem", fontWeight: "600", color: N[800], flex: 1 }}>{f.label}</span>
-                <Icon icon="ph:check-bold" width={16} height={16} style={{ flexShrink: 0, color: "#22C55E" }} />
+            מתקדם - מולטי-פייג׳
+          </span>
+          <div style={{ flex: 1, height: "1px", backgroundColor: N[100] }} />
+        </div>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))",
+          gap: "24px",
+          marginBottom: "72px",
+        }}>
+          {templates.filter(t => t.tier === "premium").map((t) => (
+            <div
+              key={t.id}
+              className="template-card"
+              onMouseEnter={() => setHoveredId(t.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              style={{
+                backgroundColor: "white",
+                borderRadius: "14px",
+                overflow: "hidden",
+                border: `2px solid transparent`,
+                boxShadow: hoveredId === t.id
+                  ? `0 16px 48px rgba(240,106,16,0.14)`
+                  : `0 2px 8px rgba(65,130,220,0.08)`,
+              }}
+            >
+              <Link href={`/${t.id}`} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
+                <TemplatePreview t={t} />
+                <div style={{ padding: "10px 16px 8px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
+                    <span style={{
+                      fontSize: "0.6rem", fontWeight: "700", padding: "2px 8px", borderRadius: "8px",
+                      backgroundColor: "#FFF3E8", color: "#F06A10",
+                    }}>{t.tierLabel}</span>
+                    <span style={{
+                      fontSize: "0.6rem", fontWeight: "600", padding: "2px 8px", borderRadius: "8px",
+                      backgroundColor: N[50], color: N[400],
+                      display: "inline-flex", alignItems: "center", gap: "4px",
+                    }}>
+                      <Icon icon="ph:stack-fill" width={11} height={11} />
+                      {t.structure}
+                    </span>
+                    <div style={{ marginRight: "auto", display: "flex", gap: "4px" }}>
+                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.color }} />
+                      <div style={{ width: "11px", height: "11px", borderRadius: "50%", backgroundColor: t.accent }} />
+                    </div>
+                  </div>
+                  <h2 style={{ fontSize: "1.05rem", fontWeight: "800", color: N[950], marginBottom: "2px", fontFamily: "'Google Sans', sans-serif" }}>
+                    {t.nameHe}
+                  </h2>
+                  <p style={{ fontSize: "0.75rem", color: N[400], marginBottom: "14px", lineHeight: 1.4 }}>
+                    {t.persona}
+                  </p>
+                </div>
+              </Link>
+              <div style={{ padding: "0 16px 16px", display: "flex", gap: "8px" }}>
+                <Link
+                  href={`/${t.id}`}
+                  style={{
+                    flex: 1, textAlign: "center",
+                    padding: "9px 12px", borderRadius: "10px",
+                    fontSize: "0.78rem", fontWeight: "600",
+                    backgroundColor: N[50], color: N[600],
+                    textDecoration: "none", border: "none",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "5px",
+                  }}
+                >
+                  <Icon icon="ph:eye-fill" width={14} height={14} />
+                  צפה בדמו
+                </Link>
+                <a
+                  href={`https://wa.me/972500000000?text=${encodeURIComponent(`היי! רוצה לשמוע על תבנית ״${t.nameHe}״ לאתר המרפאה שלי`)}`}
+                  className="choose-btn"
+                  style={{
+                    flex: 2, textAlign: "center",
+                    padding: "9px 12px", borderRadius: "10px",
+                    fontSize: "0.78rem", fontWeight: "700",
+                    backgroundColor: "#f0fdf4", color: "#16a34a",
+                    textDecoration: "none", border: "none",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                  }}
+                >
+                  <span className="choose-icon" style={{ color: "#16a34a" }}>
+                    <WhatsAppIcon size={14} />
+                  </span>
+                  בחר תבנית זו
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ─── What's Included ─── */}
+        <div style={{ marginBottom: "72px" }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: "900", color: N[950], fontFamily: "'Google Sans', sans-serif", marginBottom: "6px" }}>
+              מה כלול בכל תבנית
+            </h2>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>הכל כלול, ללא תוספות</p>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px" }}>
+            {included.map((f, i) => (
+              <div key={i} style={{
+                backgroundColor: "white", borderRadius: "10px", padding: "12px 16px",
+                display: "flex", alignItems: "center", gap: "8px",
+                border: `1px solid ${N[100]}`, minWidth: "190px",
+              }}>
+                <Icon icon={f.icon} width={18} height={18} style={{ flexShrink: 0, color: f.color ?? P[500] }} />
+                <span style={{ fontSize: "0.8rem", fontWeight: "600", color: N[800], flex: 1 }}>{f.label}</span>
+                <Icon icon="ph:check-bold" width={14} height={14} style={{ flexShrink: 0, color: "#22C55E" }} />
               </div>
             ))}
           </div>
         </div>
 
         {/* ─── Comparison ─── */}
-        <div style={{ marginBottom: "64px" }}>
+        <div style={{ marginBottom: "72px" }}>
           <div style={{ textAlign: "center", marginBottom: "32px" }}>
-            <h2 style={{
-              fontSize: "1.4rem",
-              fontWeight: "900",
-              color: N[950],
-              fontFamily: "'Google Sans', sans-serif",
-              marginBottom: "8px",
-            }}>
-              השוואת חבילות
+            <h2 style={{ fontSize: "1.4rem", fontWeight: "900", color: N[950], fontFamily: "'Google Sans', sans-serif", marginBottom: "6px" }}>
+              בסיסי או מתקדם?
             </h2>
-            <p style={{ fontSize: "0.82rem", color: N[400] }}>בחר את הרמה שמתאימה לך</p>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>בחרו את הרמה שמתאימה לשלב שלכם עכשיו</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[1060px] mx-auto">
-            {/* בייסיק */}
-            <div style={{
-              backgroundColor: "white",
-              borderRadius: "14px",
-              padding: "24px",
-              border: `1px solid ${N[100]}`,
-              display: "flex",
-              flexDirection: "column",
-            }}>
-              <div style={{
-                fontSize: "0.7rem",
-                fontWeight: "700",
-                color: P[500],
-                backgroundColor: P[50],
-                display: "inline-block",
-                padding: "4px 12px",
-                borderRadius: "10px",
-                marginBottom: "16px",
-              }}>
-                בייסיק
-              </div>
+            {/* בסיסי */}
+            <div style={{ backgroundColor: "white", borderRadius: "14px", padding: "24px", border: `1px solid ${N[100]}`, display: "flex", flexDirection: "column" }}>
+              <div style={{ fontSize: "0.7rem", fontWeight: "700", color: P[500], backgroundColor: P[50], display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>בסיסי</div>
+              <p style={{ fontSize: "0.72rem", color: N[400], marginBottom: "16px" }}>להשקה מהירה ומקצועית</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {[
-                  "דף בית אחד רציף (one-pager)",
-                  "6–8 סקשנים קבועים",
-                  "שלושה מבנים שונים לבחירה",
-                  "מושלם להשקה מהירה",
-                  "עלות הטמעה נמוכה יותר",
-                ].map((item, i) => (
+                {["דף בית אחד רציף (one-pager)", "6–8 סקשנים מובנים", "3 עיצובים שונים לבחירה", "מושלם להתחלה", "עלות הטמעה נמוכה יותר"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
                     <Icon icon="ph:check-bold" width={14} height={14} style={{ color: P[500], flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
@@ -559,36 +722,16 @@ export default function Home() {
             </div>
 
             {/* מתקדם */}
-            <div style={{
-              backgroundColor: "white",
-              borderRadius: "14px",
-              padding: "24px",
-              border: `1px solid ${N[100]}`,
-              display: "flex",
-              flexDirection: "column",
-            }}>
-              <div style={{
-                fontSize: "0.7rem",
-                fontWeight: "700",
-                color: "#C4704A",
-                backgroundColor: "#FDF3EC",
-                display: "inline-block",
-                padding: "4px 12px",
-                borderRadius: "10px",
-                marginBottom: "16px",
-              }}>
-                מתקדם
+            <div style={{ backgroundColor: "white", borderRadius: "14px", padding: "24px", border: `2px solid #FFB88A`, display: "flex", flexDirection: "column", position: "relative" }}>
+              <div style={{ position: "absolute", top: "-11px", right: "20px", fontSize: "0.65rem", fontWeight: "700", backgroundColor: "#F06A10", color: "white", padding: "3px 10px", borderRadius: "8px" }}>
+                מומלץ לרוב הרופאים
               </div>
+              <div style={{ fontSize: "0.7rem", fontWeight: "700", color: "#F06A10", backgroundColor: "#FFF3E8", display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>מתקדם</div>
+              <p style={{ fontSize: "0.72rem", color: N[400], marginBottom: "16px" }}>לקליניקה שצומחת ורוצה SEO</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {[
-                  "אתר מולטי-פייג׳ עם דפים פנימיים",
-                  "דפי שירות / טיפולים נפרדים",
-                  "גלריה / לפני-אחרי / סיפור הרופא",
-                  "SEO טוב יותר לטיפולים ספציפיים",
-                  "מתאים לקליניקות שצומחות",
-                ].map((item, i) => (
+                {["מולטי-פייג׳ עם דפים נפרדים", "דפי שירות / טיפולים עצמאיים", "בלוג מאמרים מקצועיים", "עדכוני תוכן לפי דרישה", "גלריה לפני-אחרי + סיפור הרופא", "SEO חזק לטיפולים ספציפיים"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
-                    <Icon icon="ph:diamond-fill" width={12} height={12} style={{ color: "#C4704A", flexShrink: 0, marginTop: "2px" }} />
+                    <Icon icon="ph:diamond-fill" width={12} height={12} style={{ color: "#F06A10", flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -596,102 +739,70 @@ export default function Home() {
             </div>
 
             {/* מותאם אישית */}
-            <div style={{
-              background: `linear-gradient(145deg, ${N[950]} 0%, ${P[900]} 100%)`,
-              borderRadius: "14px",
-              padding: "24px",
-              display: "flex",
-              flexDirection: "column",
-            }}>
-              <div style={{
-                fontSize: "0.7rem",
-                fontWeight: "700",
-                color: P[200],
-                backgroundColor: "rgba(255,255,255,0.1)",
-                display: "inline-block",
-                padding: "4px 12px",
-                borderRadius: "10px",
-                marginBottom: "8px",
-              }}>
-                מותאם אישית
-              </div>
-              <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", marginBottom: "16px" }}>
-                בנוי בשבילך מאפס
-              </p>
+            <div style={{ background: `linear-gradient(145deg, ${N[950]} 0%, ${P[900]} 100%)`, borderRadius: "14px", padding: "24px", display: "flex", flexDirection: "column" }}>
+              <div style={{ fontSize: "0.7rem", fontWeight: "700", color: P[200], backgroundColor: "rgba(255,255,255,0.1)", display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>מותאם אישית</div>
+              <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.45)", marginBottom: "16px" }}>בנוי בשבילך מאפס</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {[
-                  "עיצוב ייחודי — לא קיים בשום מרפאה אחרת",
-                  "מבנה דפים לפי הצרכים הספציפיים שלך",
-                  "אינטגרציות: הזמנת תורים, CRM, טפסים",
-                  "SEO מותאם לנישה ולאזור גיאוגרפי",
-                  "ליווי צמוד מהרעיון ועד השקה",
-                ].map((item, i) => (
+                {["עיצוב ייחודי, לא קיים בשום מרפאה אחרת", "מבנה דפים לפי הצרכים שלך", "הזמנת תורים, CRM, טפסים", "SEO מותאם לנישה ואזור", "ליווי צמוד מהרעיון ועד השקה"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "rgba(255,255,255,0.8)" }}>
                     <Icon icon="ph:star-four-fill" width={12} height={12} style={{ color: P[300], flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://wa.me/972500000000"
-                className="btn-whatsapp"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  backgroundColor: "#25D366",
-                  color: "white",
-                  padding: "10px 16px",
-                  borderRadius: "20px",
-                  fontSize: "0.82rem",
-                  fontWeight: "700",
-                  textDecoration: "none",
-                  marginTop: "20px",
-                }}
-              >
+              <a href="https://wa.me/972500000000" className="btn-wa" style={{
+                display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                backgroundColor: "#25D366", color: "white",
+                padding: "10px 16px", borderRadius: "20px",
+                fontSize: "0.82rem", fontWeight: "700", textDecoration: "none", marginTop: "20px",
+              }}>
                 <WhatsAppIcon size={16} />
-                <span>בואו נדבר על הפרויקט</span>
+                <span>דברו איתנו על הפרויקט</span>
               </a>
             </div>
           </div>
         </div>
-      </main>
+
+        {/* ─── FAQ ─── */}
+        <div style={{ maxWidth: "720px", margin: "0 auto 72px" }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: "900", color: N[950], fontFamily: "'Google Sans', sans-serif", marginBottom: "6px" }}>
+              שאלות נפוצות
+            </h2>
+            <p style={{ fontSize: "0.82rem", color: N[400] }}>תשובות לשאלות שכולם שואלים</p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            {faqs.map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+        </div>
+
+      </section>
 
       {/* ─── Bottom CTA ─── */}
       <section style={{
         background: `linear-gradient(135deg, ${P[900]} 0%, ${P[500]} 100%)`,
-        padding: "48px 24px",
+        padding: "64px 24px",
         textAlign: "center",
         color: "white",
       }}>
-        <div style={{ maxWidth: "560px", margin: "0 auto" }}>
-          <h2 style={{
-            fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
-            fontWeight: "900",
-            fontFamily: "'Google Sans', sans-serif",
-            marginBottom: "8px",
-          }}>
+        <div style={{ maxWidth: "480px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)", fontWeight: "900", fontFamily: "'Google Sans', sans-serif", marginBottom: "10px" }}>
             מצאת תבנית שאתה אוהב?
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.9rem", marginBottom: "24px", lineHeight: 1.5 }}>
-            דברו איתנו ב-WhatsApp — נתאים את התבנית לקליניקה שלך ונשיק תוך ימים ספורים.
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", marginBottom: "28px", lineHeight: 1.6 }}>
+            שלחו לנו הודעה ב-WhatsApp. נאשר את הבחירה, נתאם פרטים ונעלה את האתר לאוויר תוך ימים.
           </p>
           <a
             href="https://wa.me/972500000000"
-            className="btn-whatsapp"
+            className="btn-wa"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              backgroundColor: "#25D366",
-              color: "white",
-              padding: "14px 28px",
-              borderRadius: "30px",
-              fontSize: "1rem",
-              fontWeight: "800",
-              textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(37,211,102,0.4)",
+              display: "inline-flex", alignItems: "center", gap: "10px",
+              backgroundColor: "#25D366", color: "white",
+              padding: "14px 32px", borderRadius: "30px",
+              fontSize: "1rem", fontWeight: "800", textDecoration: "none",
+              boxShadow: "0 4px 24px rgba(37,211,102,0.4)",
             }}
           >
             <WhatsAppIcon size={22} />
@@ -702,13 +813,10 @@ export default function Home() {
 
       {/* ─── Footer ─── */}
       <footer style={{
-        backgroundColor: N[950],
-        color: "rgba(255,255,255,0.4)",
-        textAlign: "center",
-        padding: "24px",
-        fontSize: "0.72rem",
+        backgroundColor: N[950], color: "rgba(255,255,255,0.35)",
+        textAlign: "center", padding: "24px", fontSize: "0.72rem",
       }}>
-        <p>© 2025 DentalSites · כל הזכויות שמורות · תבניות אתר מקצועיות לרופאי שיניים בישראל</p>
+        <p>© {new Date().getFullYear()} DentalSites · כל הזכויות שמורות · תבניות אתר מקצועיות לרופאי שיניים בישראל</p>
       </footer>
     </div>
   );

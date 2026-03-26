@@ -22,6 +22,7 @@ const iconMap = {
 const navLinks = [
   { label: "אודות", href: "/premium-1/#about" },
   { label: "ביקורות", href: "/premium-1/#reviews" },
+  { label: "מאמרים", href: "/premium-1/articles" },
   { label: "צרו קשר", href: "/premium-1/contact" },
 ];
 

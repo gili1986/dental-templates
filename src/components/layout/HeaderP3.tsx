@@ -7,6 +7,7 @@ import { clinicData } from "@/lib/mock-data";
 const navLinks = [
   { label: "אודות", href: "/premium-3/about" },
   { label: "טיפולים", href: "/premium-3/treatments" },
+  { label: "מאמרים", href: "/premium-3/articles" },
   { label: "גלריה", href: "/premium-3/gallery" },
   { label: "צרו קשר", href: "/premium-3/#contact" },
 ];
