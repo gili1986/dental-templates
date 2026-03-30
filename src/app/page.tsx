@@ -139,14 +139,14 @@ const templates = [
 const included = [
   { icon: "circle-flags:il",        label: "עברית מלאה RTL"         },
   { icon: "ph:device-mobile-fill",  label: "מותאם למובייל"          },
-  { icon: "ph:wheelchair-fill",     label: "נגישות SI 5568"          },
+  { icon: "ph:wheelchair-fill",     label: "נגישות וחוק 13"          },
   { icon: "ph:whatsapp-logo",       label: "כפתור WhatsApp",  color: "#25D366" },
   { icon: "ph:first-aid-kit-fill",  label: "לוגואי קופות חולים"     },
   { icon: "ph:star-fill",           label: "ביקורות מטופלים", color: "#F59E0B" },
   { icon: "ph:question-fill",       label: "שאלות נפוצות"           },
   { icon: "ph:map-trifold-fill",    label: "מפה וניווט"             },
   { icon: "ph:magnifying-glass-fill", label: "בסיס SEO מוכן"       },
-  { icon: "ph:lock-key-fill",       label: "SSL + HTTPS"            },
+  { icon: "ph:sparkle-fill",        label: "תוכן מוכן בסיוע AI",  color: "#7C3AED" },
 ];
 
 const stats = [
@@ -376,7 +376,7 @@ export default function Home() {
             letterSpacing: "0.03em", color: "#1A3D7A",
           }}>
             <Icon icon="ph:seal-check-fill" width={13} height={13} />
-            <span className="hero-badge">6 תבניות מקצועיות · עברית מלאה · נגישות SI 5568</span>
+            <span className="hero-badge">6 תבניות מקצועיות · עברית מלאה · נגישות וחוק 13</span>
           </div>
 
           <h1 style={{
@@ -458,7 +458,7 @@ export default function Home() {
                 }}>
                   {/* Number */}
                   <span style={{
-                    fontSize: "2.2rem", fontWeight: "900", color: P[200],
+                    fontSize: "2.2rem", fontWeight: "900", color: P[500],
                     fontFamily: "'Google Sans', sans-serif", lineHeight: 1,
                   }}>{step.num}</span>
                   <h3 style={{ fontSize: "1rem", fontWeight: "800", color: N[950], fontFamily: "'Google Sans', sans-serif", margin: 0 }}>{step.title}</h3>
@@ -743,7 +743,7 @@ export default function Home() {
               <div style={{ fontSize: "0.7rem", fontWeight: "700", color: P[500], backgroundColor: P[50], display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>בסיסי</div>
               <p style={{ fontSize: "0.72rem", color: N[400], marginBottom: "16px" }}>להשקה מהירה ומקצועית</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {["דף בית אחד רציף (one-pager)", "6–8 סקשנים מובנים", "3 עיצובים שונים לבחירה", "מושלם להתחלה", "עלות הטמעה נמוכה יותר"].map((item, i) => (
+                {["דף בית אחד רציף (one-pager)", "6–8 סקשנים מובנים", "3 עיצובים שונים לבחירה", "טקסטים מוכנים בסיוע AI", "מושלם להתחלה", "עלות הטמעה נמוכה יותר"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
                     <Icon icon="ph:check-bold" width={14} height={14} style={{ color: P[500], flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
@@ -760,7 +760,7 @@ export default function Home() {
               <div style={{ fontSize: "0.7rem", fontWeight: "700", color: "#F06A10", backgroundColor: "#FFF3E8", display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>מתקדם</div>
               <p style={{ fontSize: "0.72rem", color: N[400], marginBottom: "16px" }}>לקליניקה שצומחת ורוצה SEO</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {["מולטי-פייג׳ עם דפים נפרדים", "דפי שירות / טיפולים עצמאיים", "בלוג מאמרים מקצועיים", "עדכוני תוכן לפי דרישה", "גלריה לפני-אחרי + סיפור הרופא", "SEO חזק לטיפולים ספציפיים"].map((item, i) => (
+                {["מולטי-פייג׳ עם דפים נפרדים", "דפי שירות / טיפולים עצמאיים", "בלוג מאמרים מקצועיים", "תוכן לכל הדפים בסיוע AI", "גלריה לפני-אחרי + סיפור הרופא", "SEO חזק לטיפולים ספציפיים"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: N[600] }}>
                     <Icon icon="ph:diamond-fill" width={12} height={12} style={{ color: "#F06A10", flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
@@ -774,7 +774,7 @@ export default function Home() {
               <div style={{ fontSize: "0.7rem", fontWeight: "700", color: P[200], backgroundColor: "rgba(255,255,255,0.1)", display: "inline-block", padding: "4px 12px", borderRadius: "10px", marginBottom: "8px" }}>מותאם אישית</div>
               <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.45)", marginBottom: "16px" }}>בנוי בשבילך מאפס</p>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                {["עיצוב ייחודי, לא קיים בשום מרפאה אחרת", "מבנה דפים לפי הצרכים שלך", "הזמנת תורים, CRM, טפסים", "SEO מותאם לנישה ואזור", "ליווי צמוד מהרעיון ועד השקה"].map((item, i) => (
+                {["עיצוב ייחודי, לא קיים בשום מרפאה אחרת", "מבנה דפים לפי הצרכים שלך", "תוכן שיווקי בסיוע AI", "הזמנת תורים, CRM, טפסים", "SEO מותאם לנישה ואזור", "ליווי צמוד מהרעיון ועד השקה"].map((item, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "0.82rem", color: "rgba(255,255,255,0.8)" }}>
                     <Icon icon="ph:star-four-fill" width={12} height={12} style={{ color: P[300], flexShrink: 0, marginTop: "2px" }} />
                     <span>{item}</span>
