@@ -189,7 +189,7 @@ export default function Basic3() {
         {/* ── HERO ── */}
         <section className="py-24 lg:py-36 relative overflow-hidden"
           style={{
-            backgroundImage: "url(/clinic-hero.jpg)",
+            backgroundImage: "url(/images/thumb-basic-3.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

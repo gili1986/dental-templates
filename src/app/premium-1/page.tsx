@@ -69,7 +69,7 @@ export default function Premium1() {
         <section className="pt-0 pb-0 relative"
           style={{
             backgroundColor: "var(--bg)",
-            backgroundImage: "url('/clinic-hero.jpg')",
+            backgroundImage: "url('/images/thumb-premium-1.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

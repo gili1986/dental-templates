@@ -148,7 +148,7 @@ export default function Basic2() {
         <section
           className="py-20 lg:py-28 relative overflow-hidden"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80')",
+            backgroundImage: "url('/images/thumb-basic-2-v3.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
