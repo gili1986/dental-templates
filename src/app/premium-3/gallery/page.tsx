@@ -167,7 +167,7 @@ export default function GalleryPage() {
               style={{ fontFamily: "var(--font-heading)", color: "var(--primary)" }}>
               רוצים להיות הבאים?
             </h2>
-            <p className="text-sm leading-relaxed mb-6 max-w-sm mx-auto"
+            <p className="text-base leading-relaxed mb-6 max-w-sm mx-auto"
               style={{ color: "var(--text-muted)" }}>
               קבעו ייעוץ ראשוני חינם ונבנה יחד את תוכנית הטיפול שלכם.
             </p>

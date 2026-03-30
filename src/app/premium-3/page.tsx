@@ -70,11 +70,11 @@ export default function Premium3() {
               <h1 id="hero-heading-p3"
                 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                 style={{ fontFamily: "var(--font-heading)" }}>
-                {clinicData.tagline}
+                חיוך בריא ויפה<br />לכל החיים
               </h1>
 
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                {clinicData.heroSubtitle}
+                מרפאת שיניים מתקדמת המציעה שירותים מקצועיים ואיכותיים<br />בסביבה נעימה ומזמינה
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -119,7 +119,7 @@ export default function Premium3() {
                 <div className="flex text-yellow-500 mb-1">
                   {[...Array(5)].map((_, i) => <Star key={i} size={11} fill="currentColor" aria-hidden="true" />)}
                 </div>
-                <p className="text-xs font-semibold" style={{ color: "var(--text)" }}>4.9 · 340+ ביקורות</p>
+                <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>4.9 · 340+ ביקורות</p>
               </motion.div>
             </motion.div>
           </div>
@@ -153,8 +153,8 @@ export default function Premium3() {
                   >
                     {iconMap[s.id as keyof typeof iconMap]}
                   </div>
-                  <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
-                  <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
+                  <h3 className="font-semibold text-base" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
+                  <p className="text-sm mt-1 leading-snug hidden sm:block" style={{ color: "var(--text-muted)" }}>{s.description}</p>
                 </motion.a>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function Premium3() {
             <div className="rounded-3xl overflow-hidden aspect-square"
               role="img" aria-label={`תמונת ${clinicData.doctorName}`}>
               <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                src="/images/doctor-p3-v2.jpg"
                 alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
                 className="w-full h-full object-cover"
               />
@@ -182,7 +182,7 @@ export default function Premium3() {
               <h2 id="about-heading-p3" className="text-3xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>{clinicData.doctorName}</h2>
               <p className="text-sm font-medium" style={{ color: "var(--text)" }}>{clinicData.doctorTitle}</p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{clinicData.doctorBio}</p>
+              <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>{clinicData.doctorBio}</p>
             </motion.div>
           </div>
         </section>
@@ -203,7 +203,7 @@ export default function Premium3() {
                   <div className="flex text-yellow-500 mb-3" aria-label={`דירוג: ${r.rating} כוכבים`}>
                     {[...Array(r.rating)].map((_, j) => <Star key={j} size={13} fill="currentColor" aria-hidden="true" />)}
                   </div>
-                  <p className="text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
+                  <p className="text-base leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
                   <p className="font-semibold text-sm">{r.name}</p>
                 </motion.div>
               ))}
@@ -227,7 +227,7 @@ export default function Premium3() {
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
                     aria-controls={`faq-panel-p3-${i}`}
-                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-sm hover:opacity-80 cursor-pointer"
+                    className="w-full flex items-center justify-between p-4 text-right font-semibold text-base hover:opacity-80 cursor-pointer"
                     style={{ backgroundColor: "var(--bg)" }}>
                     <span>{faq.q}</span>
                     <ChevronDown size={15} aria-hidden="true"
@@ -236,7 +236,7 @@ export default function Premium3() {
                   </button>
                   <div id={`faq-panel-p3-${i}`} role="region" aria-label={faq.q}
                     hidden={openFaq !== i}
-                    className="px-4 pb-4 pt-3 text-sm leading-relaxed"
+                    className="px-4 pb-4 pt-3 text-base leading-relaxed"
                     style={{ color: "var(--text-muted)", backgroundColor: "var(--bg)", borderTop: "1px solid var(--border)" }}>
                     {faq.a}
                   </div>
@@ -256,7 +256,7 @@ export default function Premium3() {
               className="space-y-6">
               <h2 id="contact-heading-p3" className="text-3xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>בואו לבקר</h2>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
                 נשמח לקבל אתכם בסביבה חמה ומזמינה
               </p>
               <div className="space-y-4">
@@ -266,7 +266,7 @@ export default function Premium3() {
                   { icon: Clock, text: clinicData.hours.weekdays, href: "#" },
                 ].map((item, i) => (
                   <a key={i} href={item.href}
-                    className="flex items-center gap-3 text-sm hover:opacity-70">
+                    className="flex items-center gap-3 text-base hover:opacity-70">
                     <item.icon size={15} style={{ color: "var(--accent)" }} aria-hidden="true" />
                     {item.text}
                   </a>

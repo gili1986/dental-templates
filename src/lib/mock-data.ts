@@ -115,10 +115,9 @@ export const faqs = [
 ]
 
 export const kupatHolim = [
-  { name: "מכבי שירותי בריאות", abbr: "מכבי" },
   { name: "שירותי בריאות כללית", abbr: "כללית" },
+  { name: "מכבי שירותי בריאות", abbr: "מכבי" },
   { name: "מאוחדת", abbr: "מאוחדת" },
-  { name: "לאומית שירותי בריאות", abbr: "לאומית" },
 ]
 
 export const navLinks = [
@@ -128,6 +127,30 @@ export const navLinks = [
   { label: "שאלות נפוצות", href: "#faq" },
   { label: "צרו קשר", href: "#contact" },
 ]
+
+export const beforeAfterResults = [
+  {
+    id: "result-1",
+    treatment: "ציפויי חרסינה",
+    category: "אסתטיקה",
+    description: "8 ציפויי חרסינה לחיוך הוליוודי מלא",
+    duration: "3 ביקורים",
+  },
+  {
+    id: "result-2",
+    treatment: "השתלת שיניים",
+    category: "שיקום",
+    description: "שיקום מלא עם 4 שתלים וכתרים קרמיים",
+    duration: "6 חודשים",
+  },
+  {
+    id: "result-3",
+    treatment: "יישור + הלבנה",
+    category: "אסתטיקה",
+    description: "אינביזליין 14 חודשים + הלבנה מקצועית",
+    duration: "14 חודשים",
+  },
+];
 
 export const articles = [
   {

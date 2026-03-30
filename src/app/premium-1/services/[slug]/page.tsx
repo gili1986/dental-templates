@@ -262,20 +262,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       {/* ── HERO ── */}
       <section
-        className="py-16"
+        className="py-8"
         style={{ backgroundColor: "var(--bg-secondary)", borderBottom: "1px solid var(--border)" }}
         aria-labelledby="service-heading">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           {/* Icon + label + title */}
-          <div className="mb-4" style={{ color: "var(--accent)" }} aria-hidden="true">
+          <div className="mb-2" style={{ color: "var(--accent)" }} aria-hidden="true">
             {icon}
           </div>
-          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--accent)" }}>
+          <div className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--accent)" }}>
             {clinicData.doctorName} · טיפולים
           </div>
           <h1
             id="service-heading"
-            className="text-4xl lg:text-5xl font-bold leading-tight mb-10"
+            className="text-4xl lg:text-5xl font-bold leading-tight mb-6"
             style={{ fontFamily: "var(--font-heading)" }}>
             {service.title}
           </h1>
@@ -283,11 +283,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           {/* Stats — horizontal row */}
           <div className="flex gap-10">
             {content.stats.map((stat, i) => (
-              <div key={i} className="flex flex-col gap-1">
+              <div key={i} className="flex flex-col gap-0">
                 <span className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>
                   {stat.value}
                 </span>
-                <span className="text-xs uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+                <span className="text-sm uppercase tracking-wider" style={{ color: "var(--text)" }}>
                   {stat.label}
                 </span>
               </div>
@@ -296,11 +296,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
 
         {/* ── ABOUT + GALLERY ── */}
         <section className="mb-24" aria-labelledby="about-heading">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] gap-16 items-start">
+          <div className="grid lg:grid-cols-[1fr_1.8fr] gap-16 items-start">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
@@ -350,7 +350,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   {p.step}
                 </div>
                 <h3 className="font-semibold text-lg mb-2" style={{ fontFamily: "var(--font-heading)" }}>{p.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.desc}</p>
+                <p className="text-base leading-relaxed" style={{ color: "var(--text)" }}>{p.desc}</p>
               </div>
             ))}
           </div>

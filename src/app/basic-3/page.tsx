@@ -221,7 +221,7 @@ export default function Basic3() {
               </h1>
 
               <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                {clinicData.heroSubtitle}
+                מרפאת שיניים מתקדמת המציעה שירותים מקצועיים ואיכותיים<br />בסביבה נעימה ומזמינה
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -264,7 +264,7 @@ export default function Basic3() {
               <div className="rounded overflow-hidden aspect-[4/3] border"
                 style={{ borderColor: "var(--border)" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80"
+                  src="/images/doctor-b3.png"
                   alt="ציוד דנטלי מתקדם ומודרני"
                   className="w-full h-full object-cover"
                 />
@@ -395,11 +395,11 @@ export default function Basic3() {
                       style={{ backgroundColor: "rgba(0,229,255,0.08)", color: "var(--accent)" }}>
                       {iconMap[s.id as keyof typeof iconMap]}
                     </div>
-                    <h3 className="font-bold text-sm" style={{ fontFamily: "var(--font-heading)" }}>
+                    <h3 className="font-bold text-base" style={{ fontFamily: "var(--font-heading)" }}>
                       {s.title}
                     </h3>
                   </div>
-                  <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                     {s.description}
                   </p>
                 </motion.div>
@@ -415,9 +415,9 @@ export default function Basic3() {
             <div className="rounded border aspect-square overflow-hidden max-w-sm mx-auto md:max-w-full"
               style={{ borderColor: "var(--border)" }}>
               <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                src="/images/doctor-b3-about.png"
                 alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-x-[-1]"
               />
             </div>
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}

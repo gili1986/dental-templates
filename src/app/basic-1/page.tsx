@@ -214,14 +214,14 @@ export default function Basic1() {
                 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                {clinicData.tagline}
+                חיוך בריא ויפה<br />לכל החיים
               </h1>
 
               <p
                 className="text-lg leading-relaxed max-w-lg"
                 style={{ color: "var(--text-muted)" }}
               >
-                {clinicData.heroSubtitle}
+                מרפאת שיניים מתקדמת המציעה שירותים מקצועיים ואיכותיים<br />בסביבה נעימה ומזמינה
               </p>
 
               {/* CTA buttons */}
@@ -263,7 +263,7 @@ export default function Basic1() {
                     >
                       {stat.num}
                     </div>
-                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                    <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
                       {stat.label}
                     </div>
                   </div>
@@ -281,7 +281,7 @@ export default function Basic1() {
             >
               <div className="rounded-2xl overflow-hidden aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=900&q=80"
+                  src="/images/hero-b1-v2.png"
                   alt="מרפאת שיניים מודרנית ונקייה"
                   className="w-full h-full object-cover"
                 />
@@ -305,7 +305,7 @@ export default function Basic1() {
                     4.9/5
                   </span>
                 </div>
-                <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
                   מתוך 340 ביקורות
                 </p>
               </motion.div>
@@ -362,12 +362,12 @@ export default function Basic1() {
                     {iconMap[service.id as keyof typeof iconMap]}
                   </div>
                   <h3
-                    className="font-semibold text-sm mb-1"
+                    className="font-semibold text-base mb-1"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     {service.title}
                   </h3>
-                  <p className="text-xs leading-relaxed hidden sm:block" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-sm leading-relaxed hidden sm:block" style={{ color: "var(--text-muted)" }}>
                     {service.description}
                   </p>
                 </motion.div>
@@ -390,7 +390,7 @@ export default function Basic1() {
               aria-label={`תמונת ${clinicData.doctorName}`}
             >
               <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                src="/images/doctor-b1-v2.jpg"
                 alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
                 className="w-full h-full object-cover"
               />

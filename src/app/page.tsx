@@ -42,6 +42,7 @@ const templates = [
     sections: ["hero", "services", "about", "reviews", "faq", "contact"],
     sectionColors: ["#1B4F8A", "#F0F7FF", "#ffffff", "#F0F7FF", "#ffffff", "#1B4F8A"],
     preview: { navBg: "#ffffff", navDark: false, heroBg: "#EEF4FB", imgBg: "#FFFFFF", textHi: "#1B4F8A", textLo: "#C8D8E8", cta: "#1B4F8A" },
+    thumbnail: "/images/thumb-basic-1-v2.jpg",
   },
   {
     id: "basic-2",
@@ -59,6 +60,7 @@ const templates = [
     sections: ["hero", "about", "services", "reviews", "contact"],
     sectionColors: ["#C4704A", "#FDF3EC", "#ffffff", "#FDF3EC", "#C4704A"],
     preview: { navBg: "#FFFDF9", navDark: false, heroBg: "#FBF0E8", imgBg: "#FFFFFF", textHi: "#C4704A", textLo: "#DFC4B0", cta: "#C4704A" },
+    thumbnail: "/images/thumb-basic-2-v3.jpg",
   },
   {
     id: "basic-3",
@@ -76,6 +78,7 @@ const templates = [
     sections: ["hero", "tech", "services", "reviews", "contact"],
     sectionColors: ["#0D1B2A", "#0a1929", "#0F2035", "#0a1929", "#0D1B2A"],
     preview: { navBg: "#0D1B2A", navDark: true, heroBg: "#0D1B2A", imgBg: "#162840", textHi: "#00E5FF", textLo: "#1E3F5A", cta: "#00E5FF" },
+    thumbnail: "/images/thumb-basic-3.png",
   },
   {
     id: "premium-1",
@@ -93,6 +96,7 @@ const templates = [
     sections: ["home", "services", "about", "contact"],
     sectionColors: ["#2C2C2C", "#F2F0EB", "#ffffff", "#2C2C2C"],
     preview: { navBg: "#FAFAF8", navDark: false, heroBg: "#F2F0EB", imgBg: "#E2DDD4", textHi: "#2C2C2C", textLo: "#C8C2B8", cta: "#C9A96E" },
+    thumbnail: "/images/thumb-premium-1.png",
   },
   {
     id: "premium-2",
@@ -110,6 +114,7 @@ const templates = [
     sections: ["home", "treatments", "results", "contact"],
     sectionColors: ["#1A1A1A", "#F8F8F8", "#ffffff", "#1A1A1A"],
     preview: { navBg: "#ffffff", navDark: false, heroBg: "#F5F5F5", imgBg: "#E0E0E0", textHi: "#1A1A1A", textLo: "#C8C8C8", cta: "#FF4D4D" },
+    thumbnail: "/images/thumb-premium-2-v2.png",
   },
   {
     id: "premium-3",
@@ -127,6 +132,7 @@ const templates = [
     sections: ["home", "about", "treatments", "gallery"],
     sectionColors: ["#4A3728", "#F0E8DE", "#ffffff", "#4A3728"],
     preview: { navBg: "#FAF6F1", navDark: false, heroBg: "#EDE3D8", imgBg: "#D8C8B4", textHi: "#4A3728", textLo: "#C4B09A", cta: "#4A3728" },
+    thumbnail: "/images/thumb-premium-3.png",
   },
 ];
 
@@ -204,6 +210,17 @@ function WhatsAppIcon({ size = 20 }: { size?: number }) {
 function TemplatePreview({ t }: { t: typeof templates[0] }) {
   const p = t.preview;
   const pill = 999;
+  const thumb = (t as any).thumbnail;
+
+  if (thumb) {
+    return (
+      <div style={{ width: "100%", backgroundColor: "white", padding: "8px" }}>
+        <div style={{ height: "200px", borderRadius: "8px", overflow: "hidden" }}>
+          <img src={thumb} alt={t.nameHe} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ width: "100%", backgroundColor: "white", padding: "8px" }}>

@@ -75,7 +75,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     </h2>
                   );
                 if (block.type === "p")
-                  return <p key={i} style={{ color: "var(--text-muted)" }}>{block.text}</p>;
+                  return <p key={i} className="text-base" style={{ color: "var(--text)" }}>{block.text}</p>;
                 if (block.type === "tip")
                   return (
                     <div
@@ -139,7 +139,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <p className="text-sm font-bold mb-1" style={{ fontFamily: "var(--font-heading)" }}>
                 {clinicData.doctorName}
               </p>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                 {clinicData.doctorTitle}
               </p>
             </div>
@@ -181,7 +181,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     <p className="text-sm font-medium mt-0.5 group-hover:opacity-60 transition-opacity" style={{ fontFamily: "var(--font-heading)" }}>
                       {a.title}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{a.readTime}</p>
+                    <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>{a.readTime}</p>
                   </Link>
                 ))}
               </div>

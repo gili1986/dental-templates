@@ -180,7 +180,7 @@ export default function Basic2() {
                 <span style={{ color: "var(--primary)" }}>בידיים טובות</span>
               </h1>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                {clinicData.heroSubtitle}
+                מרפאת שיניים מתקדמת המציעה שירותים מקצועיים ואיכותיים<br />בסביבה נעימה ומזמינה
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -205,7 +205,7 @@ export default function Basic2() {
             <motion.div variants={fadeUp} custom={2} initial="hidden" animate="show" className="relative">
               <div className="rounded-3xl overflow-hidden aspect-[4/3]">
                 <img
-                  src="/smile-hero.jpg"
+                  src="/images/smile-hero-b2.avif"
                   alt="חיוך בריא ויפה"
                   className="w-full h-full object-cover"
                 />
@@ -221,7 +221,7 @@ export default function Basic2() {
               {[
                 { value: "340+", label: "מטופלים מרוצים", sub: "ביקורות 5 כוכבים" },
                 { value: "15+", label: "שנות ניסיון", sub: "בטיפולים אסתטיים" },
-                { value: "4", label: "קופות חולים", sub: "כלל, מכבי, מאוחדת, לאומית" },
+                { value: "3", label: "קופות חולים", sub: "כללית, מכבי ומאוחדת" },
                 { value: "98%", label: "ממליצים", sub: "על המרפאה לחברים" },
               ].map((stat, i) => (
                 <motion.div
@@ -236,8 +236,8 @@ export default function Basic2() {
                   <p className="text-3xl font-bold" style={{ color: "var(--primary)", fontFamily: "var(--font-heading)" }}>
                     {stat.value}
                   </p>
-                  <p className="text-sm font-semibold mt-0.5" style={{ color: "var(--text)" }}>{stat.label}</p>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{stat.sub}</p>
+                  <p className="text-base font-semibold mt-0.5" style={{ color: "var(--text)" }}>{stat.label}</p>
+                  <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>{stat.sub}</p>
                 </motion.div>
               ))}
             </div>
@@ -349,7 +349,7 @@ export default function Basic2() {
               >
                 <div className="rounded-3xl overflow-hidden aspect-[3/4] max-w-sm mx-auto lg:max-w-full shadow-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+                    src="/images/doctor-b2-v2.jpg"
                     alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
                     className="w-full h-full object-cover"
                   />

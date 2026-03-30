@@ -42,9 +42,9 @@ export default function ArticlesPage() {
             ידע מקצועי
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
-            מאמרים ומידע<br />מקצועי
+            מאמרים ומידע מקצועי
           </h1>
-          <p className="mt-4 text-base max-w-xl" style={{ color: "var(--text-muted)" }}>
+          <p className="mt-4 text-base max-w-xl" style={{ color: "var(--text)" }}>
             מידע מקצועי על טיפולי שיניים, אסתטיקה דנטלית ובריאות הפה — שכתב הצוות שלנו עבורכם.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function ArticlesPage() {
               >
                 {featured.title}
               </h2>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-muted)" }}>
+              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--text)" }}>
                 {featured.excerpt}
               </p>
               <div className="flex items-center justify-between">
@@ -123,7 +123,7 @@ export default function ArticlesPage() {
               >
                 {article.title}
               </h3>
-              <p className="text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text-muted)" }}>
+              <p className="text-base leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text)" }}>
                 {article.excerpt}
               </p>
               <div className="flex items-center gap-3 text-xs" style={{ color: "var(--text-muted)" }}>

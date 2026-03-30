@@ -87,11 +87,11 @@ export default function Premium1() {
               <h1 id="hero-heading-p1"
                 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight"
                 style={{ fontFamily: "var(--font-heading)" }}>
-                {clinicData.tagline}
+                חיוך בריא ויפה<br />לכל החיים
               </h1>
 
-              <p className="text-base leading-relaxed max-w-lg" style={{ color: "var(--text)" }}>
-                {clinicData.heroSubtitle}
+              <p className="text-lg leading-relaxed max-w-lg" style={{ color: "var(--text)" }}>
+                מרפאת שיניים מתקדמת המציעה שירותים מקצועיים ואיכותיים<br />בסביבה נעימה ומזמינה
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">
@@ -122,19 +122,19 @@ export default function Premium1() {
                 className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "24px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>98%</div>
-                <div className="text-xs" style={{ color: "var(--text)" }}>ממליצים</div>
+                <div className="text-sm" style={{ color: "var(--text)" }}>ממליצים</div>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.15 }}
                 className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "120px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>15+</div>
-                <div className="text-xs" style={{ color: "var(--text)" }}>שנות ניסיון</div>
+                <div className="text-sm" style={{ color: "var(--text)" }}>שנות ניסיון</div>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
                 className="hidden lg:block absolute -left-6 bg-white p-4 shadow-lg w-28 text-center"
                 style={{ border: "1px solid var(--border)", top: "216px" }}>
                 <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)", color: "var(--accent)" }}>340+</div>
-                <div className="text-xs" style={{ color: "var(--text)" }}>מטופלים מרוצים</div>
+                <div className="text-sm" style={{ color: "var(--text)" }}>מטופלים מרוצים</div>
               </motion.div>
             </motion.div>
           </div>
@@ -158,22 +158,22 @@ export default function Premium1() {
               <h2 id="services-heading-p1" className="text-4xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>השירותים שלנו</h2>
             </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: "var(--border)" }}>
+            <div className="grid grid-cols-2 md:grid-cols-3 border-t border-r" style={{ borderColor: "var(--border)" }}>
               {services.map((s, i) => (
                 <motion.a key={s.id} href={`/premium-1/services/${s.id}`} variants={fadeUp} custom={i} initial="hidden"
                   whileInView="show" viewport={{ once: true }}
-                  className="p-6 hover:opacity-80 transition-opacity block"
-                  style={{ backgroundColor: "var(--bg)" }}>
+                  className="p-6 transition-all duration-200 block border-b border-l group hover:bg-[var(--bg-secondary)]"
+                  style={{ borderColor: "var(--border)" }}>
                   <div
-                    className="flex justify-start mb-4"
+                    className="flex justify-start mb-4 transition-transform duration-200 group-hover:-translate-x-2"
                     style={{ color: "var(--accent)" }}
                     aria-hidden="true"
                   >
                     {iconMap[s.id as keyof typeof iconMap]}
                   </div>
-                  <h3 className="font-semibold text-sm" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
-                  <p className="text-xs mt-1 hidden sm:block" style={{ color: "var(--text)" }}>{s.description}</p>
-                  <span className="text-xs mt-2 block" style={{ color: "var(--accent)" }}>קרא עוד ←</span>
+                  <h3 className="font-semibold text-base" style={{ fontFamily: "var(--font-heading)" }}>{s.title}</h3>
+                  <p className="text-sm mt-1 hidden sm:block" style={{ color: "var(--text)" }}>{s.description}</p>
+                  <span className="text-sm mt-2 block transition-all duration-200 group-hover:gap-2" style={{ color: "var(--accent)" }}>קרא עוד ←</span>
                 </motion.a>
               ))}
             </div>
@@ -189,7 +189,7 @@ export default function Premium1() {
               <img
                 src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
                 alt={`ד״ר ${clinicData.doctorName}, רופאת שיניים`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-x-[-1]"
               />
               {/* Gold corner */}
               <div className="absolute bottom-4 left-4 w-8 h-8 border-b border-l" style={{ borderColor: "var(--accent)" }} aria-hidden="true" />
@@ -203,7 +203,7 @@ export default function Premium1() {
               <h2 id="about-heading-p1" className="text-3xl font-bold"
                 style={{ fontFamily: "var(--font-heading)" }}>{clinicData.doctorName}</h2>
               <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{clinicData.doctorTitle}</p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>{clinicData.doctorBio}</p>
+              <p className="text-base leading-relaxed" style={{ color: "var(--text)" }}>{clinicData.doctorBio}</p>
               <div className="w-12 h-0.5" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
             </motion.div>
           </div>
@@ -232,10 +232,10 @@ export default function Premium1() {
                   <div className="flex text-yellow-500 mb-4" aria-label={`דירוג: ${r.rating} כוכבים`}>
                     {[...Array(r.rating)].map((_, j) => <Star key={j} size={13} fill="currentColor" aria-hidden="true" />)}
                   </div>
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text)" }}>&ldquo;{r.text}&rdquo;</p>
+                  <p className="text-base leading-relaxed mb-6" style={{ color: "var(--text)" }}>&ldquo;{r.text}&rdquo;</p>
                   <div>
                     <p className="font-semibold text-sm">{r.name}</p>
-                    <p className="text-xs" style={{ color: "var(--text)" }}>{r.date}</p>
+                    <p className="text-sm" style={{ color: "var(--text)" }}>{r.date}</p>
                   </div>
                 </motion.div>
               ))}
@@ -262,7 +262,7 @@ export default function Premium1() {
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
                     aria-controls={`faq-panel-p1-${i}`}
-                    className="w-full flex items-center justify-between py-5 text-right text-sm font-semibold hover:opacity-70 cursor-pointer"
+                    className="w-full flex items-center justify-between py-5 text-right text-base font-semibold hover:opacity-70 cursor-pointer"
                     style={{ fontFamily: "var(--font-heading)" }}>
                     <span>{faq.q}</span>
                     <ChevronDown size={15} aria-hidden="true"
@@ -271,7 +271,7 @@ export default function Premium1() {
                   </button>
                   <div id={`faq-panel-p1-${i}`} role="region" aria-label={faq.q}
                     hidden={openFaq !== i}
-                    className="pb-5 text-sm leading-relaxed" style={{ color: "var(--text)" }}>
+                    className="pb-5 text-base leading-relaxed" style={{ color: "var(--text)" }}>
                     {faq.a}
                   </div>
                 </motion.div>
@@ -301,7 +301,7 @@ export default function Premium1() {
                   { icon: Clock, text: clinicData.hours.weekdays, href: "#" },
                 ].map((item, i) => (
                   <a key={i} href={item.href}
-                    className="flex items-center gap-3 text-sm hover:opacity-70">
+                    className="flex items-center gap-3 text-base hover:opacity-70">
                     <item.icon size={15} style={{ color: "var(--accent)" }} aria-hidden="true" />
                     {item.text}
                   </a>

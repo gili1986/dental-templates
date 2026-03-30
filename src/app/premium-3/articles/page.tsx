@@ -67,7 +67,7 @@ export default function ArticlesPage() {
                 >
                   {featured.title}
                 </h2>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
                   {featured.excerpt}
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function ArticlesPage() {
                 >
                   {article.title}
                 </h3>
-                <p className="text-xs leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text-muted)" }}>
+                <p className="text-base leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text-muted)" }}>
                   {article.excerpt}
                 </p>
                 <div className="flex items-center gap-3 text-xs" style={{ color: "var(--text-muted)" }}>

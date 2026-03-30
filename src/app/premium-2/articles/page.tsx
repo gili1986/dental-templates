@@ -76,7 +76,7 @@ export default function ArticlesPage() {
                   <span className="flex items-center gap-1"><Clock size={11} aria-hidden="true" /> {featured.readTime}</span>
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--accent)" }} aria-hidden="true">
-                  קרא עוד →
+                  קרא עוד ←
                 </span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function ArticlesPage() {
                   >
                     {article.title}
                   </h3>
-                  <p className="text-xs leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--text-muted)" }}>
                     {article.excerpt}
                   </p>
                   <div className="flex items-center gap-3 text-xs font-medium" style={{ color: "var(--text-muted)" }}>

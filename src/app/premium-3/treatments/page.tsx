@@ -159,7 +159,7 @@ export default function TreatmentsPage() {
                         style={{ fontFamily: "var(--font-heading)" }}>
                         {service.title}
                       </h2>
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-base leading-relaxed">
                         {content.story}
                       </p>
                     </div>
@@ -187,7 +187,7 @@ export default function TreatmentsPage() {
                           </div>
                           <div>
                             <div className="text-sm font-bold">{step.label}</div>
-                            <div className="text-sm leading-relaxed"
+                            <div className="text-base leading-relaxed"
                               style={{ color: "var(--text-muted)" }}>
                               {step.text}
                             </div>

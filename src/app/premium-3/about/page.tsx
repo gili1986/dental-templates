@@ -64,18 +64,18 @@ export default function AboutPage() {
                 מסע של 15 שנה
                 <br />ברפואת שיניים
               </h1>
-              <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)", lineHeight: 2 }}>
+              <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
                 {clinicData.doctorBio}
               </p>
             </div>
-            <div className="relative">
+            <div className="relative max-w-sm mx-auto">
               <div
                 className="absolute inset-0 rounded-2xl translate-x-3 translate-y-3"
                 style={{ backgroundColor: "var(--accent)", opacity: 0.15 }}
                 aria-hidden="true"
               />
               <img
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80&auto=format"
+                src="/images/doctor-p3-v2.jpg"
                 alt={`ד"ר יעל כהן, רופאת שיניים מומחית`}
                 className="relative w-full rounded-2xl object-cover"
                 style={{ aspectRatio: "3/4" }}
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 >
                   <div className="mb-4 flex justify-center" style={{ color: "var(--accent)" }}>{p.icon}</div>
                   <h3 className="font-bold mb-3" style={{ fontFamily: "var(--font-heading)" }}>{p.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.desc}</p>
+                  <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h3 className="font-bold mb-0" style={{ fontFamily: "var(--font-heading)" }}>{t.title}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{t.desc}</p>
+                    <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>{t.desc}</p>
                   </div>
                 </div>
               ))}
@@ -157,7 +157,7 @@ export default function AboutPage() {
                   name: "ד\"ר יעל כהן",
                   role: "מנהלת המרפאה",
                   spec: "אסתטיקה דנטלית ושיקום",
-                  img: "photo-1559839734-2b71ea197ec2",
+                  img: "/images/doctor-p3-v2.jpg",
                 },
                 {
                   name: "ד\"ר אמיר לוי",
@@ -174,12 +174,12 @@ export default function AboutPage() {
               ].map((member) => (
                 <div key={member.name} className="text-center">
                   <img
-                    src={`https://images.unsplash.com/${member.img}?w=400&q=80&auto=format&fit=crop`}
+                    src={member.img.startsWith("/") ? member.img : `https://images.unsplash.com/${member.img}?w=400&q=80&auto=format&fit=crop`}
                     alt={member.name}
                     className="w-32 h-32 rounded-full object-cover object-top mx-auto mb-4"
                   />
                   <h3 className="font-bold" style={{ fontFamily: "var(--font-heading)" }}>{member.name}</h3>
-                  <p className="text-sm" style={{ color: "var(--accent)" }}>{member.role}</p>
+                  <p className="text-sm" style={{ color: "var(--text)" }}>{member.role}</p>
                   <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{member.spec}</p>
                 </div>
               ))}
@@ -196,7 +196,7 @@ export default function AboutPage() {
             <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-heading)" }}>
               נשמח להכיר אתכם
             </h2>
-            <p className="text-sm leading-relaxed mb-8 opacity-80">
+            <p className="text-base leading-relaxed mb-8 opacity-80">
               ייעוץ ראשוני חינם. בואו ונבנה יחד תוכנית טיפול מותאמת.
             </p>
             <a
